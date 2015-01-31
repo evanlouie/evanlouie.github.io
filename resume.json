@@ -30,7 +30,7 @@
     "website": "http://sap.com",
     "startDate": "2012-01-01",
     "endDate": "2014-09-01",
-    "summary": "Internal tools developer and open source legal analyst on team dealing with the approval of usage of third-party open-source.",
+    "summary": "Full-stack developer and open source legal analyst on team dealing with the approval of usage of third-party open-source.",
     "highlights": [
       "Developer of internal portal to track and automate team tasks and assignments; implemented with Ruby/Rails/PostgreSQL and integrated with existing J2EE/Hibernate systems.",
       "Developer of open-source vulnerability database, implemented with PHP/Laravel/PostgreSQL and integrated with existing J2EE/Hibernate systems.",

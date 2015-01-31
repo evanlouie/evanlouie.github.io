@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Evan Louie",
-    "label": "Developer & Open-Source Legal Analyst",
+    "label": "Software Developer",
     "picture": "",
     "email": "louie.evan@gmail.com",
     "phone": "(778) 987-8489",
     "website": "http://evanlouie.com",
-    "summary": "Evan is an experienced software developer and open-source legal analyst with 4+ years of industry experience.  He will be earning his degree in April 2015 with a B.Sc Major Computer Science.  Starting out as a junior developer and general IT guy during his high-school years at Oxford Foods in Victoria, B.C., he would later go onto study Computer Science at UBC in 2009 and continue with freelance work while completing his degree. Accepting a 2 year long contract with SAP in 2012, Evan joined a DevOps team as a developer and legal analyst tasked with the auditing of requests for integrating/usage of third-party open-source into SAP outbound products. ",
+    "summary": "Evan is an experienced software developer with 4+ years of industry experience.  He will be earning his degree in April 2015 with a B.Sc Major Computer Science.  Starting out as a junior developer and general IT guy during his high-school years at Oxford Foods in Victoria, B.C., he would later go onto study Computer Science at UBC in 2009 and continue with freelance work while completing his degree. Accepting a 2 year long contract with SAP in 2012, Evan joined a DevOps team as a full-stack developer; developing custom internal tools to increase productivity in the auditing of requests for integrating/usage of third-party open-source into SAP outbound products. ",
     "location": {
       "address": "2205 Lower Mall",
       "postalCode": "V6T1Z4",
@@ -35,7 +35,7 @@
       "Developer of internal portal to track and automate team tasks and assignments; implemented with Ruby/Rails/PostgreSQL and integrated with existing J2EE/Hibernate systems.",
       "Developer of open-source vulnerability database, implemented with PHP/Laravel/PostgreSQL and integrated with existing J2EE/Hibernate systems.",
       "Created general purposed Bash/Python scripts for automated server tasks",
-      "Audit third party open-source licenses to assure compliance with SAP commercial usage"
+      "Audited third party open-source licenses to assure compliance with SAP commercial usage"
     ]
   }, {
     "company": "Oxford Foods",
@@ -104,16 +104,6 @@
   }],
   "publications": [],
   "skills": [{
-    "name": "Web Development",
-    "level": "Intermediate",
-    "keywords": [
-      "HTML5/CSS3",
-      "Twitter Bootstrap",
-      "Zurb Foundation",
-      "RESTful Design",
-      "SOAP Services"
-    ]
-  }, {
     "name": "Ruby",
     "level": "Master",
     "keywords": [
@@ -175,6 +165,16 @@
     "keywords": [
       "Apache Hadoop",
       "MPI"
+    ]
+  }, {
+    "name": "Web Development",
+    "level": "Intermediate",
+    "keywords": [
+      "HTML5/CSS3",
+      "Twitter Bootstrap",
+      "Zurb Foundation",
+      "RESTful Design",
+      "SOAP Services"
     ]
   }, {
     "name": "Misc",

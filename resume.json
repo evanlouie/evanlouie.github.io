@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Evan Louie",
-    "label": "Software Developer",
+    "label": "Software Engineer",
     "picture": "",
     "email": "louie.evan@gmail.com",
     "phone": "(778) 987-8489",
@@ -26,7 +26,7 @@
   },
   "work": [{
     "company": "SAP",
-    "position": "Developer & Open Source Legal Analyst",
+    "position": "Software Engineer",
     "website": "http://sap.com",
     "startDate": "2012-01-01",
     "endDate": "2014-09-01",
@@ -39,7 +39,7 @@
     ]
   }, {
     "company": "Oxford Foods",
-    "position": "Developer & System Administrator",
+    "position": "Software Engineer & System Administrator",
     "website": "http://oxfordfoods.net",
     "startDate": "2007-06-01",
     "endDate": "2009-08-30",
@@ -54,7 +54,6 @@
     "position": "Software Professional",
     "website": "http://evanlouie.com",
     "startDate": "2009-09-01",
-    "endDate": "2015-12-31",
     "summary": "Software professional for contract based clientele requesting anything from personal websites to Linux kernel customizations",
     "highlights": [
       "SEO Optimization and Google Analytics deployment",

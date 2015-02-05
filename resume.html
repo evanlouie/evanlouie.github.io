@@ -599,18 +599,18 @@
 <body itemscope itemtype="http://schema.org/Person">
   <script>
     window.onload = function() {
-    	var toggleFloatingMenu = function() {
-    		$('.js-floating-nav').toggleClass('is-visible');
-    		$('.js-floating-nav-trigger').toggleClass('is-open');
-    	};
+      var toggleFloatingMenu = function() {
+        $('.js-floating-nav').toggleClass('is-visible');
+        $('.js-floating-nav-trigger').toggleClass('is-open');
+      };
 
-    	$(".background-card").css("min-height", window.screen.availHeight + "px");
-    	$(".js-tooltip").tooltip();
-    	$('.js-floating-nav-trigger').on('click', function(e) {
-    		e.preventDefault();
-    		toggleFloatingMenu();
-    	});
-    	$('.js-floating-nav a').on('click', toggleFloatingMenu);
+      $(".background-card").css("min-height", window.screen.availHeight + "px");
+      $(".js-tooltip").tooltip();
+      $('.js-floating-nav-trigger').on('click', function(e) {
+        e.preventDefault();
+        toggleFloatingMenu();
+      });
+      $('.js-floating-nav a').on('click', toggleFloatingMenu);
     }
   </script>
   <div class="container-fluid">
@@ -842,7 +842,7 @@
                       <p class="text-muted visible-xs visible-sm">
                         <small>
                           <span class="space-right">
-                            Aug, 2009 - Dec, 2015
+                            Aug, 2009 - Present
                           </span>
 
                           <span>

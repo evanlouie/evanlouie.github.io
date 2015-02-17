@@ -2,6 +2,8 @@
 
 html,body {
     height: 100%;
+    /*Fix: mobile not filling*/
+    min-height: 100%;
 }
 
 body {

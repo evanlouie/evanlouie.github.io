@@ -152,12 +152,13 @@
       "OpenGL"
     ]
   }, {
-    "name": "Database",
+    "name": "Database/Key-Value Store",
     "level": "Master",
     "keywords": [
       "PostgreSQL",
+      "MySQL/MariaDB",
       "MongoDB",
-      "MySQL/MariaDB"
+      "Redis"
     ]
   }, {
     "name": "Distributed",

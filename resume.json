@@ -130,6 +130,7 @@
     "keywords": [
       "jQuery",
       "AngularJS",
+      "D3.js",
       "three.js",
       "Node.js",
       "MEAN.JS",
@@ -163,6 +164,7 @@
     "level": "Beginner",
     "keywords": [
       "Apache Hadoop",
+      "Apache ZooKeeper",
       "MPI"
     ]
   }, {

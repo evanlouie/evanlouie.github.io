@@ -1,0 +1,30 @@
+body {
+    color: #ddd
+}
+code {
+    background: #3A3D4B
+}
+body.landing #bg {
+    opacity: 1
+}
+body.landing #wrapper header h1 {
+    opacity: 1
+}
+body.landing #wrapper header p {
+    opacity: 1
+}
+body.landing #wrapper .icons {
+    opacity: 1
+}
+body.landing #wrapper hr {
+    opacity: 1
+}
+body.landing #wrapper .links {
+    opacity: 1
+}
+body.landing #footer {
+    opacity: 1
+}
+body.subpage.scrollex #bg {
+    display: none
+}

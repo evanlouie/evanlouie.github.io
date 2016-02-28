@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro|Inconsolata");
+
 @font-face {
     font-family: 'n33';
     src: url("fonts/n33.eot?-qj6ox6");
@@ -6,6 +7,7 @@
     font-weight: normal;
     font-style: normal
 }
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
@@ -14,170 +16,266 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font: inherit;
     vertical-align: baseline
 }
+
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block
 }
+
 body {
     line-height: 1
 }
+
 ol, ul {
     list-style: none
 }
+
 blockquote, q {
     quotes: none
 }
+
 blockquote:before, blockquote:after, q:before, q:after {
     content: '';
     content: none
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0
 }
+
 body {
     -webkit-text-size-adjust: none
 }
+
 *, *:before, *:after {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box
 }
+
 .container {
     margin-left: auto;
     margin-right: auto
 }
-.container.\31 25\25 {
+
+.container.\31
+
+25
+\25 {
     width: 100%;
     max-width: 62.5em;
     min-width: 50em
 }
-.container.\37 5\25 {
+
+.container.\37
+
+5
+\25 {
     width: 37.5em
 }
-.container.\35 0\25 {
+
+.container.\35
+
+0
+\25 {
     width: 25em
 }
-.container.\32 5\25 {
+
+.container.\32
+
+5
+\25 {
     width: 12.5em
 }
+
 .container {
     width: 50em
 }
+
 @media screen and (max-width: 1680px) {
-    .container.\31 25\25 {
-        width: 100%;
-        max-width: 62.5em;
-        min-width: 50em
-    }
-    .container.\37 5\25 {
-        width: 37.5em
-    }
-    .container.\35 0\25 {
-        width: 25em
-    }
-    .container.\32 5\25 {
-        width: 12.5em
-    }
+    .container.\31
+
+25\25 {
+      width: 100%;
+      max-width: 62.5em;
+      min-width: 50em
+  }
+
+    .container.\37
+
+5\25 {
+     width: 37.5em
+ }
+
+    .container.\35
+
+0\25 {
+     width: 25em
+ }
+
+    .container.\32
+
+5\25 {
+     width: 12.5em
+ }
+
     .container {
         width: 50em
     }
 }
+
 @media screen and (max-width: 1080px) {
-    .container.\31 25\25 {
-        width: 100%;
-        max-width: 112.5%;
-        min-width: 90%
-    }
-    .container.\37 5\25 {
-        width: 67.5%
-    }
-    .container.\35 0\25 {
-        width: 45%
-    }
-    .container.\32 5\25 {
-        width: 22.5%
-    }
+    .container.\31
+
+25\25 {
+      width: 100%;
+      max-width: 112.5%;
+      min-width: 90%
+  }
+
+    .container.\37
+
+5\25 {
+     width: 67.5%
+ }
+
+    .container.\35
+
+0\25 {
+     width: 45%
+ }
+
+    .container.\32
+
+5\25 {
+     width: 22.5%
+ }
+
     .container {
         width: 90% !important
     }
 }
+
 @media screen and (max-width: 768px) {
-    .container.\31 25\25 {
-        width: 100%;
-        max-width: 112.5%;
-        min-width: 90%
-    }
-    .container.\37 5\25 {
-        width: 67.5%
-    }
-    .container.\35 0\25 {
-        width: 45%
-    }
-    .container.\32 5\25 {
-        width: 22.5%
-    }
+    .container.\31
+
+25\25 {
+      width: 100%;
+      max-width: 112.5%;
+      min-width: 90%
+  }
+
+    .container.\37
+
+5\25 {
+     width: 67.5%
+ }
+
+    .container.\35
+
+0\25 {
+     width: 45%
+ }
+
+    .container.\32
+
+5\25 {
+     width: 22.5%
+ }
+
     .container {
         width: 90% !important
     }
 }
+
 @media screen and (max-width: 736px) {
-    .container.\31 25\25 {
-        width: 100%;
-        max-width: 112.5%;
-        min-width: 90%
-    }
-    .container.\37 5\25 {
-        width: 67.5%
-    }
-    .container.\35 0\25 {
-        width: 45%
-    }
-    .container.\32 5\25 {
-        width: 22.5%
-    }
+    .container.\31
+
+25\25 {
+      width: 100%;
+      max-width: 112.5%;
+      min-width: 90%
+  }
+
+    .container.\37
+
+5\25 {
+     width: 67.5%
+ }
+
+    .container.\35
+
+0\25 {
+     width: 45%
+ }
+
+    .container.\32
+
+5\25 {
+     width: 22.5%
+ }
+
     .container {
         width: 90% !important
     }
 }
+
 @media screen and (max-width: 480px) {
-    .container.\31 25\25 {
-        width: 100%;
-        max-width: 112.5%;
-        min-width: 90%
-    }
-    .container.\37 5\25 {
-        width: 67.5%
-    }
-    .container.\35 0\25 {
-        width: 45%
-    }
-    .container.\32 5\25 {
-        width: 22.5%
-    }
+    .container.\31
+
+25\25 {
+      width: 100%;
+      max-width: 112.5%;
+      min-width: 90%
+  }
+
+    .container.\37
+
+5\25 {
+     width: 67.5%
+ }
+
+    .container.\35
+
+0\25 {
+     width: 45%
+ }
+
+    .container.\32
+
+5\25 {
+     width: 22.5%
+ }
+
     .container {
         width: 90% !important
     }
 }
+
 html, body {
     height: 100%;
     background-color: #2A2D3C
 }
+
 @media screen and (max-width: 736px) {
     html, body {
         height: auto
     }
 }
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16pt;
     color: rgba(255, 255, 255, 0.6);
     line-height: 1.5em
 }
+
 @media screen and (max-width: 1680px) {
     body {
         font-size: 12pt
     }
 }
+
 body.is-loading *, body.is-loading *:before, body.is-loading *:after {
     -moz-animation: none !important;
     -webkit-animation: none !important;
@@ -188,6 +286,7 @@ body.is-loading *, body.is-loading *:before, body.is-loading *:after {
     -ms-transition: none !important;
     transition: none !important
 }
+
 a {
     color: inherit;
     border-bottom: dotted 1px;
@@ -197,9 +296,11 @@ a {
     -ms-transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
     transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out
 }
+
 a:hover {
     color: #fff
 }
+
 h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     letter-spacing: 0.25em;
@@ -207,19 +308,24 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
     line-height: 1.5em
 }
+
 h2 {
     font-size: 1.5em;
     margin: 0 0 2em 0
 }
+
 h3 {
     font-size: 1.1em
 }
+
 strong, b {
     color: #fff
 }
+
 p {
     margin: 0 0 2em 0
 }
+
 hr {
     position: relative;
     border: 0;
@@ -229,6 +335,7 @@ hr {
     border-top: solid 1px rgba(255, 255, 255, 0.125);
     margin-top: 2.5em
 }
+
 hr:before, hr:after {
     content: '';
     height: 9px;
@@ -237,18 +344,22 @@ hr:before, hr:after {
     position: absolute;
     top: -5px
 }
+
 hr:before {
     left: -1px
 }
+
 hr:after {
     right: -1px
 }
+
 @media screen and (max-width: 736px) {
     hr {
         height: 1.75em;
         margin-top: 1.75em
     }
 }
+
 code {
     border-radius: 4px;
     font-family: 'Inconsolata', 'Courier New', fixed;
@@ -260,45 +371,58 @@ code {
     letter-spacing: 0.025em;
     background: rgba(255, 255, 255, 0.075)
 }
+
 code .str {
     color: #e6db5a
 }
+
 code .kwd {
     color: #66d9ef
 }
+
 code .com {
     color: #75715e;
     font-style: italic
 }
+
 code .typ {
     color: #66d9ef
 }
+
 code .lit {
     color: #ae81ff
 }
+
 code .pun {
     color: inherit
 }
+
 code .pln {
     color: inherit
 }
+
 code .tag {
     color: #f92672
 }
+
 code .atn {
     color: #a6e22a
 }
+
 code .atv {
     color: #e6db74
 }
+
 code .dec {
     color: #ae81ff
 }
+
 pre {
     -webkit-overflow-scrolling: touch;
     margin: 0 0 2em 0;
     white-space: pre-wrap
 }
+
 pre code {
     border-radius: 6px;
     display: block;
@@ -306,37 +430,46 @@ pre code {
     padding: 1em 1.5em;
     overflow-x: auto
 }
+
 ol {
     list-style: decimal;
     margin: 0 0 2em 0;
     padding-left: 1.25em
 }
+
 ol li {
     padding-left: 0.25em
 }
+
 ul {
     list-style: disc;
     margin: 0 0 2em 0;
     padding-left: 1em
 }
+
 ul li {
     padding-left: 0.5em
 }
+
 ul.actions {
     padding: 0
 }
+
 ul.actions li {
     display: inline-block;
     padding: 0;
     margin-left: 1.5em
 }
+
 ul.actions li:first-child {
     margin-left: 0
 }
+
 @media screen and (max-width: 480px) {
     ul.actions {
         margin: 0 0 2em 0
     }
+
     ul.actions li {
         padding: 1em 0 0 0;
         margin: 0;
@@ -344,27 +477,33 @@ ul.actions li:first-child {
         text-align: center;
         width: 100%
     }
+
     ul.actions li:first-child {
         padding-top: 0
     }
-    ul.actions li>* {
+
+    ul.actions li > * {
         width: 100% !important;
         margin: 0 !important
     }
-    ul.actions li>*.icon:before {
+
+    ul.actions li > *.icon:before {
         margin-left: -2em
     }
 }
+
 ul.icons {
     cursor: default;
     padding: 0
 }
+
 ul.icons li {
     display: inline-block;
     font-size: 1.75em;
     margin: 0 0.1em;
     padding: 0
 }
+
 ul.icons li a {
     width: 1.85em;
     height: 1.85em;
@@ -374,37 +513,45 @@ ul.icons li a {
     border-radius: 100%;
     border: 0
 }
+
 ul.icons li a:hover {
     background-color: rgba(255, 255, 255, 0.075)
 }
+
 @media screen and (max-width: 480px) {
     ul.icons {
         cursor: default
     }
+
     ul.icons li {
         font-size: 1.5em;
         margin: 0
     }
 }
+
 ul.links {
     padding: 0
 }
+
 ul.links li {
     display: inline-block;
     line-height: 2.5em;
     padding: 0
 }
+
 ul.links li .icon {
     font-size: 1.35em;
     line-height: 1.85em;
     padding: 0 0.85em;
     text-indent: 0
 }
+
 ul.links li .icon:before {
     position: relative;
     top: 0.1em;
     left: 0.125em
 }
+
 ul.links li a {
     display: inline-block;
     padding: 0 1em;
@@ -413,39 +560,49 @@ ul.links li a {
     text-indent: 0.125em;
     border: 0
 }
+
 ul.links li a:hover {
     background-color: rgba(255, 255, 255, 0.075)
 }
+
 @media screen and (max-width: 480px) {
     ul.links li {
         display: block
     }
 }
+
 dl {
     margin: 0 0 2em 0
 }
+
 dl dt {
     margin: 0 0 1em 0
 }
+
 dl dd {
     margin-left: 2em
 }
+
 .table-wrapper {
     -webkit-overflow-scrolling: touch;
     overflow-x: auto
 }
+
 table {
     margin: 0 0 2em 0;
     width: 100%
 }
+
 table tbody tr {
     border: solid 1px rgba(255, 255, 255, 0.125);
     border-left: 0;
     border-right: 0
 }
+
 table td {
     padding: 0.5em 0.5em
 }
+
 table th {
     color: #fff;
     font-size: 0.9em;
@@ -453,12 +610,15 @@ table th {
     padding: 0 0.5em 0.5em 0.5em;
     text-align: left
 }
+
 table thead {
     border-bottom: solid 2px rgba(255, 255, 255, 0.125)
 }
+
 table tfoot {
     border-top: solid 2px rgba(255, 255, 255, 0.125)
 }
+
 .button {
     display: inline-block;
     border-radius: 6px;
@@ -470,12 +630,15 @@ table tfoot {
     text-transform: uppercase;
     letter-spacing: 0.175em
 }
+
 .button:hover {
     background-color: rgba(255, 255, 255, 0.075)
 }
+
 .icon {
     text-decoration: none
 }
+
 .icon:before {
     font-family: 'n33';
     speak: none;
@@ -487,30 +650,38 @@ table tfoot {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
-.icon>span {
+
+.icon > span {
     display: none
 }
+
 .icon-drop:before {
     content: url("../images/brands/droplogo_white.svg");
 }
+
 .icon-square:before {
     content: url("../images/brands/square_white.svg");
 }
+
 .icon-sap:before {
     content: url("../images/brands/sap.svg");
 }
+
 .icon-ubc:before {
     content: url("../images/brands/ubc.svg");
     padding: auto;
     display: block;
     height: 55px !important;
 }
+
 ul {
     margin: 0 0 2em 0
 }
+
 #wrapper {
     position: relative
 }
+
 #footer {
     padding: 2em 0;
     font-size: 0.8em;
@@ -519,6 +690,7 @@ ul {
     letter-spacing: 0.175em;
     text-align: center
 }
+
 @-moz-keyframes x-in {
     0% {
         opacity: 0;
@@ -535,6 +707,7 @@ ul {
         transform: scale(1)
     }
 }
+
 @-webkit-keyframes x-in {
     0% {
         opacity: 0;
@@ -551,6 +724,7 @@ ul {
         transform: scale(1)
     }
 }
+
 @-ms-keyframes x-in {
     0% {
         opacity: 0;
@@ -567,6 +741,7 @@ ul {
         transform: scale(1)
     }
 }
+
 @keyframes x-in {
     0% {
         opacity: 0;
@@ -583,6 +758,7 @@ ul {
         transform: scale(1)
     }
 }
+
 @-moz-keyframes y-in {
     0% {
         opacity: 0;
@@ -599,6 +775,7 @@ ul {
         transform: scale(1)
     }
 }
+
 @-webkit-keyframes y-in {
     0% {
         opacity: 0;
@@ -615,6 +792,7 @@ ul {
         transform: scale(1)
     }
 }
+
 @-ms-keyframes y-in {
     0% {
         opacity: 0;
@@ -631,6 +809,7 @@ ul {
         transform: scale(1)
     }
 }
+
 @keyframes y-in {
     0% {
         opacity: 0;
@@ -647,6 +826,7 @@ ul {
         transform: scale(1)
     }
 }
+
 @-moz-keyframes z-in {
     0% {
         opacity: 0
@@ -655,6 +835,7 @@ ul {
         opacity: 1
     }
 }
+
 @-webkit-keyframes z-in {
     0% {
         opacity: 0
@@ -663,6 +844,7 @@ ul {
         opacity: 1
     }
 }
+
 @-ms-keyframes z-in {
     0% {
         opacity: 0
@@ -671,6 +853,7 @@ ul {
         opacity: 1
     }
 }
+
 @keyframes z-in {
     0% {
         opacity: 0
@@ -679,6 +862,7 @@ ul {
         opacity: 1
     }
 }
+
 @-moz-keyframes bg-in {
     0% {
         opacity: 0
@@ -687,6 +871,7 @@ ul {
         opacity: 1
     }
 }
+
 @-webkit-keyframes bg-in {
     0% {
         opacity: 0
@@ -695,6 +880,7 @@ ul {
         opacity: 1
     }
 }
+
 @-ms-keyframes bg-in {
     0% {
         opacity: 0
@@ -703,6 +889,7 @@ ul {
         opacity: 1
     }
 }
+
 @keyframes bg-in {
     0% {
         opacity: 0
@@ -711,17 +898,20 @@ ul {
         opacity: 1
     }
 }
+
 body.landing {
     background-color: #2A2D3C;
     color: #fff;
     text-align: center
 }
+
 body.landing:before {
     content: '';
     display: inline-block;
     height: 100%;
     vertical-align: middle
 }
+
 body.landing #bg {
     -moz-animation: bg-in 3s;
     -webkit-animation: bg-in 3s;
@@ -745,14 +935,17 @@ body.landing #bg {
     top: -10px;
     width: calc(100% + 20px)
 }
+
 body.landing.is-touch {
     background-image: url("images/bg.jpg");
     background-size: cover;
     background-repeat: no-repeat
 }
+
 body.landing.is-touch #bg {
     display: none
 }
+
 body.landing #wrapper {
     cursor: default;
     display: inline-block;
@@ -760,6 +953,7 @@ body.landing #wrapper {
     width: 40em;
     z-index: 2
 }
+
 body.landing #wrapper header h1 {
     width: 80px;
     margin: 0 auto !important;
@@ -784,6 +978,7 @@ body.landing #wrapper header h1 {
     position: relative;
     top: 0
 }
+
 body.landing #wrapper header h1:before {
     content: url(../images/brands/el.svg);
     speak: none;
@@ -795,12 +990,15 @@ body.landing #wrapper header h1:before {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
-body.landing #wrapper header h1>span {
+
+body.landing #wrapper header h1 > span {
     display: none
 }
-body.landing #wrapper header h1>span {
+
+body.landing #wrapper header h1 > span {
     display: none
 }
+
 body.landing #wrapper header p {
     -moz-animation: x-in 0.75s;
     -webkit-animation: x-in 0.75s;
@@ -824,6 +1022,7 @@ body.landing #wrapper header p {
     text-transform: uppercase;
     letter-spacing: 0.175em
 }
+
 body.landing #wrapper .icons {
     -moz-animation: x-in 0.75s;
     -webkit-animation: x-in 0.75s;
@@ -842,6 +1041,7 @@ body.landing #wrapper .icons {
     position: relative;
     top: 0
 }
+
 body.landing #wrapper hr {
     -moz-animation: x-in 0.75s;
     -webkit-animation: x-in 0.75s;
@@ -860,6 +1060,7 @@ body.landing #wrapper hr {
     position: relative;
     top: 0
 }
+
 body.landing #wrapper .links {
     -moz-animation: x-in 0.5s;
     -webkit-animation: x-in 0.5s;
@@ -882,9 +1083,11 @@ body.landing #wrapper .links {
     text-transform: uppercase;
     letter-spacing: 0.175em
 }
+
 body.landing #wrapper .links a:not(.icon) {
     font-size: 0.8em
 }
+
 body.landing #footer {
     position: absolute;
     left: 0;
@@ -905,61 +1108,76 @@ body.landing #footer {
     -ms-animation-fill-mode: forwards;
     animation-fill-mode: forwards
 }
+
 @media screen and (max-width: 736px) {
     body.landing {
         height: auto
     }
+
     body.landing:before {
         display: none
     }
+
     body.landing #wrapper {
         width: 100%;
         padding: 3em 2em
     }
+
     body.landing #wrapper header h1 {
         font-size: 4em
     }
+
     body.landing #wrapper header p {
         margin: 1em 0
     }
+
     body.landing #footer {
         position: relative
     }
 }
+
 body.modal {
     text-align: center
 }
+
 body.modal:before {
     content: '';
     display: inline-block;
     height: 100%;
     vertical-align: middle
 }
+
 body.modal #wrapper {
     cursor: default;
     display: inline-block;
     vertical-align: middle
 }
+
 body.modal #footer {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%
 }
+
 @media screen and (max-width: 736px) {
     body.modal {
         height: auto
     }
+
     body.modal:before {
         display: none
     }
+
     body.modal #wrapper {
         padding: 6em 2em 2em 2em
     }
+
     body.modal #footer {
         position: relative
     }
 }
+
 @-moz-keyframes scrollex-show-header {
     0% {
         -moz-transform: translateY(100%);
@@ -974,6 +1192,7 @@ body.modal #footer {
         transform: translateY(0)
     }
 }
+
 @-webkit-keyframes scrollex-show-header {
     0% {
         -moz-transform: translateY(100%);
@@ -988,6 +1207,7 @@ body.modal #footer {
         transform: translateY(0)
     }
 }
+
 @-ms-keyframes scrollex-show-header {
     0% {
         -moz-transform: translateY(100%);
@@ -1002,6 +1222,7 @@ body.modal #footer {
         transform: translateY(0)
     }
 }
+
 @keyframes scrollex-show-header {
     0% {
         -moz-transform: translateY(100%);
@@ -1016,13 +1237,16 @@ body.modal #footer {
         transform: translateY(0)
     }
 }
+
 body.subpage #wrapper {
     height: 100%
 }
+
 body.subpage #header {
     padding: 6em 0 4em 0;
     text-align: center
 }
+
 body.subpage #header h1 {
     font-size: 2.5em;
     margin: 0 0 0.7em 0;
@@ -1030,41 +1254,51 @@ body.subpage #header h1 {
     line-height: 1em;
     overflow: hidden
 }
+
 body.subpage #header h1 span {
     display: block
 }
+
 body.subpage #header .button {
     width: 12em;
     padding: 0
 }
+
 @media screen and (max-width: 768px) {
     body.subpage #header {
         padding: 6em 4em 4em 4em
     }
 }
+
 body.subpage #main {
     padding: 5em 0 3em 0;
     border-top: solid 1px rgba(255, 255, 255, 0.125);
     position: relative
 }
-body.subpage #main>.container>section {
+
+body.subpage #main > .container > section {
     border-bottom: solid 1px rgba(255, 255, 255, 0.125);
     padding: 6em 0 4em 0
 }
-body.subpage #main>.container>section:first-child {
+
+body.subpage #main > .container > section:first-child {
     padding-top: 0
 }
-body.subpage #main>.container>section:last-child {
+
+body.subpage #main > .container > section:last-child {
     padding-bottom: 0;
     border-bottom: 0
 }
+
 body.subpage #footer {
     padding: 4em 0;
     border-top: solid 1px rgba(255, 255, 255, 0.125)
 }
+
 body.subpage.scrollex #wrapper {
     z-index: 2
 }
+
 body.subpage.scrollex #bg {
     position: fixed;
     left: 0;
@@ -1074,28 +1308,33 @@ body.subpage.scrollex #bg {
     background: #03A081;
     opacity: 0
 }
+
 body.subpage.scrollex #header {
     position: relative;
     height: 100%;
     overflow: hidden
 }
+
 body.subpage.scrollex #header:before {
     content: '';
     height: 100%;
     display: inline-block;
     vertical-align: middle
 }
+
 body.subpage.scrollex #header .inner {
     content: '';
     display: inline-block;
     vertical-align: middle
 }
+
 body.subpage.scrollex #header h1 span {
     -moz-animation: scrollex-show-header 1.25s forwards ease;
     -webkit-animation: scrollex-show-header 1.25s forwards ease;
     -ms-animation: scrollex-show-header 1.25s forwards ease;
     animation: scrollex-show-header 1.25s forwards ease
 }
+
 body.subpage.scrollex #header .documentation {
     -moz-transition: all 1s ease;
     -webkit-transition: all 1s ease;
@@ -1117,6 +1356,7 @@ body.subpage.scrollex #header .documentation {
     border: 0;
     text-decoration: none
 }
+
 body.subpage.scrollex #header .documentation:before {
     content: "";
     font-family: 'n33';
@@ -1129,9 +1369,11 @@ body.subpage.scrollex #header .documentation:before {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
-body.subpage.scrollex #header .documentation>span {
+
+body.subpage.scrollex #header .documentation > span {
     display: none
 }
+
 body.subpage.scrollex #header .documentation:before {
     width: 2em;
     height: 2em;
@@ -1141,6 +1383,7 @@ body.subpage.scrollex #header .documentation:before {
     left: 50%;
     margin: 0 0 0 -1em
 }
+
 body.subpage.scrollex #header.inactive .documentation {
     -moz-transform: translateY(6em);
     -webkit-transform: translateY(6em);
@@ -1148,6 +1391,7 @@ body.subpage.scrollex #header.inactive .documentation {
     transform: translateY(6em);
     opacity: 0
 }
+
 body.subpage.scrollex #header .container {
     -moz-transition: opacity 1.5s ease;
     -webkit-transition: opacity 1.5s ease;
@@ -1155,7 +1399,8 @@ body.subpage.scrollex #header .container {
     transition: opacity 1.5s ease;
     opacity: 1
 }
-body.subpage.scrollex #main>.container>section {
+
+body.subpage.scrollex #main > .container > section {
     -moz-transition: -moz-transform 0.75s ease, opacity 0.75s ease;
     -webkit-transition: -webkit-transform 0.75s ease, opacity 0.75s ease;
     -ms-transition: -ms-transform 0.75s ease, opacity 0.75s ease;
@@ -1166,7 +1411,8 @@ body.subpage.scrollex #main>.container>section {
     transform: translateX(0);
     opacity: 1
 }
-body.subpage.scrollex #main>.container>section h2 {
+
+body.subpage.scrollex #main > .container > section h2 {
     -moz-transition: -moz-transform 0.75s ease, opacity 0.75s ease;
     -webkit-transition: -webkit-transform 0.75s ease, opacity 0.75s ease;
     -ms-transition: -ms-transform 0.75s ease, opacity 0.75s ease;
@@ -1176,42 +1422,51 @@ body.subpage.scrollex #main>.container>section h2 {
     -ms-transform: translateX(0);
     transform: translateX(0)
 }
-body.subpage.scrollex #main>.container>section.inactive {
+
+body.subpage.scrollex #main > .container > section.inactive {
     -moz-transform: translateX(2em);
     -webkit-transform: translateX(2em);
     -ms-transform: translateX(2em);
     transform: translateX(2em);
     opacity: 0
 }
-body.subpage.scrollex #main>.container>section.inactive h2 {
+
+body.subpage.scrollex #main > .container > section.inactive h2 {
     -moz-transform: translateX(-2em);
     -webkit-transform: translateX(-2em);
     -ms-transform: translateX(-2em);
     transform: translateX(-2em)
 }
-body.subpage.scrollex.is-loading #header>h1 span {
+
+body.subpage.scrollex.is-loading #header > h1 span {
     -moz-animation: none !important;
     -webkit-animation: none !important;
     -ms-animation: none !important;
     animation: none !important
 }
+
 body.subpage.scrollex.is-loading #header .container, body.subpage.scrollex.is-loading #header .documentation {
     opacity: 0
 }
+
 @media screen and (max-width: 736px) {
     body.subpage #header {
         padding: 6em 0 4em 0
     }
+
     body.subpage #header h1 {
         font-size: 2em
     }
+
     body.subpage #header .button {
         width: auto;
         padding: 0 1.5em
     }
+
     body.subpage.scrollex #wrapper {
         height: auto
     }
+
     body.subpage.scrollex #header .documentation {
         display: none
     }

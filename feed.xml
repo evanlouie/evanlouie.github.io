@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Evan Louie</title>
+    <description>俺の世界にようこそ
+</description>
+    <link>https://evanlouie.com/</link>
+    <atom:link href="https://evanlouie.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 14 Sep 2016 02:52:45 -0700</pubDate>
+    <lastBuildDate>Wed, 14 Sep 2016 02:52:45 -0700</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>HHVM Primer</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;A HipHopsters Guide To WebDev with Facebook’s HHVM / My scratchpad for development with HHVM on Apache and NGINX&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;useful-commands&quot;&gt;Useful Commands&lt;/h1&gt;
+
+&lt;h2 id=&quot;clean-verbose-logs&quot;&gt;Clean Verbose Logs:&lt;/h2&gt;
+
+&lt;p&gt;HHVM produces a lot of garbage in verbose mode; notably the &lt;code class=&quot;highlighter-rouge&quot;&gt;f_is_{file,dir}&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tail -f /var/log/hhvm/error.log | grep --line-buffered -v f_is_
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;almighty-restart&quot;&gt;Almighty Restart&lt;/h2&gt;
+
+&lt;p&gt;Restarting Apache, HHVM, and monitoring the error log while removing Verbose &lt;code class=&quot;highlighter-rouge&quot;&gt;f_is_{file,dir}&lt;/code&gt; junk&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo service hhvm restart &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo service apache2 restart &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tail -f /var/log/hhvm/error.log | grep --line-buffered -v f_is_
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;update-classes-ez&quot;&gt;Update classes (eZ)&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;php ezpublish/console ezpublish:legacy:script bin/php/ezpgenerateautoloads.php --extension
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;enabling-modphp&quot;&gt;Enabling mod_php&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo su
+a2dismod mpm_worker proxy_fcgi
+a2enmod mpm_prefork php5
+apachectl configtest
+service hhvm stop
+service apache2 restart
+/var/www/bin/clearcache.sh
+&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;note: You must disable geoip php plugin&lt;/p&gt;
+
+&lt;h2 id=&quot;enabling-hhvm&quot;&gt;Enabling HHVM&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo su
+a2dismod mpm_prefork php5
+a2enmod mpm_worker proxy_fcgi
+apachectl configtest
+service hhvm start
+service apache2 restart
+/var/www/bin/clearcache.sh
+&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;serverini&quot;&gt;server.ini&lt;/h2&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;; php options
+&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;pid&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/var/run/hhvm/pid&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;; hhvm specific
+&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.server.request_memory_max_bytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;8096M&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.server.port&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;9000&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.server.type&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;fastcgi&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.server.default_document&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;index.php&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.log.use_log_file&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.log.file&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/var/log/hhvm/error.log&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.repo.central.path&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/var/run/hhvm/hhvm.hhbc&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.libxml.ext_entity_whitelist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;file,http&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;; debugging
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;hhvm.jit_profile_interp_requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.server.implicit_flush&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.log.level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Verbose&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.log.header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.log.native_stack_trace&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.debug.native_stack_trace&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.debug.server_error_message&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;hhvm.server.implicit_flush&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+
+&lt;span class=&quot;py&quot;&gt;xdebug.enable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;xdebug.remote_enable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;xdebug.remote_connect_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;xdebug.remote_autostart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;xdebug.remote_host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;xdebug.remote_port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;9999&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;issues&quot;&gt;Issues&lt;/h1&gt;
+
+&lt;h2 id=&quot;craft&quot;&gt;Craft&lt;/h2&gt;
+
+&lt;h3 id=&quot;image-uploads&quot;&gt;Image uploads&lt;/h3&gt;
+
+&lt;p&gt;Craft can’t seem to detect the HHVM &lt;code class=&quot;highlighter-rouge&quot;&gt;post_max_size&lt;/code&gt; ini setting; likely an issue with Craft client JS and NGINX/HHVM combination.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/facebook/hhvm/issues/4993&quot;&gt;https://github.com/facebook/hhvm/issues/4993&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/lib/patch.php&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;require_once&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;__DIR__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/../vendor/antecedent/patchwork/Patchwork.php'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;__DIR__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/../craft/app/variables/AppVariable.php'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;__DIR__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/../craft/app/helpers/AppHelper.php'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/*
+ * Redefine getMaxUploadSize for AppVariable due to Craft incompatibility with HHVM ini.
+ */&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Patchwork\redefine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'\Craft\AppVariable'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'getMaxUploadSize'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$maxUpload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ini_get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'hhvm.server.upload.upload_max_file_size'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$maxPost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ini_get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'hhvm.server.max_post_size'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$memoryLimit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ini_get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'memory_limit'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;nv&quot;&gt;$uploadInBytes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$maxUpload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$maxPost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$memoryLimit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$uploadInBytes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$uploadInBytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$memoryLimit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$uploadInBytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;exceptions-handling&quot;&gt;Exceptions Handling&lt;/h3&gt;
+
+&lt;p&gt;HHVM handles deconstructors somewhat differently from Zend. Yii/Craft uses deconstructors for exception handling. Wrap the app in a try/catch and manually call Crafts exception handler, passing the Exception&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.hhvm.com/hhvm/inconsistencies/classes-and-objects#exceptions-thrown-from-destructors&quot;&gt;https://docs.hhvm.com/hhvm/inconsistencies/classes-and-objects#exceptions-thrown-from-destructors&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/public/index.php&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Path to your craft/ folder
+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$craftPath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'../craft'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Do not edit below this line
+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rtrim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$craftPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/app/index.php'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;is_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;function_exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http_response_code'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;http_response_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;503&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Could not find your craft/ folder. Please ensure that &amp;lt;strong&amp;gt;&amp;lt;code&amp;gt;$craftPath&amp;lt;/code&amp;gt;&amp;lt;/strong&amp;gt; is set correctly in '&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$craftPath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/config/environment_vars.php'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;require_once&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$exception&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$method&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReflectionMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'\Craft\ErrorHandler'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'handleException'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+     &lt;span class=&quot;nv&quot;&gt;$method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setAccessible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+     &lt;span class=&quot;nv&quot;&gt;$method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;invoke&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;\Craft\ErrorHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$exception&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+     &lt;span class=&quot;c1&quot;&gt;//var_dump($e);
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 13 Sep 2016 00:00:00 -0700</pubDate>
+        <link>https://evanlouie.com/2016/09/13/hhvm-primer.html</link>
+        <guid isPermaLink="true">https://evanlouie.com/2016/09/13/hhvm-primer.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Hello World</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;Been a while, huh? Finally found some time to ge the site back up :)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;amp-img width=&quot;565&quot; height=&quot;240&quot; layout=&quot;responsive&quot; src=&quot;http://img.pandawhale.com/post-43991-hell-its-about-time-gif-Imgur-4XAw.gif&quot;&gt;&lt;/amp-img&gt;
+
+</description>
+        <pubDate>Mon, 12 Sep 2016 00:00:00 -0700</pubDate>
+        <link>https://evanlouie.com/2016/09/12/hello-world.html</link>
+        <guid isPermaLink="true">https://evanlouie.com/2016/09/12/hello-world.html</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

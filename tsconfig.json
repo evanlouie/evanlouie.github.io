@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    // "sourceMap": true,
+    "inlineSourceMap": true,
+    "removeComments": true,
+    "watch": true,
+    "outDir": "./_includes/js/"
+  }
+}

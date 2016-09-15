@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html ⚡ lang="en">
   <head>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans|Lora' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Source+Code+Pro|VT323" rel="stylesheet">
   <script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>
   <script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>
   <script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>
@@ -25,8 +25,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://evanlouie.com/resume/",
   "headline": "Resume",
-  "datePublished": "2016-09-14T11:00:38-07:00",
-  "dateModified": "2016-09-14T11:00:38-07:00",
+  "datePublished": "2016-09-15T03:07:49-07:00",
+  "dateModified": "2016-09-15T03:07:49-07:00",
   "description": "Evan is an experienced software developer with 5+ years experience currently working as a full-stack developer on Hootsuite's WebDev team.",
   "author": {
     "@type": "Person",
@@ -649,66 +649,112 @@ pre {
 .pagination .disabled {
   opacity: 0; }
 
-article.resume {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: flex-start;
-  align-content: flex-start;
-  font-family: "Helvetica Neue", "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: small;
-  line-height: 1.42857143; }
-  @media print {
-    article.resume {
-      margin: 1em auto 0; }
-      article.resume a {
-        color: inherit;
-        text-decoration: inherit; } }
-  article.resume section {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding: 0.5em;
-    border-top: 1px solid #eee; }
-    article.resume section .title {
-      order: 1;
-      width: 15%; }
-    article.resume section .body {
-      order: 2;
-      width: 85%; }
-    article.resume section .icon svg {
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      vertical-align: text-top; }
-    article.resume section.skills ul {
-      padding-left: 0;
-      list-style: none; }
-    article.resume section.experience .job {
-      margin-bottom: 1em; }
-      article.resume section.experience .job .placement {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between; }
-        article.resume section.experience .job .placement .company {
-          font-size: medium; }
-      article.resume section.experience .job .role {
-        font-style: italic; }
-      article.resume section.experience .job .description {
-        font-weight: bold; }
-      article.resume section.experience .job .responsibilities ul {
-        padding: 0;
-        margin: 0;
+@media screen {
+  article.resume {
+    font-family: Georgia, Cambria, "Times New Roman", Times, "Lora", serif;
+    font-size: medium;
+    line-height: 1.42857143; }
+    article.resume section {
+      width: 100%;
+      padding: 0.5em;
+      border-top: 1px solid #eee; }
+      article.resume section .icon svg {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        vertical-align: text-top; }
+      article.resume section.skills ul {
+        padding-left: 0;
         list-style: none; }
-    article.resume section.education .entry .convocation {
+      article.resume section.experience .job {
+        margin: 1em 0; }
+        article.resume section.experience .job .placement {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: space-between; }
+          article.resume section.experience .job .placement .company {
+            font-size: large; }
+        article.resume section.experience .job .role {
+          font-style: italic; }
+        article.resume section.experience .job .description {
+          font-weight: bold; }
+        article.resume section.experience .job .responsibilities ul {
+          padding: 0;
+          margin: 0;
+          list-style: none; }
+      article.resume section.education .entry {
+        margin: 1em 0; }
+        article.resume section.education .entry .convocation {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: space-between; }
+          article.resume section.education .entry .convocation .school {
+            font-size: large; }
+
+  article.resume section.skills ul {
+    font-family: "VT323", "Source Code Pro", "Inconsolata", monospace; }
+  article.resume section.experience .job .technologies {
+    font-family: "VT323", "Source Code Pro", "Inconsolata", monospace; } }
+@media print {
+  article.resume {
+    font-family: "Helvetica Neue", "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: small;
+    line-height: 1.42857143; }
+    article.resume section {
+      width: 100%;
+      padding: 0.5em;
+      border-top: 1px solid #eee; }
+      article.resume section .icon svg {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        vertical-align: text-top; }
+      article.resume section.skills ul {
+        padding-left: 0;
+        list-style: none; }
+      article.resume section.experience .job {
+        margin: 1em 0; }
+        article.resume section.experience .job .placement {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: space-between; }
+          article.resume section.experience .job .placement .company {
+            font-size: medium; }
+        article.resume section.experience .job .role {
+          font-style: italic; }
+        article.resume section.experience .job .description {
+          font-weight: bold; }
+        article.resume section.experience .job .responsibilities ul {
+          padding: 0;
+          margin: 0;
+          list-style: none; }
+      article.resume section.education .entry {
+        margin: 1em 0; }
+        article.resume section.education .entry .convocation {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: space-between; }
+          article.resume section.education .entry .convocation .school {
+            font-size: medium; }
+
+  article.resume {
+    margin: 1em auto 0; }
+    article.resume a {
+      color: inherit;
+      text-decoration: inherit; }
+    article.resume section {
       display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: space-between; }
-      article.resume section.education .entry .convocation .school {
-        font-size: medium; }
+      flex-direction: row; }
+      article.resume section .title {
+        order: 1;
+        width: 15%; }
+      article.resume section .body {
+        order: 2;
+        width: 85%; } }
 
   </style>
 
@@ -773,38 +819,33 @@ github.com/evanlouie</a></div>
 
     <article class="content resume">
   <section class="section">
-    <div class="title">
-      <h3>Profile</h3>
-    </div>
+    <h3 class="title">Profile</h3>
 
-    <div class="body">
+    <p class="body">
       Evan is an experienced software developer with 5+ years experience. Web developer through and through, Evan enjoys developing with bleeding edge technologies in his search for the perfect web stack. Evan is currently working as a full-stack developer
       on Hootsuite's WebDev team.
-    </div>
+    </p>
   </section>
 
   <section class="skills">
-    <div class="title">
-      <h3>Skills</h3>
-    </div>
+    <h3 class="title">Skills</h3>
 
-    <div class="body">
-      <ul>
-        <li><span class="icon icon--javascript"><svg viewBox="0 0 128 128">
+    <ul class="body">
+      <li><span class="icon icon--javascript"><svg viewBox="0 0 128 128">
   <path
     fill="#F0DB4F"
     d="M2 1v125h125v-125h-125zm66.119 106.513c-1.845 3.749-5.367 6.212-9.448 7.401-6.271 1.44-12.269.619-16.731-2.059-2.986-1.832-5.318-4.652-6.901-7.901l9.52-5.83c.083.035.333.487.667 1.071 1.214 2.034 2.261 3.474 4.319 4.485 2.022.69 6.461 1.131 8.175-2.427 1.047-1.81.714-7.628.714-14.065-.001-10.115.046-20.188.046-30.188h11.709c0 11 .06 21.418 0 32.152.025 6.58.596 12.446-2.07 17.361zm48.574-3.308c-4.07 13.922-26.762 14.374-35.83 5.176-1.916-2.165-3.117-3.296-4.26-5.795 4.819-2.772 4.819-2.772 9.508-5.485 2.547 3.915 4.902 6.068 9.139 6.949 5.748.702 11.531-1.273 10.234-7.378-1.333-4.986-11.77-6.199-18.873-11.531-7.211-4.843-8.901-16.611-2.975-23.335 1.975-2.487 5.343-4.343 8.877-5.235l3.688-.477c7.081-.143 11.507 1.727 14.756 5.355.904.916 1.642 1.904 3.022 4.045-3.772 2.404-3.76 2.381-9.163 5.879-1.154-2.486-3.069-4.046-5.093-4.724-3.142-.952-7.104.083-7.926 3.403-.285 1.023-.226 1.975.227 3.665 1.273 2.903 5.545 4.165 9.377 5.926 11.031 4.474 14.756 9.271 15.672 14.981.882 4.916-.213 8.105-.38 8.581z"></path>
 </svg>
 </span>
 <strong>Javascript:</strong> Node.js, React, Flux (Redux), AngularJS, Meteor, Cordova, ES6/Babel, TypeScript</li>
-        <li><span class="icon icon--php"><svg viewBox="0 0 128 128">
+      <li><span class="icon icon--php"><svg viewBox="0 0 128 128">
   <path
     fill="#6181B6"
     d="M64 33.039c-33.74 0-61.094 13.862-61.094 30.961s27.354 30.961 61.094 30.961 61.094-13.862 61.094-30.961-27.354-30.961-61.094-30.961zm-15.897 36.993c-1.458 1.364-3.077 1.927-4.86 2.507-1.783.581-4.052.461-6.811.461h-6.253l-1.733 10h-7.301l6.515-34h14.04c4.224 0 7.305 1.215 9.242 3.432 1.937 2.217 2.519 5.364 1.747 9.337-.319 1.637-.856 3.159-1.614 4.515-.759 1.357-1.75 2.624-2.972 3.748zm21.311 2.968l2.881-14.42c.328-1.688.208-2.942-.361-3.555-.57-.614-1.782-1.025-3.635-1.025h-5.79l-3.731 19h-7.244l6.515-33h7.244l-1.732 9h6.453c4.061 0 6.861.815 8.402 2.231s2.003 3.356 1.387 6.528l-3.031 15.241h-7.358zm40.259-11.178c-.318 1.637-.856 3.133-1.613 4.488-.758 1.357-1.748 2.598-2.971 3.722-1.458 1.364-3.078 1.927-4.86 2.507-1.782.581-4.053.461-6.812.461h-6.253l-1.732 10h-7.301l6.514-34h14.041c4.224 0 7.305 1.215 9.241 3.432 1.935 2.217 2.518 5.418 1.746 9.39zM95.919 54h-5.001l-2.727 14h4.442c2.942 0 5.136-.29 6.576-1.4 1.442-1.108 2.413-2.828 2.918-5.421.484-2.491.264-4.434-.66-5.458-.925-1.024-2.774-1.721-5.548-1.721zM38.934 54h-5.002l-2.727 14h4.441c2.943 0 5.136-.29 6.577-1.4 1.441-1.108 2.413-2.828 2.917-5.421.484-2.491.264-4.434-.66-5.458s-2.772-1.721-5.546-1.721z"></path>
 </svg>
 </span>
 <strong>PHP/Hack:</strong> Symfony, Laravel, Yii, CraftCMS, Wordpress</li>
-        <li><span class="icon icon--ruby"><svg viewBox="0 0 128 128">
+      <li><span class="icon icon--ruby"><svg viewBox="0 0 128 128">
   <path
     fill-rule="evenodd"
     clip-rule="evenodd"
@@ -813,7 +854,7 @@ github.com/evanlouie</a></div>
 </svg>
 </span>
 <strong>Ruby:</strong> Rails, Sinatra </li>
-        <li><span class="icon icon--java"><svg viewBox="0 0 128 128">
+      <li><span class="icon icon--java"><svg viewBox="0 0 128 128">
   <path
     fill="#0074BD"
     d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.795 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969zM44.629 84.455s-5.348 3.959 2.823 4.805c10.567 1.091 18.91 1.18 33.354-1.6 0 0 1.993 2.025 5.132 3.131-29.542 8.64-62.446.68-41.309-6.336z"></path>
@@ -826,41 +867,38 @@ github.com/evanlouie</a></div>
 </svg>
 </span>
 <strong>Java:</strong> GWT, Spring MVC</li>
-        <li><span class="icon icon--c"><svg viewBox="0 0 128 128">
+      <li><span class="icon icon--c"><svg viewBox="0 0 128 128">
   <path
     fill="#03599C"
     d="M117.5 33.5l.3-.2c-.6-1.1-1.5-2.1-2.4-2.6l-48.3-27.8c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.3.9 3.4l-.2.1c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4v-55.8c.1-.8 0-1.7-.4-2.6zm-53.5 55c9.1 0 17.1-5 21.3-12.4l12.9 7.6c-6.8 11.8-19.6 19.8-34.2 19.8-21.8 0-39.5-17.7-39.5-39.5s17.7-39.5 39.5-39.5c14.7 0 27.5 8.1 34.3 20l-13 7.5c-4.2-7.5-12.2-12.5-21.3-12.5-13.5 0-24.5 11-24.5 24.5s11 24.5 24.5 24.5z"></path>
 </svg>
 </span>
 <strong>C/C++:</strong> Boost, OpenGL</li>
-        <li><span class="icon icon--redis"><svg viewBox="0 0 128 128">
+      <li><span class="icon icon--redis"><svg viewBox="0 0 128 128">
   <g fill="#D82C20"><path
     d="M6.2 52.7c6.7 3.2 43.7 18.1 49.5 20.9 5.8 2.8 10 2.8 17.4-1 7.4-3.9 42.2-18.1 48.9-21.6 3.4-1.8 4.9-3.2 4.9-4.4v-12.5c0-1.3-1.7-2.4-5-3.6-6.5-2.4-41.1-16.1-47.7-18.6-6.6-2.4-9.3-2.3-17.1.5-7.8 2.8-44.5 17.2-51.1 19.8-3.2 1.3-5 2.4-5 3.7h-.2v12.7c.2 1.2 2.1 2.5 5.4 4.1zm60.4 1.8l-20.3-8.4 29.1-4.5-8.8 12.9zm44.1-20l-17.2 6.8-1.9.7-17.2-6.8 19.1-7.5 17.2 6.8zm-50.6-12.5l-2.8-5.2 8.8 3.4 8.3-2.7-2.2 5.4 8.4 3.2-10.9 1.1-2.4 5.9-3.9-6.5-12.6-1.1 9.3-3.5zm-21.7 7.3c8.6 0 15.6 2.7 15.6 6s-7 6-15.6 6-15.6-2.7-15.6-6 7-6 15.6-6zM122 59.8c-6.7 3.5-41.4 17.8-48.8 21.6-7.4 3.9-11.5 3.8-17.3 1-5.8-2.8-43-17.7-49.6-20.9-3.4-1.6-5.3-2.9-5.3-4.2v12.7c0 1.3 1.9 2.6 5.2 4.2 6.7 3.2 43.7 18.1 49.5 20.9 5.8 2.8 10 2.8 17.4-1 7.4-3.9 42.2-18.1 48.9-21.6 3.4-1.8 4.9-3.2 4.9-4.4v-12.5c0 1.1-1.6 2.5-4.9 4.2zM122 80.5c-6.7 3.5-41.4 17.8-48.8 21.6-7.4 3.9-11.5 3.8-17.3 1-5.8-2.8-43-17.7-49.6-20.9-3.4-1.5-5.3-2.9-5.3-4.2v12.7c0 1.3 1.9 2.6 5.2 4.2 6.7 3.2 43.7 18.1 49.5 20.9 5.8 2.8 10 2.8 17.4-1 7.4-3.9 42.2-18.1 48.9-21.6 3.4-1.8 4.9-3.2 4.9-4.4v-12.5c0 1.2-1.6 2.5-4.9 4.2z"/></g>
 </svg>
 </span>
 <strong>Database/Key-Value Store:</strong> PostgreSQL, MySQL/MariaDB, MongoDB, Redis</li>
-        <li><span class="icon icon--apache"><svg viewBox="0 0 128 128">
+      <li><span class="icon icon--apache"><svg viewBox="0 0 128 128">
   <path
     fill="#303284"
     d="M127.6 75.9l-.3-.5-.2-.1v-.4l-.1-.4-.2-.3-.4-.2h-.1l-.1-.2-.3-.2-.3-.2-.4-.1h-.2l-.4-.4-.5-.3-.6-.3-.6-.2h-.2l-.5-.6-.6-.4-.6-.3-.6-.2h-.1l-.6-.4-.8-.3-.5-.1-.5-.4-.5-.2-.5-.1-.5-.1h-.5l-.6.1h-.1l-.4-.6-.6-.4-.8-.2h-.9l-1 .2-.4.1-.8-.3-.8-.2h-2.6000000000000005l-1-.4-.9-.3-.9-.1h-.6l-.8-.8-.9-.6-.8-.4-.8-.2h-.8l-.4.3-.5-.4-.6-.3-.7-.1-.6.1-.7-.3-.7-.2h-1l-1.1-.4-1.2-.3-1.1-.1h-.2l-1.2-.7-1.2-.3h-1.1.1l-1.7-.4-1.1-.1h-.5l-.7-.7-.8-.5-.9-.2-.9.1-.6.2-.8-.1h-1.8000000000000003v-.2l-1.4-.3-1.4-.2-1.3-.1-.5.1v-.1l-1-.1-1-.1h-.1l-1.1-.5-1.1-.3-1-.1h-.8l-1.1-.4-.9-.2h-1l-1.1-.8-.9-.3-.7-.1-.8-.4-1.2-.2h-1.1l-1.1-.5-1-.2h-.6l-1.2-.6-1-.3-1-.1-.3.1h.1l-1.4-.8-1.1-.4-1-.1h-.1l-.7-.5-.6-.3-.6-.2-.7-.1-.7.1-.8-.6-.7-.3-.9-.1h-.8l-.9.2-.2.1-1-.5-1-.3h-.9l-.8-.5-.7-.3h-.8l-.7.1-.7.2h-.1l-.7-.7-.6-.4-.7-.1-.7.1-.6.3-.2-.1-.3-.2-.3-.1-.3-.1h-.7l-.3.1-.5.3-.1.1-.9-.2h-.8l-.7.2-.6.5-.4.5-.3.7-.3.8-.2.8-.1.8-.1 1.6.1 1.8v.3c-.5-.2-1-.4-1.6-.6v-.4l.1-.6.1-1.3.1-1.2-.1-1.2-.1-.6-.1-.5-.1-.5-.2-.5-.2-.4-.3-.4-.3-.4-.6-.5.2.9.1.6.1.6.1.5.1.6.1.5v.1-.1l-.1-.3-.1-.3-.2-.6-.3-1-.1-.3-.2-1.3v-.4l.1-.7.1-.3.2-.7h-.2l-.5.6-.3.7-.3.7-.1.6v1.4l.1.7.1.7-.1-.1-.3-.4-.3-.4-.2-.5-.2-.5-.2-.5-.1-.7-.1-1-.7.6-.3.6-.2.6v.6l.1.6.2.6.3.6.1.2-.2.2-.6-.1-.1.2.4.2.4.3 1 .8.3.3.5.6.5.5.5.5.4.4.3.4.2.2c-5.7-2.3-11.7-5-19.1-8.5l-.4-.2.2.4c1 1.7 3.9 3.4 6.4 5 1.2.7 2.3 1.4 3.1 2 2.4 1.3 5.6 2.7 8.4 3.8h-.2l-2 .4-1.4.3-1.4.5-.7.3-.7.2-.6.4-.5.4-.5.5-.4.5-.3.6-.2.7.2.1.2-.2.5-.5.2-.2.6-.4.3-.2.3-.2.6-.3.4-.1.3-.1.7-.2.7-.1.6-.2 1.3-.7.6-.4.6-.4.5-.3.4-.2.3-.1.6.2-2.4 1.2-1.3.8-.7.5-.6.5-.6.5-.5.6-.3.5-.2.6-.1.6.1.7.4.9.5-1 .4-.6.4-.5.4-.4.4-.3.9-.6.4-.2-.1.4-.2.8v.9l.1 1 .3 1.1h.2l.2-1.1.3-1 .2-.5.4-.9.5-.9.8-1.4 1.1-1.8c.4.2.8.3 1.2.4l-.1.2-.7 1.4-.4.6-.3.7-.1.7-.2.7-.1.7v.7l.1.6.3.6.5.5.7.4.8.3.3.6.4.5.4.4.4.3.4.2.4.1h1v.1l.4.6.6.5.7.3h.8l.8-.2.2.2.6.6.6.4.7.3.8.1h.6l.6.4.7.3.8.2.6.5.8.4 1 .2 1.1.1h.2l.7.6.8.4.7.3.8.1.9-.2.4.2.6.3.6.1h.6l.6-.1.3.2 1 .3 1.1.1 1.3-.1.4.2.9.3 1 .1 1.4-.1h.1l.9.3 1 .1 1.1-.1.4.3 1 .4 1 .1 1.1-.1v-.1l.6.2h1l1.1-.2.7.2h.8l.8-.1 1.1.2.3.2 1 .3 1 .2 1.1.1 1.1-.1v-.1l.6.2.9.1.9.1v-.1l.6.2 1.2.4 1.3.3 1.4-.3v-.1h.2l.9.2.8.1h.9l.1.1.8.6.8.4h1.3l.8-.4.7-.6.9.1 1.1-.1h1.2v.1l.3.2 1.1.2 1.1-.1 1.1-.5h1l1.2.1 1-.1.6.1h1.4l.9-.1.5.2.6.1.6-.1.6-.3.1.1.8.1h2.5l.8-.3 1.1-.4h1.6l.8-.1.5.2.8.2.8.1.8-.1.9-.2.2.1.9.4.8.3h.8l.6-.3.5-.5.3.1.5.1.5.1h.5l.5-.1.5-.2.7.1.8-.1.7-.3h.7l.6-.1.6-.3.5-.4.1-.1.6.1.6-.1.5.1h.8999999999999999l.4-.3.3-.2.1-.2h.1l.3-.1.3-.2.2-.5.1-.6h.2l.3-.1.1-.3.1.1v-.7zm-107-16.3l.2-.5.3.1-.2.2-.3.2zm.6-6.8l.1.5.1.5.1.5.3 1.6.2.7-.4-.2h.1l-.2-.1-.5-.4v-2.4l.1-.8.1.1z"></path>
 </svg>
 </span>
 <strong>Distributed:</strong> Apache Hadoop, Apache ZooKeeper, MPI</li>
-        <li><span class="icon icon--html5"><svg viewBox="0 0 128 128">
+      <li><span class="icon icon--html5"><svg viewBox="0 0 128 128">
   <path
     fill="#E44D26"
     d="M9.032 2l10.005 112.093 44.896 12.401 45.02-12.387 10.015-112.107h-109.936zm89.126 26.539l-.627 7.172-.276 3.289h-52.665000000000006l1.257 14h50.156000000000006l-.336 3.471-3.233 36.119-.238 2.27-28.196 7.749v.002l-.034.018-28.177-7.423-1.913-21.206h13.815000000000001l.979 10.919 15.287 4.081h.043v-.546l15.355-3.875 1.604-17.579h-47.698l-3.383-38.117-.329-3.883h68.939l-.33 3.539z"></path>
 </svg>
 </span>
 <strong>Web Development:</strong> Webpack, HTML5/CSS3, WebSockets, REST, SOAP, SASS, Google AMP</li>
-      </ul>
-    </div>
+    </ul>
   </section>
 
   <section class="experience">
-    <div class="title">
-      <h3>Experience</h3>
-    </div>
+    <h3 class="title">Experience</h3>
 
     <div class="body">
       <div class="job">
@@ -943,7 +981,7 @@ Audited third party open-source licenses to assure compliance with SAP commercia
           </span>
         </div>
         <div class="role">
-          Software Developer
+          <!-- Software Developer -->
         </div>
         <div class="description">
           Backend developer of BI/Inventory tools and system administrator
@@ -1025,6 +1063,22 @@ Linux server/kernel customizations.</li>
   d="M1518 836l18 316q4 69-82 128t-235 93.5-323 34.5-323-34.5-235-93.5-82-128l18-316 574 181q22 7 48 7t48-7zm530-324q0 23-22 31l-1120 352q-4 1-10 1t-10-1l-652-206q-43 34-71 111.5t-34 178.5q63 36 63 109 0 69-58 107l58 433q2 14-8 25-9 11-24 11h-192q-15 0-24-11-10-11-8-25l58-433q-58-38-58-107 0-73 65-111 11-207 98-330l-333-104q-22-8-22-31t22-31l1120-352q4-1 10-1t10 1l1120 352q22 8 22 31z"/></svg>
 </span>
 B.Sc Major in Computer Science
+        </div>
+      </div>
+      <div class="entry">
+        <div class="convocation">
+          <span class="school">
+            <a href="https://www.smus.ca/">St. Michaels University School</a>
+          </span>
+          <span class="conferred">
+            May 2009
+          </span>
+        </div>
+        <div class="degree">
+          <span class="icon icon--graduation-cap"><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path
+  d="M1518 836l18 316q4 69-82 128t-235 93.5-323 34.5-323-34.5-235-93.5-82-128l18-316 574 181q22 7 48 7t48-7zm530-324q0 23-22 31l-1120 352q-4 1-10 1t-10-1l-652-206q-43 34-71 111.5t-34 178.5q63 36 63 109 0 69-58 107l58 433q2 14-8 25-9 11-24 11h-192q-15 0-24-11-10-11-8-25l58-433q-58-38-58-107 0-73 65-111 11-207 98-330l-333-104q-22-8-22-31t22-31l1120-352q4-1 10-1t10 1l1120 352q22 8 22 31z"/></svg>
+</span>
+Dogwood Diploma
         </div>
       </div>
     </div>

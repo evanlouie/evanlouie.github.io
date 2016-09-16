@@ -3,6 +3,7 @@
   <head>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans|Lora' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Source+Code+Pro|VT323" rel="stylesheet">
+  <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
   <script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>
   <script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>
   <script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>
@@ -693,8 +694,6 @@ pre {
           article.resume section.education .entry .convocation .school {
             font-size: large; }
 
-  article.resume section.skills ul {
-    font-family: "VT323", "Source Code Pro", "Inconsolata", monospace; }
   article.resume section.experience .job .technologies {
     font-family: "VT323", "Source Code Pro", "Inconsolata", monospace; } }
 @media print {
@@ -803,6 +802,10 @@ github.com/evanlouie</a></div>
     
       
     
+      
+    
+      
+        「<a class="page-link" href="/javascript-controller/">JavaScript Controller</a>」
       
     
       
@@ -939,17 +942,17 @@ service apache2 restart
  * Redefine getMaxUploadSize for AppVariable due to Craft incompatibility with HHVM ini.
  */</span>
 <span class="nx">Patchwork\redefine</span><span class="p">([</span><span class="s1">'\Craft\AppVariable'</span><span class="p">,</span> <span class="s1">'getMaxUploadSize'</span><span class="p">],</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nv">$maxUpload</span> <span class="o">=</span> <span class="nb">ini_get</span><span class="p">(</span><span class="s1">'hhvm.server.upload.upload_max_file_size'</span><span class="p">);</span>
-    <span class="nv">$maxPost</span> <span class="o">=</span> <span class="nb">ini_get</span><span class="p">(</span><span class="s1">'hhvm.server.max_post_size'</span><span class="p">);</span>
-    <span class="nv">$memoryLimit</span> <span class="o">=</span> <span class="nb">ini_get</span><span class="p">(</span><span class="s1">'memory_limit'</span><span class="p">);</span>
+  <span class="nv">$maxUpload</span> <span class="o">=</span> <span class="nb">ini_get</span><span class="p">(</span><span class="s1">'hhvm.server.upload.upload_max_file_size'</span><span class="p">);</span>
+  <span class="nv">$maxPost</span> <span class="o">=</span> <span class="nb">ini_get</span><span class="p">(</span><span class="s1">'hhvm.server.max_post_size'</span><span class="p">);</span>
+  <span class="nv">$memoryLimit</span> <span class="o">=</span> <span class="nb">ini_get</span><span class="p">(</span><span class="s1">'memory_limit'</span><span class="p">);</span>
 
-    <span class="nv">$uploadInBytes</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nv">$maxUpload</span><span class="p">,</span> <span class="nv">$maxPost</span><span class="p">);</span>
+  <span class="nv">$uploadInBytes</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nv">$maxUpload</span><span class="p">,</span> <span class="nv">$maxPost</span><span class="p">);</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$memoryLimit</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$uploadInBytes</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nv">$uploadInBytes</span><span class="p">,</span> <span class="nv">$memoryLimit</span><span class="p">);</span>
-    <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$memoryLimit</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$uploadInBytes</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nv">$uploadInBytes</span><span class="p">,</span> <span class="nv">$memoryLimit</span><span class="p">);</span>
+  <span class="p">}</span>
 
-    <span class="k">return</span> <span class="nv">$uploadInBytes</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nv">$uploadInBytes</span><span class="p">;</span>
 <span class="p">});</span>
 </code></pre>
 </div>
@@ -1015,7 +1018,7 @@ service apache2 restart
         <section class="author">
           <div class="author-image"></div>
           <h4>Evan Louie</h4>
-          <p class="bio">Evan is an experienced software developer with 5+ years experience. Web developer through and through, Evan enjoys developing with bleeding edge technologies in his search for the perfect web stack. Evan is currently working as a full-stack developer on Hootsuite's WebDev team
+          <p class="bio">Evan is software developer who likes to eat, drink, and code. When he's not at the gym or just being lazy, he's usally coding something stupid in an attempt to either break the internet or just make it a little less broken. Evan is currently working as a full-stack developer on Hootsuite's WebDev team
 </p>
 
           <p>

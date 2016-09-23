@@ -14,11 +14,11 @@
   </span>
   <div class="page-links">
     「<a class="page-link" href="{{ site.baseurl }}/">Home</a>」
-    「<a class="page-link" href="https://evanlouie.github.io/project-euler/">Project Euler</a>」
     {% for my_page in site.pages %}
       {% if my_page.title and my_page.title != 'JavaScript Controller' %}
         「<a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>」
       {% endif %}
     {% endfor %}
+    「<a class="page-link" href="https://evanlouie.github.io/project-euler/">Project Euler</a>」
   </div>
 </header>

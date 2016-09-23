@@ -9,10 +9,11 @@
 title: Evan Louie
 email: mail@evanlouie.com
 description: >
-  俺の世界にようこそ
+  The personal website of Evan Louie;
+  developer, designer, photographer, fashionista, and snarky-bastard.
 logo: "/assets/images/logo.svg"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: https://evanlouie.com # the base hostname & protocol for your site
+url: https://www.evanlouie.com # the base hostname & protocol for your site
 paginate:	5 # The number of posts to show per page on your homepage
 
 name: Evan Louie

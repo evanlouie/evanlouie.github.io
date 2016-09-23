@@ -33,6 +33,7 @@ kramdown:
 
 gems:
   - jekyll-paginate
+  - jekyll-sitemap
 
 exclude:
   - node_modules

@@ -1,0 +1,42 @@
+# Welcome to Amplified for Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Evan Louie
+email: mail@evanlouie.com
+description: >
+  俺の世界にようこそ
+logo: "/assets/images/logo.svg"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: https://evanlouie.com # the base hostname & protocol for your site
+paginate:	5 # The number of posts to show per page on your homepage
+
+name: Evan Louie
+bio: >
+  Evan is software developer who likes to eat, drink, and code.
+  When he's not at the gym or just being lazy, he's usally coding something stupid in an attempt
+  to either break the internet or just make it a little less broken.
+  Evan is currently working as a full-stack developer on Hootsuite's WebDev team
+author_image: "/assets/images/author.jpg"
+twitter_username: evanlouie
+github_username:  evanlouie
+
+# Build settings
+markdown: kramdown
+
+kramdown:
+  parse_block_html: true
+
+gems:
+  - jekyll-paginate
+
+exclude:
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - tsconfig.json
+  - package.json

@@ -1,1411 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Evan Louie</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <style>
-        .clear-margin {
-            margin: 0;
-        }
-
-        .space-top {
-            margin-top: 10px;
-        }
-
-        .space-right {
-            margin-right: 10px;
-        }
-
-        .icon-left {
-            margin-right: 5px;
-        }
-
-        .icon-right {
-            margin-left: 5px;
-        }
-
-        .labels {
-            word-spacing: 5px;
-            line-height: 2;
-        }
-
-        .label-keyword {
-            display: inline-block;
-            background: #7eb0db;
-            color: white;
-            font-size: 0.9em;
-            padding: 5px;
-            border: 1px solid #357ebd;
-        }
-
-        .link-disguise {
-            color: inherit;
-        }
-
-        .link-disguise:hover {
-            color: inherit;
-        }
-
-        @media (max-width: 992px) {
-            .clear-margin-sm {
-                margin-bottom: 0;
-            }
-        }
-
-        body {
-            font-family: 'Lato';
-            background: #f0f0f0;
-            color: #333333;
-        }
-
-        .main {
-            padding: 5px;
-        }
-
-        .card {
-            background: #ffffff;
-            border: 1px solid #e6e6e6;
-            border-radius: 3px;
-            min-height: 300px;
-            padding: 10px;
-        }
-
-        .card-nested {
-            min-height: 0;
-            margin-bottom: 10px;
-            border-width: 1px 0 0 0;
-        }
-
-        .card-nested:before,
-        .card-nested:after {
-            content: " ";
-            display: table;
-        }
-
-        .card-nested:after {
-            clear: both;
-        }
-
-        @media (max-width: 480px) {
-            .card-nested {
-                padding: 5px 0;
-            }
-        }
-
-        .background-card {
-            padding: 10px 20px;
-        }
-
-        .card-wrapper {
-            padding: 5px;
-        }
-
-        @media (max-width: 992px) {
-            .card-wrapper {
-                float: none !important;
-            }
-        }
-
-        .text-bolder {
-            font-weight: bold;
-        }
-
-        .background-details .detail {
-            display: table;
-            padding: 10px 0;
-        }
-
-        .background-details .detail .icon {
-            min-width: 45px;
-            max-width: 45px;
-            text-align: center;
-        }
-
-        .background-details .detail .info {
-            width: 100%;
-        }
-
-        .background-details .detail .title,
-        .background-details .detail .icon {
-            color: #707070;
-        }
-
-        .background-details .detail .mobile-title {
-            display: none;
-        }
-
-        @media (max-width: 480px) {
-            .background-details .detail .mobile-title {
-                display: inline-block;
-                margin-left: 5px;
-                font-weight: bold;
-                text-transform: uppercase;
-                vertical-align: middle;
-            }
-        }
-
-        .background-details .detail .icon,
-        .background-details .detail .info {
-            display: table-cell;
-            padding: 0 10px;
-        }
-
-        @media (max-width: 480px) {
-            .background-details .detail {
-                display: block;
-            }
-
-            .background-details .detail .icon {
-                max-width: inherit;
-                min-width: inherit;
-                text-align: left;
-            }
-
-            .background-details .detail .icon,
-            .background-details .detail .info {
-                display: block;
-                padding: 10px 0;
-            }
-
-            .background-details .detail .title {
-                display: none;
-            }
-        }
-
-        .info .content.has-sidebar {
-            width: 80%;
-            box-sizing: border-box;
-            float: left;
-            padding: 0 10px;
-            border-right: 1px solid #cdcdcd;
-        }
-
-        @media (max-width: 992px) {
-            .info .content.has-sidebar {
-                width: 100%;
-                border-right: 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .info .content.has-sidebar {
-                padding: 0 2px;
-            }
-        }
-
-        .info .sidebar {
-            margin-left: 80%;
-            box-sizing: border-box;
-            padding: 10px;
-        }
-
-        @media (max-width: 480px) {
-            ul {
-                padding-left: 25px;
-            }
-        }
-
-        /*
-Credits: http://codyhouse.co/demo/smart-fixed-navigation/index.html
-*/
-
-        .floating-nav-trigger {
-            width: 50px;
-            height: 50px;
-            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-            -webkit-transition: background-color 0.5s ease;
-            -o-transition: background-color 0.5s ease;
-            transition: background-color 0.5s ease;
-            display: block;
-            border-radius: 50%;
-            text-align: center;
-            padding-top: 10px;
-            background-color: white;
-            font-size: 1.5em;
-            color: #357ebd;
-            z-index: 100;
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-        }
-
-        .floating-nav-trigger .close-icon {
-            display: none;
-        }
-
-        .floating-nav-trigger:hover {
-            color: #1f496e;
-            background-color: #e6e6e6;
-            text-decoration: none;
-        }
-
-        .floating-nav-trigger.is-open {
-            -webkit-box-shadow: none;
-            box-shadow: none;
-        }
-
-        .floating-nav-trigger.is-open .close-icon {
-            display: inherit;
-        }
-
-        .floating-nav-trigger.is-open .fa-bars {
-            display: none;
-        }
-
-        .floating-nav-trigger.is-open:hover {
-            background-color: white;
-        }
-
-        .floating-nav {
-            -webkit-transform: scale(0);
-            -ms-transform: scale(0);
-            -o-transform: scale(0);
-            transform: scale(0);
-            -webkit-transform-origin: 100% 100%;
-            -moz-transform-origin: 100% 100%;
-            -ms-transform-origin: 100% 100%;
-            transform-origin: 100% 100%;
-            -webkit-transition: transform 0.3s, visibility 0s 0.3s;
-            -o-transition: transform 0.3s, visibility 0s 0.3s;
-            transition: transform 0.3s, visibility 0s 0.3s;
-            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-            position: fixed;
-            z-index: 50;
-            right: 10px;
-            bottom: 10px;
-            background-color: white;
-            width: 90%;
-            max-width: 400px;
-            visibility: hidden;
-            overflow: hidden;
-        }
-
-        .floating-nav ul {
-            font-size: 1.2em;
-            margin: 0;
-        }
-
-        .floating-nav ul li {
-            border-bottom: 1px solid #eff2f6;
-        }
-
-        .floating-nav ul li a {
-            padding: 20px;
-            text-decoration: none;
-            color: #357ebd;
-            display: block;
-        }
-
-        .floating-nav ul li a:hover {
-            color: #1f496e;
-        }
-
-        .floating-nav ul li i.fa {
-            margin-right: 10px;
-        }
-
-        .floating-nav ul li:last-child {
-            border-bottom: 0;
-        }
-
-        .floating-nav.is-visible {
-            -webkit-transform: scale(1);
-            -ms-transform: scale(1);
-            -o-transform: scale(1);
-            transform: scale(1);
-            -webkit-transition: transform 0.3s, visibility 0s 0s;
-            -o-transition: transform 0.3s, visibility 0s 0s;
-            transition: transform 0.3s, visibility 0s 0s;
-            visibility: visible;
-        }
-
-        @media (max-width: 992px) {
-            .profile-card-wrapper {
-                position: relative;
-            }
-        }
-
-        .profile-pic {
-            padding: 20px 0;
-        }
-
-        @media (max-width: 992px) {
-            .profile-pic {
-                padding: 10px 0;
-            }
-        }
-
-        .profile-pic img {
-            width: 100px;
-            height: 100px;
-        }
-
-        @media (max-width: 992px) {
-            .name {
-                margin-top: 10px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .contact-details {
-                text-align: center;
-            }
-        }
-
-        .contact-details .detail {
-            display: table;
-            padding: 10px 0;
-        }
-
-        .contact-details .detail .icon {
-            padding: 0 10px;
-            color: #707070;
-        }
-
-        @media (max-width: 992px) {
-            .contact-details .detail .icon {
-                padding: 0 5px 0 0;
-            }
-        }
-
-        .contact-details .detail .info {
-            font-size: 0.8em;
-        }
-
-        .contact-details .detail .icon,
-        .contact-details .detail .info {
-            display: table-cell;
-            vertical-align: middle;
-        }
-
-        @media (max-width: 768px) {
-            .contact-details .detail {
-                position: relative;
-                float: left;
-                width: 100%;
-                min-height: 1px;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .contact-details .detail {
-                position: relative;
-                min-height: 1px;
-                padding: 10px;
-            }
-
-            .contact-details .detail .icon,
-            .contact-details .detail .info {
-                display: inline-block;
-            }
-        }
-
-        @media (max-width: 992px) and (min-width: 768px) {
-            .contact-details .detail {
-                float: left;
-                width: 25%;
-            }
-        }
-
-        .social-links {
-            line-height: 2.5;
-        }
-
-        .social-link {
-            margin-left: 5px;
-            min-width: 35px;
-            display: inline-block;
-        }
-
-        .social-link:first-child {
-            margin-left: 0;
-        }
-
-        .social-link:hover {
-            text-decoration: none;
-        }
-
-        .link-github {
-            color: #454545;
-        }
-
-        .link-github:hover,
-        .link-github:focus {
-            text-decoration: none;
-            color: #2b2b2b;
-        }
-
-        .link-twitter {
-            color: #33ccff;
-        }
-
-        .link-twitter:hover,
-        .link-twitter:focus {
-            text-decoration: none;
-            color: #00bfff;
-        }
-
-        .link-blog {
-            color: #f36f24;
-        }
-
-        .link-blog:hover,
-        .link-blog:focus {
-            text-decoration: none;
-            color: #d8560c;
-        }
-
-        .link-linkedin {
-            color: #007bb6;
-        }
-
-        .link-linkedin:hover,
-        .link-linkedin:focus {
-            text-decoration: none;
-            color: #005983;
-        }
-
-        .link-skype {
-            color: #12a5f4;
-        }
-
-        .link-skype:hover,
-        .link-skype:focus {
-            text-decoration: none;
-            color: #0986ca;
-        }
-
-        .link-stackoverflow {
-            color: #8e8e92;
-        }
-
-        .link-stackoverflow:hover,
-        .link-stackoverflow:focus {
-            text-decoration: none;
-            color: #747479;
-        }
-
-        .link-soundcloud {
-            color: #e8822d;
-        }
-
-        .link-soundcloud:hover,
-        .link-soundcloud:focus {
-            text-decoration: none;
-            color: #cc6916;
-        }
-
-        .link-pinterest {
-            color: #bd091f;
-        }
-
-        .link-pinterest:hover,
-        .link-pinterest:focus {
-            text-decoration: none;
-            color: #8c0717;
-        }
-
-        .link-vimeo {
-            color: #17b3e8;
-        }
-
-        .link-vimeo:hover,
-        .link-vimeo:focus {
-            text-decoration: none;
-            color: #128fba;
-        }
-
-        .link-behance {
-            color: #2c98cf;
-        }
-
-        .link-behance:hover,
-        .link-behance:focus {
-            text-decoration: none;
-            color: #2379a5;
-        }
-
-        .link-codepen {
-            color: #1c1c1c;
-        }
-
-        .link-codepen:hover,
-        .link-codepen:focus {
-            text-decoration: none;
-            color: #020202;
-        }
-
-        .link-foursquare {
-            color: #fa4778;
-        }
-
-        .link-foursquare:hover,
-        .link-foursquare:focus {
-            text-decoration: none;
-            color: #f91554;
-        }
-
-        .link-reddit {
-            color: #545454;
-        }
-
-        .link-reddit:hover,
-        .link-reddit:focus {
-            text-decoration: none;
-            color: #3b3b3b;
-        }
-
-        .link-spotify {
-            color: #acd200;
-        }
-
-        .link-spotify:hover,
-        .link-spotify:focus {
-            text-decoration: none;
-            color: #829f00;
-        }
-
-        .link-dribbble {
-            color: #ce366f;
-        }
-
-        .link-dribbble:hover,
-        .link-dribbble:focus {
-            text-decoration: none;
-            color: #a82959;
-        }
-
-        .link-facebook {
-            color: #4b6daa;
-        }
-
-        .link-facebook:hover,
-        .link-facebook:focus {
-            text-decoration: none;
-            color: #3b5687;
-        }
-
-        .link-angellist {
-            color: #000000;
-        }
-
-        .link-angellist:hover,
-        .link-angellist:focus {
-            text-decoration: none;
-            color: #000000;
-        }
-
-        .link-bitbucket {
-            color: #205081;
-        }
-
-        .link-bitbucket:hover,
-        .link-bitbucket:focus {
-            text-decoration: none;
-            color: #163758;
-        }
-
-        .card-skills {
-            position: relative;
-        }
-
-        .skill-level {
-            border-radius: 3px;
-            position: absolute;
-            top: 10px;
-            bottom: 10px;
-            left: 0;
-            width: 10px;
-            box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
-        }
-
-        .skill-level .skill-progress {
-            position: absolute;
-            border-radius: 3px;
-            bottom: 0;
-            width: 100%;
-            -webkit-transition: height 1s ease;
-        }
-
-        .skill-level .skill-progress.beginner {
-            height: 50%;
-            background: #e74c3c;
-        }
-
-        .skill-level .skill-progress.intermediate {
-            height: 70%;
-            background: #f1c40f;
-        }
-
-        .skill-level .skill-progress.advanced {
-            height: 80%;
-            background: #428bca;
-        }
-
-        .skill-level .skill-progress.master {
-            height: 95%;
-            background: #5cb85c;
-        }
-
-        .skill-info {
-            margin-left: 10px;
-        }
-
-        @media (max-width: 480px) {
-            .skill-info {
-                margin-left: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .quote {
-                font-size: inherit;
-            }
-        }
-
-        @media print {
-            a[href]:after {
-                content: none !important;
-            }
-
-            .profile-card {
-                text-align: center;
-            }
-
-            .profile-pic {
-                display: inline-block;
-                vertical-align: middle;
-            }
-
-            .profile-pic img {
-                border-radius: 0;
-            }
-
-            .name-and-profession {
-                display: inline-block;
-                vertical-align: middle;
-                margin-left: 15px;
-            }
-
-            .contact-details .detail {
-                position: relative;
-                float: left;
-                width: 25%;
-                min-height: 1px;
-                padding: 0;
-            }
-
-            .floating-nav,
-            .floating-nav-trigger {
-                display: none;
-            }
-
-            .pagebreak {
-                page-break-before: always;
-            }
-        }
-
-    </style>
-</head>
-
-<body itemscope itemtype="http://schema.org/Person">
-<script>
-    window.onload = function () {
-        var toggleFloatingMenu = function () {
-            $('.js-floating-nav').toggleClass('is-visible');
-            $('.js-floating-nav-trigger').toggleClass('is-open');
-        };
-
-        $(".background-card").css("min-height", window.screen.availHeight + "px");
-        $(".js-tooltip").tooltip();
-        $('.js-floating-nav-trigger').on('click', function (e) {
-            e.preventDefault();
-            toggleFloatingMenu();
-        });
-        $('.js-floating-nav a').on('click', toggleFloatingMenu);
-    }
-</script>
-<div class="container-fluid">
-    <div class="row main clearfix">
-        <a href="#" class="js-floating-nav-trigger floating-nav-trigger">
-            <i class="fa fa-bars"></i>
-            <span class="close-icon">&times;</span>
-        </a>
-        <nav class="floating-nav js-floating-nav">
-            <ul class="list-unstyled">
-                <li>
-                    <a href="#about">
-                        <i class="fa fa-user"></i>
-                        About
-                    </a>
-                </li>
-                <li>
-                    <a href="#work-experience">
-                        <i class="fa fa-building"></i>
-                        Work Experience
-                    </a>
-                </li>
-                <li>
-                    <a href="#skills">
-                        <i class="fa fa-code"></i>
-                        Skills
-                    </a>
-                </li>
-                <li>
-                    <a href="#education">
-                        <i class="fa fa-mortar-board"></i>
-                        Education
-                    </a>
-                </li>
-                <li>
-                    <a href="#awards">
-                        <i class="fa fa-trophy"></i>
-                        Awards
-                    </a>
-                </li>
-                <li>
-                    <a href="#interests">
-                        <i class="fa fa-heart"></i>
-                        Interests
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-        <section class="col-md-3 card-wrapper profile-card-wrapper affix">
-            <div class="card profile-card">
-                        <span class="profile-pic-container">
-                            <div class="profile-pic">
-                                <img class="media-object img-circle center-block" data-src="holder.js/100x100"
-                                     alt="Evan Louie" src="/assets/images/headshot.jpg" itemprop="image">
-                            </div>
-
-                            <div class="name-and-profession">
-                                <h3 class="text-center text-bolder name" itemprop="name">
-                                    Evan Louie</h3>
-                                <h5 class="text-muted text-center" itemprop="jobTitle">Software Engineer</h5>
-                            </div>
-                        </span>
-                <hr>
-
-                <div class="contact-details clearfix">
-
-                    <div class="detail">
-                                <span class="icon">
-                                    <i class="fa fa-lg fa-location-arrow"></i>
-                                </span>
-                                <span class="info">
-                                    Vancouver, British Columbia, CA
-                                </span>
-                    </div>
-
-                    <div class="detail">
-                                <span class="icon">
-                                    <i class="fa fa-lg fa-envelope"></i>
-                                </span>
-                                <span class="info">
-                                    <a href="mailto:mail@evanlouie.com" class="link-disguise" itemprop="email">mail@evanlouie.com</a>
-                                </span>
-                    </div>
-
-                    <div class="detail">
-                                <span class="icon" title="Languages I speak">
-                                    <i class="fa fa-lg fa-language"></i>
-                                </span>
-
-                                <span class="info">
-                                    English, Japanese
-                                </span>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="social-links text-center">
-                    <a class="fa fa-linkedin fa-2x social-link link-linkedin"
-                       href="http://www.linkedin.com/in/evanlouie" target="_blank"></a>
-                    <a class="fa fa-github fa-2x social-link link-github" href="http://github.com/evanlouie"
-                       target="_blank"></a>
-                    <a class="fa fa-home fa-2x social-link link-blog" href="http://evanlouie.com" target="_blank"></a>
-                    <a class="fa fa-print fa-2x social-link link-resume" href="/resume.pdf" target="_blank"></a>
-                </div>
-            </div>
-        </section>
-
-        <section class="col-md-9 card-wrapper pull-right">
-            <div class="card background-card">
-                <h4 class="text-uppercase text-bolder">Background</h4>
-                <hr>
-
-                <div class="background-details">
-                    <div class="detail" id="about">
-                        <div class="icon">
-                            <i class="fa fa-lg fa-user"></i>
-                            <span class="mobile-title">About</span>
-                        </div>
-                        <div class="info">
-                            <h4 class="title text-uppercase">About</h4>
-
-                            <div class="content" itemprop="description">
-                                Evan is an experienced software developer with 5+ years full-stack experience. After
-                                achieving his degree in 2015, Evan joined the WebDev team as a full-stack developer at
-                                Hootsuite. Charged with the development and maintenance of hootsuite.com and
-                                the CMS powering it, Evan designed and developed an entirely new editorial interface for
-                                non-technical Hootsuite editors to use and create content with. As well as developed a
-                                Darklaunch/Gatekeeper system to allow for targeted page serving of content
-                                for specific user groups. Before this, Evan was a full-stack developer on the Legal
-                                Compliance team at SAP; where he was charged with the development and automation of
-                                tools to assist in the approval of 3rd party open source into outbound SAP
-                                products.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="detail" id="work-experience">
-                        <div class="icon">
-                            <i class="fa fa-lg fa-building"></i>
-                            <span class="mobile-title">Work Experience</span>
-                        </div>
-                        <div class="info">
-                            <h4 class="title text-uppercase">Work Experience</h4>
-
-                            <ul class="list-unstyled">
-
-                                <!--  Hootsuite -->
-                                <li class="card card-nested clearfix">
-                                    <div class="content has-sidebar">
-                                        <p class="clear-margin-sm">
-                                            <strong>Software Developer</strong>,&nbsp;
-                                            <a href="https://hootsuite.com" target="_blank">Hootsuite</a>
-                                        </p>
-                                        <p class="text-muted visible-xs visible-sm">
-                                            <small>
-                                                <span class="space-right">June 2015 - Present</span>
-                                            </small>
-                                        </p>
-                                        <p>Full-stack developer of
-                                            <a href="https://hootsuite.com">hootsuite.com</a>
-                                            and internal editorial tools</p>
-                                        <ul>
-                                            <li>
-                                                Designed/Developed component based editorial interface for non techincal
-                                                user consumption.
-                                            </li>
-                                            <li>
-                                                Developer and maintainer of Hootsuite CMS.
-                                            </li>
-                                            <li>
-                                                Developed Darklaunch/Gatekeeper system for targeted page rendering.
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="sidebar text-muted text-center hidden-xs hidden-sm">
-                                        <p>
-                                            <strong>Joined:</strong>&nbsp; June, 2015
-                                        </p>
-                                        <p>
-                                            <span class="label label-success">Currently Working</span>
-                                        </p>
-                                    </div>
-                                </li>
-
-                                <!--  SAP -->
-                                <li class="card card-nested clearfix">
-                                    <div class="content has-sidebar">
-                                        <p class="clear-margin-sm">
-                                            <strong>Software Engineer</strong>,&nbsp;
-                                            <a href="http://sap.com" target="_blank">SAP</a>
-                                        </p>
-                                        <p class="text-muted visible-xs visible-sm">
-                                            <small>
-                                                <span class="space-right">Jan, 2012 - Aug, 2014</span>
-                                                        <span>
-                                                            <i class="fa fa-clock-o icon-left"></i>
-                                                            2 years 8 months
-                                                        </span>
-                                            </small>
-                                        </p>
-                                        <p>Full-stack developer and open source legal analyst on team dealing with the
-                                            approval of usage of third-party open-source.</p>
-                                        <ul>
-                                            <li>
-                                                Developer of internal portal to track and automate team tasks and
-                                                assignments; implemented with Ruby/Rails/PostgreSQL and integrated with
-                                                existing J2EE/Hibernate systems.
-                                            </li>
-                                            <li>
-                                                Developer of open-source vulnerability database, implemented with
-                                                PHP/Laravel/PostgreSQL and integrated with existing J2EE/Hibernate
-                                                systems.
-                                            </li>
-                                            <li>
-                                                Created general purposed Bash/Python scripts for automated server tasks
-                                            </li>
-                                            <li>
-                                                Audited third party open-source licenses to assure compliance with SAP
-                                                commercial usage
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="sidebar text-muted text-center hidden-xs hidden-sm">
-                                        <p>
-                                            <strong>Joined:</strong>&nbsp; Jan, 2012
-                                        </p>
-                                        <p>
-                                            <strong>Left:</strong>&nbsp; Aug, 2014
-                                        </p>
-                                        <p>
-                                            <i class="fa fa-clock-o icon-left"></i>
-                                            2 years 8 months
-                                        </p>
-                                    </div>
-                                </li>
-
-                                <!--  Oxford Foods -->
-                                <li class="card card-nested clearfix">
-                                    <div class="content has-sidebar">
-                                        <p class="clear-margin-sm">
-                                            <strong>Software Engineer &amp; System Administrator</strong>,&nbsp;
-                                            <a href="http://oxfordfoods.net" target="_blank">Oxford Foods</a>
-                                        </p>
-                                        <p class="text-muted visible-xs visible-sm">
-                                            <small>
-                                                        <span class="space-right">
-                                                            May, 2007 - Aug, 2009
-                                                        </span>
-
-                                                        <span>
-                                                            <i class="fa fa-clock-o icon-left"></i>
-                                                            2 years 4 months
-                                                        </span>
-                                            </small>
-                                        </p>
-                                        <p>Backend developer of custom BI tools and system administrator</p>
-                                        <ul>
-                                            <li>
-                                                Developed back-end inventory system which tracks stock inventory and
-                                                purchasing trends; implemented with Java/Spring
-                                            </li>
-                                            <li>
-                                                Administrated servers/terminals
-                                            </li>
-                                            <li>
-                                                Managed network infrastructure
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="sidebar text-muted text-center hidden-xs hidden-sm">
-                                        <p>
-                                            <strong>Joined:</strong>&nbsp; May, 2007</p>
-
-                                        <p>
-                                            <strong>Left:</strong>&nbsp; Aug, 2009
-                                        </p>
-                                        <p>
-                                            <i class="fa fa-clock-o icon-left"></i>
-                                            2 years 4 months
-                                        </p>
-                                    </div>
-                                </li>
-
-                                <!--  evanlouie.com -->
-                                <li class="card card-nested clearfix">
-                                    <div class="content has-sidebar">
-                                        <p class="clear-margin-sm">
-                                            <strong>Hacker For Hire</strong>,&nbsp;
-                                            <a href="https://evanlouie.com" target="_blank">evanlouie.com</a>
-                                        </p>
-                                        <p class="text-muted visible-xs visible-sm">
-                                            <small>
-                                                        <span class="space-right">
-                                                            Aug, 2009 - Present
-                                                        </span>
-                                            </small>
-                                        </p>
-                                        <p>Software professional for contract based clientele requesting anything from
-                                            personal websites to Linux kernel customizations</p>
-                                        <ul>
-                                            <li>
-                                                SEO Optimization and Google Analytics deployment
-                                            </li>
-                                            <li>
-                                                Linux server/kernel customizations
-                                            </li>
-                                            <li>
-                                                Personal site/blog creation or updates; usually deployed using WordPress
-                                                or Ruby on Rails
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="sidebar text-muted text-center hidden-xs hidden-sm">
-                                        <p>
-                                            <strong>Joined:</strong>&nbsp; Aug, 2009
-                                        </p>
-
-                                        <p>
-                                            <span class="label label-success">Currently Working</span>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="detail" id="skills">
-                        <div class="icon">
-                            <i class="fa fa-lg fa-code"></i>
-                            <span class="mobile-title">Skills</span>
-                        </div>
-                        <div class="info">
-                            <h4 class="title text-uppercase">Skills</h4>
-
-                            <div class="content">
-                                <ul class="list-unstyled">
-                                    <li class="card card-nested card-skills">
-                                        <div class="skill-level js-tooltip" title="Master" data-placement="left">
-                                            <div class="skill-progress master"></div>
-                                        </div>
-                                        <div class="skill-info">
-                                            <strong>JavaScript</strong>
-
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">React</span>
-                                                <span class="label label-keyword">Flux (Redux)</span>
-                                                <span class="label label-keyword">Node.js/io.js</span>
-                                                <span class="label label-keyword">AngularJS</span>
-                                                <span class="label label-keyword">Meteor</span>
-                                                <span class="label label-keyword">Babel</span>
-                                                <span class="label label-keyword">CoffeeScript</span>
-                                                <span class="label label-keyword">jQuery</span>
-                                                <span class="label label-keyword">MEAN.JS</span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="card card-nested card-skills">
-                                        <div class="skill-level js-tooltip" title="Master" data-placement="left">
-                                            <div class="skill-progress master"></div>
-                                        </div>
-                                        <div class="skill-info">
-                                            <strong>Ruby</strong>
-
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">Rails</span>
-                                                <span class="label label-keyword">Sinatra</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="card card-nested card-skills">
-                                        <div class="skill-level js-tooltip" title="Master" data-placement="left">
-                                            <div class="skill-progress master"></div>
-                                        </div>
-                                        <div class="skill-info">
-                                            <strong>PHP/Hack</strong>
-
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">Symfony</span>
-                                                <span class="label label-keyword">Laravel</span>
-                                                <span class="label label-keyword">Yii</span>
-                                                <span class="label label-keyword">HHVM</span>
-                                                <span class="label label-keyword">Wordpress</span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="card card-nested card-skills">
-                                        <div class="skill-level js-tooltip" title="Master" data-placement="left">
-                                            <div class="skill-progress master"></div>
-                                        </div>
-                                        <div class="skill-info">
-                                            <strong>Web Development</strong>
-
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">Webpack</span>
-                                                <span class="label label-keyword">RESTful API Design</span>
-                                                <span class="label label-keyword">SOAP Services</span>
-                                                <span class="label label-keyword">HTML5/CSS3</span>
-                                                <span class="label label-keyword">Twitter Bootstrap</span>
-                                                <span class="label label-keyword">Zurb Foundation</span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="card card-nested card-skills">
-                                        <div class="skill-level js-tooltip" title="Master" data-placement="left">
-                                            <div class="skill-progress master"></div>
-                                        </div>
-                                        <div class="skill-info">
-                                            <strong>Database/Key-Value Store:</strong>
-
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">PostgreSQL</span>
-                                                <span class="label label-keyword">MySQL/MariaDB</span>
-                                                <span class="label label-keyword">MongoDB</span>
-                                                <span class="label label-keyword">Redis</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="card card-nested card-skills">
-                                        <div class="skill-level js-tooltip" title="Intermediate" data-placement="left">
-                                            <div class="skill-progress intermediate"></div>
-                                        </div>
-                                        <div class="skill-info">
-                                            <strong>Java</strong>
-
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">Grails</span>
-                                                <span class="label label-keyword">GWT</span>
-                                                <span class="label label-keyword">Spring MVC</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="card card-nested card-skills">
-                                        <div class="skill-level js-tooltip" title="Intermediate" data-placement="left">
-                                            <div class="skill-progress intermediate"></div>
-                                        </div>
-                                        <div class="skill-info">
-                                            <strong>C/C++</strong>
-
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">Boost</span>
-                                                <span class="label label-keyword">OpenGL</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="card card-nested card-skills">
-                                        <div class="skill-level js-tooltip" title="Intermediate" data-placement="left">
-                                            <div class="skill-progress intermediate"></div>
-                                        </div>
-                                        <div class="skill-info">
-                                            <strong>Haskell</strong>
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">Yesod</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="card card-nested card-skills">
-                                        <div class="skill-level js-tooltip" title="Beginner" data-placement="left">
-                                            <div class="skill-progress beginner"></div>
-                                        </div>
-                                        <div class="skill-info">
-                                            <strong>Distributed</strong>
-
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">Apache Hadoop</span>
-                                                <span class="label label-keyword">Apache ZooKeeper</span>
-                                                <span class="label label-keyword">MPI</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="card card-nested card-skills">
-                                        <div class="skill-info">
-                                            <strong>Misc</strong>
-
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">Vagrant</span>
-                                                <span class="label label-keyword">Ansible</span>
-                                                <span class="label label-keyword">Jenkins</span>
-                                                <span class="label label-keyword">Git</span>
-                                                <span class="label label-keyword">Subversion</span>
-                                                <span class="label label-keyword">Black Duck (Code Center, Protex)</span>
-                                                <span class="label label-keyword">Open Source License Analysis</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="detail" id="education">
-                        <div class="icon">
-                            <i class="fa fa-lg fa-mortar-board"></i>
-                            <span class="mobile-title">Education</span>
-                        </div>
-                        <div class="info">
-                            <h4 class="title text-uppercase">Education</h4>
-
-                            <div class="content">
-                                <ul class="list-unstyled">
-                                    <li class="card card-nested">
-                                        <div class="content has-sidebar">
-                                            <p class="clear-margin-sm">
-                                                <strong>Computer Science, B.Sc Major</strong>,&nbsp; University of
-                                                British Columbia
-                                            </p>
-                                            <p class="visible-xs visible-sm text-muted">
-                                                <small>Aug, 2009 - Apr, 2015</small>
-                                            </p>
-                                            <div class="space-top labels">
-                                                <span class="label label-keyword">CPSC410 - Advanced Software Engineering</span>
-                                                <span class="label label-keyword">EECE443 - Software Project Management</span>
-                                                <span class="label label-keyword">CPSC416 - Distributed Systems</span>
-                                                <span class="label label-keyword">CPSC404 - Advanced Relational Databases</span>
-                                                <span class="label label-keyword">CPSC430 - Computers &amp; Society</span>
-                                                <span class="label label-keyword">CPSC320 - Algorithm Design &amp; Analysis</span>
-                                                <span class="label label-keyword">CPSC319 - Software Engineering Project</span>
-                                                <span class="label label-keyword">CPSC322 - Artificial Intelligence</span>
-                                            </div>
-                                        </div>
-                                        <div class="sidebar text-muted text-center hidden-xs hidden-sm">
-                                            <p>
-                                                <strong>Started:</strong>&nbsp; Aug, 2009
-                                            </p>
-                                            <p>
-                                                <strong>Completion:</strong>&nbsp; Apr, 2015
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="detail" id="awards">
-                        <div class="icon">
-                            <i class="fa fa-lg fa-trophy"></i>
-                            <span class="mobile-title">Awards</span>
-                        </div>
-                        <div class="info">
-                            <h4 class="title text-uppercase">Awards</h4>
-
-                            <div class="content">
-                                <ul class="list-unstyled">
-                                    <li class="card card-nested">
-                                        <div class="content has-sidebar">
-                                            <p class="clear-margin-sm" itemprop="award">
-                                                <strong>Provincial Scholarship Award</strong>,&nbsp; Ministry of
-                                                Education
-                                            </p>
-                                            <p class="visible-xs visible-sm text-muted">
-                                                <small>Awarded on: Sep 30, 2009</small>
-                                            </p>
-                                            <p class="clear-margin">
-                                                Achieve &gt;85% on 3 Provincial Examinations
-                                            </p>
-                                        </div>
-                                        <div class="sidebar text-muted text-center hidden-xs hidden-sm">
-                                            <p>
-                                                <strong>Awarded on:</strong>&nbsp; Sep 30, 2009
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="card card-nested">
-                                        <div class="content has-sidebar">
-                                            <p class="clear-margin-sm" itemprop="award">
-                                                <strong>President’s Entrance Scholarship</strong>,&nbsp; University of
-                                                British Columbia
-                                            </p>
-                                            <p class="visible-xs visible-sm text-muted">
-                                                <small>Awarded on: Feb 28, 2009</small>
-                                            </p>
-                                            <p class="clear-margin">
-                                                Achieve &gt;85% average on all courses used to apply to UBC
-                                            </p>
-                                        </div>
-                                        <div class="sidebar text-muted text-center hidden-xs hidden-sm">
-                                            <p>
-                                                <strong>Awarded on:</strong>&nbsp; Feb 28, 2009
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="card card-nested">
-                                        <div class="content has-sidebar">
-                                            <p class="clear-margin-sm" itemprop="award">
-                                                <strong>Academic Excellence Scholarship</strong>,&nbsp; Simon Fraser
-                                                University
-                                            </p>
-                                            <p class="visible-xs visible-sm text-muted">
-                                                <small>Awarded on: Jan 31, 2009</small>
-                                            </p>
-                                            <p class="clear-margin">
-                                                Achieve &gt;85% average on all courses used to apply to SFU
-                                            </p>
-                                        </div>
-                                        <div class="sidebar text-muted text-center hidden-xs hidden-sm">
-                                            <p>
-                                                <strong>Awarded on:</strong>&nbsp; Jan 31, 2009
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="card card-nested">
-                                        <div class="content has-sidebar">
-                                            <p class="clear-margin-sm" itemprop="award">
-                                                <strong>President’s Scholarship</strong>,&nbsp; University of Waterloo
-                                            </p>
-                                            <p class="visible-xs visible-sm text-muted">
-                                                <small>Awarded on: Nov 30, 2008</small>
-                                            </p>
-                                            <p class="clear-margin">
-                                                Achieve &gt;85% average on all courses used to apply to UoW
-                                            </p>
-                                        </div>
-                                        <div class="sidebar text-muted text-center hidden-xs hidden-sm">
-                                            <p>
-                                                <strong>Awarded on:</strong>&nbsp; Nov 30, 2008
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="detail" id="interests">
-                        <div class="icon">
-                            <i class="fa fa-lg fa-heart"></i>
-                            <span class="mobile-title">Interests</span>
-                        </div>
-                        <div class="info">
-                            <h4 class="title text-uppercase">Interests</h4>
-
-                            <div class="content">
-                                <ul class="list-unstyled">
-                                    <li class="card card-nested">
-                                        <p>
-                                            <strong>Photography</strong>
-                                        </p>
-                                        <div class="space-top labels">
-                                            <span class="label label-keyword">Street Fashion</span>
-                                            <span class="label label-keyword">35mm</span>
-                                        </div>
-                                    </li>
-                                    <li class="card card-nested">
-                                        <p>
-                                            <strong>Badminton</strong>
-                                        </p>
-
-                                        <div class="space-top labels">
-                                            <span class="label label-keyword">Team BC</span>
-                                            <span class="label label-keyword">UBC Badminton Club Executive</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+---
+layout: default
+title: Resume
+permalink: /resume/
+excerpt: Evan is an experienced software developer with 5+ years experience currently working as a full-stack developer on Hootsuite's WebDev team.
+---
+
+<article class="content resume">
+  <section class="section">
+    <h3 class="title">Profile</h3>
+
+    <p class="body">
+      Evan is an experienced software developer with 5+ years experience. Web developer through and through, Evan enjoys developing with bleeding edge technologies in his search for the perfect web stack. Evan is currently working as a full-stack developer
+      on Hootsuite's WebDev team.
+    </p>
+  </section>
+
+  <section class="skills">
+    <h3 class="title">Skills</h3>
+
+    <ul class="body">
+      <li>{% include icons/icon-javascript.html %}<strong>Javascript:</strong> Node.js, React, Flux (Redux), AngularJS, Meteor, Cordova, ES6/Babel, TypeScript</li>
+      <li>{% include icons/icon-php.html %}<strong>PHP/Hack:</strong> Symfony, Laravel, Yii, CraftCMS, Wordpress</li>
+      <li>{% include icons/icon-ruby.html %}<strong>Ruby:</strong> Rails, Sinatra </li>
+      <li>{% include icons/icon-java.html %}<strong>Java:</strong> GWT, Spring MVC</li>
+      <li>{% include icons/icon-c.html %}<strong>C/C++:</strong> Boost, OpenGL</li>
+      <li>{% include icons/icon-redis.html %}<strong>Database/Key-Value Store:</strong> PostgreSQL, MySQL/MariaDB, MongoDB, Redis</li>
+      <li>{% include icons/icon-apache.html %}<strong>Distributed:</strong> Apache Hadoop, Apache ZooKeeper, MPI</li>
+      <li>{% include icons/icon-html5.html %}<strong>Web Development:</strong> Webpack, HTML5/CSS3, WebSockets, REST, SOAP, SASS, Google AMP</li>
+    </ul>
+  </section>
+
+  <section class="experience">
+    <h3 class="title">Experience</h3>
+
+    <div class="body">
+      <div class="job">
+        <div class="placement">
+          <span class="company">
+            <a href="https://hootsuite.com/">Hootsuite</a>
+          </span>
+          <span class="duration">
+            June 2015 - Present
+          </span>
+        </div>
+        <div class="role">
+          Software Developer
+        </div>
+        <div class="description">
+          Full-stack Developer of Hootsuite website
+        </div>
+        <div class="technologies">
+          {% include icons/icon-code.html %}PHP/Hack (Symfony), JavaScript/ES6 (Node.js, React, Babel)
+        </div>
+        <div class="responsibilities">
+          <ul>
+            <li>{% include icons/icon-chevron-right.html %}Developed/Designed component based editorial workflow for exensible and resuable page building.</li>
+            <li>{% include icons/icon-chevron-right.html %}Developed Darklaunch/Gatekeeper system for targeted demographic page rendering.</li>
+            <li>{% include icons/icon-chevron-right.html %}Developer and maintainer of Hootsuite CMS.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="placement">
+          <span class="company">
+            <a href="https://sap.com">SAP</a>
+          </span>
+          <span class="duration">
+            Jan 2012 - Aug 2014
+          </span>
+        </div>
+        <div class="role">
+          Software Developer
+        </div>
+        <div class="description">
+          Full-stack developer and legal analyst of third-party open-source
+        </div>
+        <div class="technologies">
+          {% include icons/icon-code.html %}PHP (Laravel), Ruby (Rails), JavaScript (CoffeeScript, jQuery), Java (Spring)
+        </div>
+        <div class="responsibilities">
+          <ul>
+            <li>{% include icons/icon-chevron-right.html %}Developed portal to automate scanning/tracking of open-source code usage and license conflicts.</li>
+            <li>{% include icons/icon-chevron-right.html %}Developed open-source vulnerability database and search engine.</li>
+            <li>{% include icons/icon-chevron-right.html %}Audited third party open-source licenses to assure compliance with SAP commercial usage.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="placement">
+          <span class="company">
+            <a href="http://oxfordfoods.net">Oxford Foods</a>
+          </span>
+          <span class="duration">
+            May 2007 - Aug 2009
+          </span>
+        </div>
+        <div class="role">
+          <!-- Software Developer -->
+        </div>
+        <div class="description">
+          Backend developer of BI/Inventory tools and system administrator
+        </div>
+        <div class="technologies">
+          {% include icons/icon-code.html %}Java (spring)
+        </div>
+        <div class="responsibilities">
+          <ul>
+            <li>{% include icons/icon-chevron-right.html %}Developed back-end inventory system which tracks stock inventory and purchasing trends.</li>
+            <li>{% include icons/icon-chevron-right.html %}Administrated Linux (CentOS) and Windows (Server 2008) servers.</li>
+            <li>{% include icons/icon-chevron-right.html %}Managed network infrastructure.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="placement">
+          <span class="company">
+            <a href="{{ site.baseurl }}/">evanlouie.com</a>
+          </span>
+          <span class="duration">
+            Aug 2009 - Present
+          </span>
+        </div>
+        <div class="role">
+          Software Developer / Hacker for Hire
+        </div>
+        <div class="description">
+          Developer for contract based clientele
+        </div>
+        <div class="technologies">
+          {% include icons/icon-code.html %}PHP/Hack (CraftCMS, Wordpress), Ruby (Rails), Javascript (Meteor)
+        </div>
+        <div class="responsibilities">
+          <ul>
+            <li>{% include icons/icon-chevron-right.html %}Web developer for projects ranging from personal blogs to high-frequency trading systems.</li>
+            <li>{% include icons/icon-chevron-right.html %}SEO Optimization and Google Analytics deployment.</li>
+            <li>{% include icons/icon-chevron-right.html %}Linux server/kernel customizations.</li>
+          </ul>
+        </div>
+      </div>
     </div>
-</div>
+  </section>
+  <section class="education">
+    <div class="title">
+      <h3>Education</h3>
+    </div>
 
-<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/tooltip.js"></script>
-</body>
-
-</html>
+    <div class="body">
+      <div class="entry">
+        <div class="convocation">
+          <span class="school">
+            <a href="https://www.ubc.ca/">University of British Columbia</a>
+          </span>
+          <span class="conferred">
+            Apr 2015
+          </span>
+        </div>
+        <div class="degree">
+          {% include icons/icon-graduation-cap.html %}B.Sc Major in Computer Science
+        </div>
+      </div>
+      <div class="entry">
+        <div class="convocation">
+          <span class="school">
+            <a href="https://www.smus.ca/">St. Michaels University School</a>
+          </span>
+          <span class="conferred">
+            May 2009
+          </span>
+        </div>
+        <div class="degree">
+          {% include icons/icon-graduation-cap.html %}Dogwood Diploma
+        </div>
+      </div>
+    </div>
+  </section>
+</article>

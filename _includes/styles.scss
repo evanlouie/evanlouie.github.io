@@ -638,6 +638,9 @@ pre {
       width: 100%;
       padding: 0.5em;
       border-top: 1px solid #eee;
+      .title {
+        font-family: $font-sans;
+      }
       // make icons font inline
       .icon {
         svg {
@@ -678,7 +681,9 @@ pre {
             font-weight: bold;
           }
 
-          .technologies {}
+          .technologies {
+            font-family: $font-mono;
+          }
 
           .responsibilities {
             ul {
@@ -719,19 +724,11 @@ pre {
           // font-family: $font-mono;
         }
       }
-
-      &.experience {
-        .job {
-          .technologies {
-            font-family: $font-mono;
-          }
-        }
-      }
     }
   }
 }
 @media print {
-   @include resumeStyling($font-sans, small, medium);
+   @include resumeStyling($font-serif, small, medium);
 
   article.resume {
     // Shrink top margin for .content
@@ -754,13 +751,6 @@ pre {
       .body {
         order: 2;
         width: 85%;
-      }
-      &.experience {
-        .job {
-          .technologies {
-            font-family: $font-mono;
-          }
-        }
       }
     }
   }

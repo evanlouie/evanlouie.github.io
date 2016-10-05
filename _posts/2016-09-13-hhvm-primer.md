@@ -105,6 +105,46 @@ xdebug.remote_host="0.0.0.0"
 xdebug.remote_port=9999
 ```
 
+## proxygen.ini
+
+Often times I find myself running having to develop HHVM along side standard PHP. This usually means I use mod_php on Apache and end up giving it my main dev port. Setting up multiple ports and virtual hosts in Apache/Nginx and juggling between FastCGI ports in server.ini can be annoying. One solution is to just start up HHVM's built in HTTP server; Proxygen.
+
+```ini
+; php options
+
+pid = /var/run/hhvm/pid
+session.save_handler = redis
+session.save_path = "tcp://127.0.0.1:6379"
+session.gc_maxlifetime = 1440
+
+; hhvm specific
+
+hhvm.pid_file = /var/run/hhvm/pid
+
+hhvm.server.type = proxygen
+hhvm.server.port = 8888
+hhvm.server.source_root=/var/www/web/
+
+;hhvm.server.default_document = index.php
+;hhvm.log.use_log_file = true
+;hhvm.log.file = /var/log/hhvm/error.log
+hhvm.log.header = true
+hhvm.libxml.ext_entity_whitelist = file,http
+
+;; debug
+hhvm.log.level = Verbose
+hhvm.log.native_stack_trace = true
+hhvm.debug.native_stack_trace = true
+hhvm.debug.server_error_message = true
+hhvm.server.implicit_flush = true
+```
+
+```bash
+hhvm -m s -c /etc/hhvm/proxygen.ini | grep --line-buffered -v f_is
+```
+
+This will start up a Proxygen listening to port 8888 and grep the verbose logs for clean output
+
 # Issues/Gotchas
 
 ## General

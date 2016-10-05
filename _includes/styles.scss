@@ -755,6 +755,13 @@ pre {
         order: 2;
         width: 85%;
       }
+      &.experience {
+        .job {
+          .technologies {
+            font-family: $font-mono;
+          }
+        }
+      }
     }
   }
 }

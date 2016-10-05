@@ -11,6 +11,8 @@ permalink: /about/
   <dd>Vancouver | 東京 | 香港</dd>
   <dt>Occupation:</dt>
   <dd>Software Developer/Designer</dd>
+  <dt>Favourite Algorithm:</dt>
+  <dd>Dijkstra's or Merge-sort (external sorting ftw)</dd>
   <dt>Profiles:</dt>
   <dd>
     <dl>
@@ -27,3 +29,6 @@ permalink: /about/
 </dl>
 
 <amp-instagram data-shortcode="_jATq9q60Y" width="250" height="250" layout="responsive"></amp-instagram>
+
+{% capture who-am-i %}{% include snippets/who-am-i.md %}{% endcapture %}
+{{ who-am-i | markdownify }}

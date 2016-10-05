@@ -4,7 +4,7 @@ title: 'React & Web Workers'
 excerpt: 'One of the less well known or used features of modern browsers is Web Worker support. With it, you can use spin up isolated processes to do CPU intensive tasks without locking the windows main rendering thread.'
 ---
 
-One of the less well known or used features of modern browsers is Web Worker support. With it, you can use spin up isolated processes to do CPU intensive tasks without locking the windows main rendering thread.
+One of the less well known or used features of modern browsers is Web Worker support. With it, you can spin up isolated processes to do CPU intensive tasks without locking the windows main rendering thread.
 
 # The Problem
 
@@ -28,15 +28,15 @@ In the example above, we executed non blocking CPU intensive code in your browse
 
 Web Workers allow you to spin up additional processes and have them communicate with each other with a standard messaging API. In the case of Web Workers, all you'll really need to know is the `postMessage` function, which is what the Worker should call on the event of receiving a message.
 
-In the example below, I have defined the code to be run as `const answer`, an anonymous function which is COMPLETELY isolated; meaning everything it needs to run is within the function itself. Helper functions are defined within it is lambda.
+In the example below, I have defined the code to be run as the variable `answer`, an anonymous function which is COMPLETELY isolated; meaning everything it needs to run is within the function itself. Helper functions are defined within the lambda itself.
 
 Here is where things get tricky/weird. Web Workers were meant to execute code on an DIFFERENT URL from the one your currently on. To get around this, you're going to have to do some weird (pronounced "hacky") stuff.
 
-- I then define the `self.onmessage` event as the `postMessage` of the `eval` for `answer`; all of which is saved as a string.
+- Define the `self.onmessage` event as the `postMessage` of the `eval` for `answer`; all of which is saved as a string.
 - Instantiate a `Blob` with a `text/javascript` type and the onmessage string as its body; do note that the string has to be stored in an array. Hence `[response]`
-- You can then bind the blob to the window under a object URL using `window.URL.createObjectURL` and thus instantiate a Worker from it
+- You can then bind the blob to the window under an object URL using `window.URL.createObjectURL` and thus instantiate a Worker from it
 - Define what the main window should do when receiving a message from the worker with `worker.onmessage`
-- Then tell it to do its thing with `worker.postMessage`
+- Tell the worker to get to work with `worker.postMessage`
 
 ```javascript
 const answer =  () => {

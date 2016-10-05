@@ -82,6 +82,6 @@ And there you have it! Multi-Process Javascript!
 
 Their aren't that many use cases for such JS as it you shouldn't be doing such heavy CPU lifting on the client or with Node in general. But if you ever find yourself needing to crank out some number work in the browser, this is how (_•̀ᴗ•́_)و ̑̑
 
-For a more in-depth look at how to implement this into your React app, take a swing over to https://github.com/evanlouie/project-euler/blob/master/src/components/Problem.tsx and <https://github.com/evanlouie/project-euler/blob/master/src/lib/EulerProblem5.ts> to take a closer look at how I implemented it for <https://www.evanlouie.com/project-euler/>
+For a more in-depth look at how to implement this into your React app, take a swing over to <https://github.com/evanlouie/project-euler/blob/master/src/lib/EulerProblem5.ts> and take a closer look at how I implemented it for <https://www.evanlouie.com/project-euler/>
 
 Happy Coding~ Go and wreak some CPU havoc from the browser ୧༼✿ ͡◕ д ◕͡ ༽୨

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Local HTTPS On OSX
+excerpt: 'As I began development with Google AMP, I realized that I would need to get SSL working on localhost to get around `amp-iframe` HTTPS rules. Luckily I found an amazing guide by jonathantneal which outlined the process step by step on OSX. Which after following, development became a breeze.'
 ---
 
 As I began development with Google AMP, I realized that I would need to get SSL working on localhost to get around `amp-iframe` HTTPS rules. Luckily I found an amazing guide by [jonathantneal](https://github.com/jonathantneal) which outlined the process step by step on OSX. Which after following, development became a breeze.

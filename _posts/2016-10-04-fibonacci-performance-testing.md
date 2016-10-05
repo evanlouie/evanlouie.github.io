@@ -14,7 +14,7 @@ With a whole bunch of different ways to implement it, calculating the nth Fibona
 
 ---
 
-Language         | Style              | Time (seconds unless explicitly noted)
+Language         | Style              | Time
 ---------------- | ------------------ | --------------------------------------
 Ruby (2.3.1p112) | Recursive          | 12.163913
                  | Recursive/Memoized | 00.000063

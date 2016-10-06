@@ -1,6 +1,7 @@
 ---
 layout: post
 title: HHVM Primer
+tags: hhvm, php, apache, nginx
 excerpt: "Internally at Hootsuite, we at the WebDev team have adopted HHVM as a means to improve the performance of our older PHP code. Unable to hot swap PHP7 without breaking third party vendor code and HHVM having full PHP5\\* support made swap very worth while. However that is not to say HHVM hasn't given me or my team any headaches. There have been plenty... segfaults anyone? Here is my scratchpad/notes for using HHVM."
 ---
 

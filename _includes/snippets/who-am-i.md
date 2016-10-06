@@ -12,7 +12,7 @@ Aside from my regular coding activities; I've competed in badminton since I was 
 
 I love to code. In particular, I love to develop solutions which solve complex problems and present them in a way which is consumable to a general audience. This is the core reason I enjoy coding for the web.
 
-Development tooling and languages are changing at an incredible pace right now. It seems that every week theirs a new JS framework or library that aims to solve the same problem was solved the week before. More and more, I'm seeing people fall back in love with typed languages thanks to LLVM and it allowing the emergence of modern typed languages that aren't Java or a C derivative. The development landscape is a vast field of choices for any dev right now; And I intent to try it all.
+Development tooling and languages are changing at an incredible pace right now. It seems that every week theirs a new JS framework or library that aims to solve the same problem that was solved the week before. More and more, I'm seeing people fall back in love with typed languages thanks to LLVM and it allowing the emergence of modern typed languages that aren't Java or a C derivative. The development landscape is a vast field of choices for any dev right now; And I intent to try it all.
 
 ## My stack
 

@@ -10,8 +10,7 @@ With a little bit of hackery if how you code your app, I imagine you develop qui
 
 A core JavaScript Controller for your app. One that acts completely on GET params. Sounds horrifying I know, but the only way your going to effectively integrate any JS into an AMP page is via GET param.
 
-
-{% highlight html linenos %}
+```html
 <amp-iframe width=300 height=300
     sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
     layout="responsive"
@@ -20,7 +19,7 @@ A core JavaScript Controller for your app. One that acts completely on GET param
 
   <amp-img width="245" height="170" layout="responsive" src="https://www.fillmurray.com/400/300" placeholder></amp-img>
 </amp-iframe>
-{% endhighlight %}
+```
 
 Above I have an `<amp-frame>` who's src attribute is set to `/project-euler`. The keen can probably already see what I'm getting at. If we define the contents of the src as to be our JS controller, we can easily set our apps initial state via those params.
 

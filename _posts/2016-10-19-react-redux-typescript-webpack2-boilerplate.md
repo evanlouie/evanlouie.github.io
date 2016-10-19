@@ -3,7 +3,7 @@ layout: post
 title: React-Redux-Typescript2-Webpack2 Boilerplate Example
 ---
 
-Recently a colleague of mine wanted to migrate one of our React apps from just using a Babel for compiling ES6/7 to using TypeScript as well (strict-null types in TypeScript2 was just too good to not have). Having used TypeScript for a few React apps in the past, I realized there were quite a few oddities when actually explaining what what to do when migrating the app. In particular, its usage with Redux.
+Recently a colleague of mine wanted to migrate one of our React apps from just using Babel for compiling ES6/7 to using TypeScript as well (strict-null types in TypeScript2 was just too good to pass up). Having used TypeScript for a few React apps in the past, I realized there were quite a few oddities when actually explaining what what to do when migrating the app. In particular, its usage with Redux.
 
 <https://www.evanlouie.com/react-redux-typescript-webpack-boilerplate/>
 
@@ -13,23 +13,17 @@ The [react-redux documentation](http://redux.js.org/docs/basics/UsageWithReact.h
 
 In the docs, you'll see visual components defined only as functions:
 
-```
+```javascript
 import React, { PropTypes } from 'react';
 
-const Todo = ({ onClick, completed, text }) => (
-  <li
-    onClick={onClick}
-    style={{
-      textDecoration: completed ? 'line-through' : 'none'
-    }}
-  >
+const Todo = ({ onClick, text }) => (
+  <li onClick={onClick}>
     {text}
   </li>
 )
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
-  completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired
 }
 

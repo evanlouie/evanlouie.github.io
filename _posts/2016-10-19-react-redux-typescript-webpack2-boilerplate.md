@@ -5,7 +5,7 @@ title: React-Redux-Typescript2-Webpack2 Boilerplate Example
 
 Recently a colleague of mine wanted to migrate one of our React apps from just using Babel for compiling ES6/7 to using TypeScript as well (strict-null types in TypeScript2 was just too good to pass up). Having used TypeScript for a few React apps in the past, I realized there were quite a few oddities when actually explaining what what to do when migrating the app. In particular, its usage with Redux.
 
-<https://www.evanlouie.com/react-redux-typescript-webpack-boilerplate/>
+<https://github.com/evanlouie/react-redux-typescript-webpack-boilerplate>
 
 # Visual Components
 

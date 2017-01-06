@@ -637,7 +637,7 @@ pre {
     line-height: 1.42857143;
 
     section {
-      width: 100%;
+      // width: 100%;
       padding: 0.5em;
       border-top: 1px solid #eee;
       .title {
@@ -744,6 +744,7 @@ pre {
     section {
       display: flex;
       flex-direction: row;
+      padding: 0;
 
       .title {
         order: 1;

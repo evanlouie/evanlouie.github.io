@@ -22,7 +22,7 @@ amp-img {
 .cf {
   @include clearfix;
 }
-$maxWidth: 750px;
+$maxWidth: 900px;
 $rs: 16px;
 $font-serif: Georgia, Cambria, "Times New Roman", Times, 'Lora', serif;
 $font-sans: "Helvetica Neue", 'Open Sans', Arial, Helvetica, sans-serif;
@@ -150,6 +150,7 @@ body {
   @include box-sizing(border-box);
 
   .blog-title {
+    border-bottom: 1px solid lightgrey;
     margin-bottom: 8px;
     font-size: 50px;
     font-weight: 700;
@@ -161,7 +162,8 @@ body {
   }
 
   .blog-description {
-    font-size: 28px;
+    // font-size: 28px;
+    font-size: medium;
     margin: 0 0 20px;
     padding: 0;
     line-height: 1.2;
@@ -211,6 +213,7 @@ body {
       font-weight: 300;
       font-style: normal;
       font-size: 20px;
+      font-family: serif;
       line-height: 1.59;
       color: #666665;
     }

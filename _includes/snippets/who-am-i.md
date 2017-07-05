@@ -1,6 +1,6 @@
 # Who Am I?
 
-I'm a software developer currently living Vancouver, BC and working at Hootsuite.
+I'm a software engineer currently living San Francisco, CA and working at Microsoft.
 
 Born and raised in Victoria, BC. After graduating from St. Michael's University School in 2009 (and getting my first taste of web dev along the way), I continued my studies at UBC where I majored in Computer Science.
 

@@ -1,5 +1,5 @@
-@import 'bourbon/bourbon';
-@import 'syntax-highlighting';
+@import "bourbon/bourbon";
+@import "syntax-highlighting";
 $grey-color: #828282;
 
 .icon {
@@ -24,11 +24,11 @@ amp-img {
 }
 $maxWidth: 900px;
 $rs: 16px;
-$font-serif: Georgia, Cambria, "Times New Roman", Times, 'Lora', serif;
-$font-sans: "Helvetica Neue", 'Open Sans', Arial, Helvetica, sans-serif;
-$font-mono: 'VT323', 'Source Code Pro', 'Inconsolata', monospace;
+$font-serif: Georgia, Cambria, "Times New Roman", Times, "Lora", serif;
+$font-sans: "Helvetica Neue", "Open Sans", Arial, Helvetica, sans-serif;
+$font-mono: "VT323", "Source Code Pro", "Inconsolata", monospace;
 @mixin respond-to($breakpoint) {
-   @media only screen and (max-width: $breakpoint + px){
+  @media only screen and (max-width: $breakpoint + px) {
     @content;
   }
 }
@@ -60,6 +60,10 @@ body {
 }
 
 .site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   position: relative;
   width: 100%;
   max-width: $maxWidth;
@@ -75,13 +79,10 @@ body {
     }
 
     .author-info {
-      $marginLeft: 1em;
-      $logoSize: 50px;
-      margin-left: $marginLeft;
+      margin-left: 1em;
       display: inline-flex;
       justify-content: space-between;
-      position: absolute;
-      width: calc(100% - #{$logoSize} - #{$marginLeft});
+      width: 100%;
 
       .name {
         font-size: x-large;
@@ -121,7 +122,6 @@ body {
 
     .page-links {
       display: block;
-      position: absolute;
       top: 10px;
       right: $rs;
       font-weight: 200;
@@ -194,7 +194,7 @@ body {
       font-weight: 700;
       font-style: normal;
       display: block;
-      font-size: 36px;
+      font-size: x-large;
       line-height: 1.15;
       margin: 0;
 
@@ -212,7 +212,7 @@ body {
       letter-spacing: -0.02em;
       font-weight: 300;
       font-style: normal;
-      font-size: 20px;
+      font-size: medium;
       font-family: serif;
       line-height: 1.59;
       color: #666665;
@@ -376,8 +376,7 @@ body {
     p {
       font-weight: 400;
       font-style: normal;
-      // font-size: medium;
-      font-size: large;
+      font-size: medium;
       line-height: 1.59;
       letter-spacing: -.002em;
       margin-top: 30px;
@@ -720,7 +719,7 @@ pre {
   }
 }
 @media screen {
-   @include resumeStyling($font-serif, medium, large);
+  @include resumeStyling($font-serif, medium, large);
 
   article.resume {
     section {
@@ -733,7 +732,7 @@ pre {
   }
 }
 @media print {
-   @include resumeStyling($font-serif, small, medium);
+  @include resumeStyling($font-serif, small, medium);
 
   article.resume {
     // Shrink top margin for .content

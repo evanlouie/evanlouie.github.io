@@ -24,9 +24,9 @@ amp-img {
 }
 $maxWidth: 900px;
 $rs: 16px;
-$font-serif: Georgia, Cambria, "Times New Roman", Times, "Lora", serif;
-$font-sans: "Helvetica Neue", "Open Sans", Arial, Helvetica, sans-serif;
-$font-mono: "VT323", "Source Code Pro", "Inconsolata", monospace;
+$font-serif: Cambria, Georgia, "Source Serif Pro", serif;
+$font-sans: "Open Sans", "Source Sans Pro", sans-serif;
+$font-mono: "VT323", "Source Code Pro", monospace;
 @mixin respond-to($breakpoint) {
   @media only screen and (max-width: $breakpoint + px) {
     @content;
@@ -141,6 +141,26 @@ body {
   }
 }
 
+.definition {
+  .word {
+    font-family: $font-serif;
+    font-size: 50px;
+    margin-bottom: 0;
+  }
+
+  .pronounciation {
+    font-size: x-large;
+    font-style: italic;
+    font-weight: bold;
+    color: grey;
+    font-family: $font-serif;
+  }
+
+  .body {
+    font-family: $font-sans;
+  }
+}
+
 .blog-header {
   width: 100%;
   max-width: $maxWidth;
@@ -150,6 +170,7 @@ body {
   @include box-sizing(border-box);
 
   .blog-title {
+    /* font-family: $font-serif; */
     border-bottom: 1px solid lightgrey;
     margin-bottom: 8px;
     font-size: 50px;
@@ -378,7 +399,7 @@ body {
       font-style: normal;
       font-size: medium;
       line-height: 1.59;
-      letter-spacing: -.002em;
+      letter-spacing: -0.002em;
       margin-top: 30px;
       margin-bottom: 0;
       color: #333333;

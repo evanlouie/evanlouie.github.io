@@ -37,8 +37,9 @@ gems:
   - jekyll-sitemap
 
 exclude:
-  - node_modules
   - Gemfile
   - Gemfile.lock
-  - tsconfig.json
+  - node_modules
   - package.json
+  - tsconfig.json
+  - vendor

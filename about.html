@@ -4,31 +4,41 @@ title: About
 permalink: /about/
 ---
 
-<dl>
-  <dt>Name:</dt>
-  <dd>Evan Louie</dd>
-  <dt>Location:</dt>
-  <dd>Vancouver | San Francisco | 東京 | 香港</dd>
-  <dt>Occupation:</dt>
-  <dd>Software Developer/Designer</dd>
-  <dt>Favourite Algorithm:</dt>
-  <dd>Dijkstra's or Merge-sort (external sorting ftw)</dd>
-  <dt>Profiles:</dt>
-  <dd>
+<div style="display: flex; justify-content: space-between;">
+  <div class="about-me">
     <dl>
-      <dt>GitHub</dt>
-      <dd>{% include icons/icon-github-dev.html %} <a href="https://github.com/evanlouie">https://github.com/evanlouie</a></dd>
-      <dt>LinkedIn</dt>
-      <dd>{% include icons/icon-linkedin.html %} <a href="https://ca.linkedin.com/in/evanlouie">https://ca.linkedin.com/in/evanlouie</a></dd>
-      <dt>Twitter</dt>
-      <dd>{% include icons/icon-twitter.html %} <a href="https://twitter.com/evanlouie">https://twitter.com/evanlouie</a></dd>
-      <dt>Instagram</dt>
-      <dd>{% include icons/icon-instagram.html %} <a href="https://www.instagram.com/evanlouie/">https://www.instagram.com/evanlouie/</a></dd>
+      <dt>Name:</dt>
+      <dd>Evan Louie</dd>
+      <dt>Location:</dt>
+      <dd>Vancouver | San Francisco | 東京 | 香港</dd>
+      <dt>Occupation:</dt>
+      <dd>Software Developer/Designer</dd>
+      <dt>Favourite Algorithm:</dt>
+      <dd>Dijkstra's or Merge-sort (external sorting ftw)</dd>
+      <dt>Profiles:</dt>
+      <dd>
+        <dl>
+          <dt>GitHub</dt>
+          <dd>{% include icons/icon-github-dev.html %}
+            <a href="https://github.com/evanlouie">https://github.com/evanlouie</a>
+          </dd>
+          <dt>LinkedIn</dt>
+          <dd>{% include icons/icon-linkedin.html %}
+            <a href="https://ca.linkedin.com/in/evanlouie">https://ca.linkedin.com/in/evanlouie</a>
+          </dd>
+          <dt>Twitter</dt>
+          <dd>{% include icons/icon-twitter.html %}
+            <a href="https://twitter.com/evanlouie">https://twitter.com/evanlouie</a>
+          </dd>
+          <dt>Instagram</dt>
+          <dd>{% include icons/icon-instagram.html %}
+            <a href="https://www.instagram.com/evanlouie/">https://www.instagram.com/evanlouie/</a>
+          </dd>
+        </dl>
+      </dd>
     </dl>
-  </dd>
-</dl>
+  </div>
+  <div class="profile-pic">{% include images/profile.svg %}</div>
+</div>
 
-<amp-instagram data-shortcode="_jATq9q60Y" width="250" height="250" layout="responsive"></amp-instagram>
-
-{% capture who-am-i %}{% include snippets/who-am-i.md %}{% endcapture %}
-{{ who-am-i | markdownify }}
+{% capture who-am-i %}{% include snippets/who-am-i.md %}{% endcapture %} {{ who-am-i | markdownify }}

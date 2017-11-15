@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-  <div class="about-me">
+  <div class="about-me" style="flex: auto;">
     <dl style="word-break: break-word;">
       <dt>Name:</dt>
       <dd>Evan Louie</dd>
@@ -17,28 +17,36 @@ permalink: /about/
       <dd>Dijkstra's or Merge-sort (external sorting ftw)</dd>
       <dt>Profiles:</dt>
       <dd>
-        <dl>
-          <dt>GitHub</dt>
-          <dd>{% include icons/icon-github-dev.html %}
-            <a href="https://github.com/evanlouie">https://github.com/evanlouie</a>
-          </dd>
-          <dt>LinkedIn</dt>
-          <dd>{% include icons/icon-linkedin.html %}
-            <a href="https://ca.linkedin.com/in/evanlouie">https://ca.linkedin.com/in/evanlouie</a>
-          </dd>
-          <dt>Twitter</dt>
-          <dd>{% include icons/icon-twitter.html %}
-            <a href="https://twitter.com/evanlouie">https://twitter.com/evanlouie</a>
-          </dd>
-          <dt>Instagram</dt>
-          <dd>{% include icons/icon-instagram.html %}
-            <a href="https://www.instagram.com/evanlouie/">https://www.instagram.com/evanlouie/</a>
-          </dd>
-        </dl>
+        <ul style="list-style: none;">
+          <li style="margin-left: 0;" class="external-profile">
+            <p style="padding: 0; margin: 0;">
+              {% include icons/icon-github-dev.html %}
+              <a href="https://github.com/evanlouie">https://github.com/evanlouie</a>
+            </p>
+          </li>
+          <li style="margin-left: 0;" class="external-profile">
+            <p style="padding: 0; margin: 0;">
+              {% include icons/icon-linkedin.html %}
+              <a href="https://ca.linkedin.com/in/evanlouie">https://ca.linkedin.com/in/evanlouie</a>
+            </p>
+          </li>
+          <li style="margin-left: 0;" class="external-profile">
+            <p style="padding: 0; margin: 0;">
+              {% include icons/icon-twitter.html %}
+              <a href="https://twitter.com/evanlouie">https://twitter.com/evanlouie</a>
+            </p>
+          </li>
+          <li style="margin-left: 0;" class="external-profile">
+            <p style="padding: 0; margin: 0;">
+              {% include icons/icon-instagram.html %}
+              <a href="https://www.instagram.com/evanlouie/">https://www.instagram.com/evanlouie/</a>
+            </p>
+          </li>
+        </ul>
       </dd>
     </dl>
   </div>
-  <div class="profile-pic">{% include images/profile.svg %}</div>
+  <div class="profile-pic" style="flex: 1;">{% include images/profile.svg %}</div>
 </div>
 
 {% capture who-am-i %}{% include snippets/who-am-i.md %}{% endcapture %} {{ who-am-i | markdownify }}

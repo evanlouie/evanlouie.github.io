@@ -24,7 +24,7 @@ amp-img {
 }
 $maxWidth: 900px;
 $rs: 16px;
-$font-serif: Cambria, Georgia, "Source Serif Pro", serif;
+$font-serif: Georgia, "Source Serif Pro", serif;
 $font-sans: "Open Sans", "Source Sans Pro", sans-serif;
 $font-mono: "VT323", "Source Code Pro", monospace;
 @mixin respond-to($breakpoint) {

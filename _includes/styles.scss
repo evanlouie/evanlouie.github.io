@@ -24,9 +24,9 @@ amp-img {
 }
 $maxWidth: 900px;
 $rs: 16px;
-$font-serif: Georgia, "Source Serif Pro", serif;
-$font-sans: "Open Sans", "Source Sans Pro", sans-serif;
-$font-mono: "VT323", "Source Code Pro", monospace;
+$font-serif: Georgia, serif;
+$font-sans: "Roboto", sans-serif;
+$font-mono: "VT323", monospace;
 @mixin respond-to($breakpoint) {
   @media only screen and (max-width: $breakpoint + px) {
     @content;
@@ -63,10 +63,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: $font-sans;
 
   position: relative;
   width: 100%;
   max-width: $maxWidth;
+
   @include box-sizing(border-box);
   @include respond-to(800) {
     padding: 0 $rs * 1;
@@ -168,14 +170,13 @@ body {
   position: relative;
   padding: 0;
   @include box-sizing(border-box);
+  font-family: $font-mono;
 
   .blog-title {
-    /* font-family: $font-serif; */
     border-bottom: 1px solid lightgrey;
     margin-bottom: 8px;
-    font-size: 50px;
+    font-size: 4em;
     font-weight: 700;
-    letter-spacing: -2px;
     outline: 0;
     line-height: 50px;
     word-break: break-word;
@@ -183,7 +184,6 @@ body {
   }
 
   .blog-description {
-    // font-size: 28px;
     font-size: medium;
     margin: 0 0 20px;
     padding: 0;
@@ -234,7 +234,6 @@ body {
       font-weight: 300;
       font-style: normal;
       font-size: medium;
-      font-family: serif;
       line-height: 1.59;
       color: #666665;
     }

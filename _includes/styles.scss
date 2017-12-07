@@ -41,6 +41,19 @@ $font-mono: "VT323", monospace;
   article {
     margin: 0 #{$postMarginWidth};
     flex: 1 1 (($maxWidth / 2) - 30px);
+
+    .article-item {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .post-header {
+        flex: 0 1 auto;
+      }
+      .post-excerpt {
+        flex: 1 0 auto;
+      }
+    }
   }
 }
 

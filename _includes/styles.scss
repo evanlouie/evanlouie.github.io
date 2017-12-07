@@ -135,7 +135,8 @@ body {
     }
 
     .page-links {
-      display: block;
+      display: flex;
+      flex-wrap: wrap;
       top: 10px;
       right: $rs;
       font-weight: 200;
@@ -143,6 +144,11 @@ body {
       font-size: 18px;
       line-height: 30px;
 
+      margin: 0 -1em 0 0;
+      .page-link {
+        flex: 1 1 auto;
+        margin: 0 1em;
+      }
       a {
         text-decoration: none;
         color: #999999;

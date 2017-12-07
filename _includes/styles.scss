@@ -19,9 +19,8 @@ amp-img {
   background-color: white;
 }
 
-.cf {
-  @include clearfix;
-}
+
+
 $maxWidth: 900px;
 $rs: 16px;
 $font-serif: Georgia, serif;
@@ -30,6 +29,19 @@ $font-mono: "VT323", monospace;
 @mixin respond-to($breakpoint) {
   @media only screen and (max-width: $breakpoint + px) {
     @content;
+  }
+}
+
+.cf {
+  @include clearfix;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+
+  margin: 0 -1em;
+  article {
+    margin: 0 1em;
+    flex: 1 1 (($maxWidth / 2) - 30px);
   }
 }
 
@@ -206,9 +218,9 @@ body {
     padding: 20px 0;
     border-bottom: 1px solid #f2f2f0;
 
-    &:last-child {
-      border-bottom: 0;
-    }
+    // &:last-child {
+    //   border-bottom: 0;
+    // }
 
     .post-title {
       letter-spacing: -0.02em;

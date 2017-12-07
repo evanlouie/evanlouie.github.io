@@ -14,7 +14,7 @@ description: >
 logo: "/assets/images/logo.svg"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://www.evanlouie.com # the base hostname & protocol for your site
-paginate:	5 # The number of posts to show per page on your homepage
+paginate:	6 # The number of posts to show per page on your homepage
 
 name: Evan Louie
 bio: >

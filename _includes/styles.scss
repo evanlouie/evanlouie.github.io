@@ -19,8 +19,6 @@ amp-img {
   background-color: white;
 }
 
-
-
 $maxWidth: 900px;
 $rs: 16px;
 $font-serif: Georgia, serif;
@@ -38,9 +36,10 @@ $font-mono: "VT323", monospace;
   flex-flow: wrap;
   justify-content: space-between;
 
-  margin: 0 -1em;
+  $postMarginWidth: 1em;
+  margin: 0 -#{$postMarginWidth};
   article {
-    margin: 0 1em;
+    margin: 0 #{$postMarginWidth};
     flex: 1 1 (($maxWidth / 2) - 30px);
   }
 }
@@ -144,10 +143,11 @@ body {
       font-size: 18px;
       line-height: 30px;
 
-      margin: 0 -1em 0 0;
+      $pageLinkMarginWidth: 1em;
+      margin: 0 -#{$pageLinkMarginWidth} 0 0;
       .page-link {
         flex: 1 1 auto;
-        margin: 0 1em;
+        margin: 0 #{$pageLinkMarginWidth};
       }
       a {
         text-decoration: none;

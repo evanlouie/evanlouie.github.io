@@ -15,10 +15,6 @@ $grey-color: #828282;
   }
 }
 
-amp-img {
-  background-color: white;
-}
-
 $maxWidth: 900px;
 $rs: 16px;
 $font-serif: Georgia, serif;
@@ -92,6 +88,11 @@ body {
   position: relative;
   width: 100%;
   max-width: $maxWidth;
+
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
 
   @include box-sizing(border-box);
   @include respond-to(800) {
@@ -442,11 +443,6 @@ body {
     a {
       color: #333333;
       text-decoration: underline;
-    }
-
-    amp-img,
-    amp-youtube {
-      margin-top: 30px;
     }
 
     figure {

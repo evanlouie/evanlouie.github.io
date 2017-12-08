@@ -80,6 +80,7 @@ body {
 }
 
 .site-header {
+  overflow: hidden; // fixes overscroll on mobile
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -4,21 +4,6 @@
 
 <body>
   {% include header.html %} {{ content }}
-  <amp-analytics type="googleanalytics" id="page-analytics">
-    <script type="application/json">
-      {
-        "vars": {
-          "account": "UA-84654726-1"
-        },
-        "triggers": {
-          "trackPageview": {
-            "on": "visible",
-            "request": "pageview"
-          }
-        }
-      }
-    </script>
-  </amp-analytics>
 </body>
 
 </html>

@@ -113,7 +113,7 @@ class ExternalMergeSort
       console.info "Sorted: ", sorted
       return sorted
     else
-      middleIndex = Math.round(list.length/2)
+      middleIndex = Math.round(list.length / 2)
       left = list[0...middleIndex]
       right = list[middleIndex..list.length]
 

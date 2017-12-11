@@ -6,7 +6,7 @@ permalink: /styleguide/
 
 > This is a playground for me to mess around with the sites styles.  So...
 
-<img width="245" height="170" layout="responsive" src="https://i.imgur.com/rN8STVb.gif"></img>
+<img style="width: 100%;" src="https://i.imgur.com/rN8STVb.gif">
 
 Credit to: [https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 

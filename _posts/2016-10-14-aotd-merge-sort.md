@@ -1,6 +1,8 @@
 ---
 layout: post
 title: 'AOTD: Merge Sort'
+categories: algorithms
+tags: algorithms, distributed, parallel, coffeescript
 ---
 
 Hard to explain my love for MergeSort. It's easily one of my favourite algorithms for its simplicity and recursive nature; being the closest to a literal "divide & conquer" algorithm you could possibly get to.
@@ -18,34 +20,34 @@ Merge sort is probably the easiest sorting algorithm to wrap you mind around:
 * Merge the sorted lists
 
 ```coffee
-merge = (a, b) =>
-  # merge the two sorted lists
-  sorted = while a.length > 0 and b.length > 0
-    if a[0] <= b[0] then a.shift() else b.shift()
+class MergeSort
+  @merge: (a, b) =>
+    # merge the two sorted lists
+    sorted = while a.length > 0 or b.length > 0
+      # If both still have items
+      if a[0]? and b[0]?
+        if a[0] <= b[0] then a.shift() else b.shift()
+      # either a or b may still have items
+      else if a[0]? then a.shift()
+      else if b[0]? then b.shift()
 
-  # either a or b may have have more numbers in them
-  while a.length > 0 then sorted.push(a.shift())
-  while b.length > 0 then sorted.push(b.shift())
+    return sorted
 
-  return sorted
+  @sort: (list) =>
+    if list.length <= 1
+      return list
+    else
+      # Split into 2 halves
+      middleIndex = Math.round(list.length/2)
+      left = list[1..middleIndex]
+      right = list[middleIndex..list.length]
 
-mergeSort = (list) =>
-  if list.length <= 1
-    return list
-  else
-    left = []
-    right = []
+      # Recurse
+      left = @sort(left)
+      right = @sort(right)
 
-    for value, index in list
-      if index + 1 <= list.length / 2
-        left.push value
-      else
-        right.push value
-
-    left = mergeSort(left)
-    right = mergeSort(right)
-
-    return merge(left, right)
+      # Merge
+      return @merge(left, right)
 ```
 
 # Application
@@ -64,41 +66,26 @@ By modifying our base case, we can apply merge sort to arbitrarily large dataset
 
 In order to get a distributed example working in the browser, we're gonna have to rely on WebWorkers. For a crash course on how they work, take a swing over to my [article on integrating with React](/react-web-worker) or the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
 
-In the following example, we're just going to sort a big array of random numbers ranging from 0-1000000
-
-Here's the code:
+In the following example, we're just going to sort a big array of random numbers ranging from 0-1000000. To do so, we are going to make use of our earlier made MergeSort class and the following WebWorker helper class to allow for multi-threaded execution:
 
 ```coffee
-mergeSort = (list) =>
-  # define merge within mergeSort so it is within mergeSorts closure
-  merge = (a, b) =>
-    # merge the two sorted lists
-    sorted = while a.length > 0 and b.length > 0
-      if a[0] <= b[0] then a.shift() else b.shift()
+# Helper class to hold some static WebWorker functions
+class WebWorker
+  # evalString is a toString of a function which when eval'd will return a string
+  @work: (evalString) ->
+    response = "self.onmessage=function(){postMessage(eval((#{evalString})()))}"
+    runnable = new Blob([response], type: "text/javascript" )
+    worker = new Worker(window.URL.createObjectURL(runnable))
+    answer = new Promise (resolve, reject) =>
+      worker.onmessage = (messageEvent) => resolve(messageEvent.data)
+      worker.onmessageerror = () => reject("Error occured within WebWorker")
+    worker.postMessage("Get to work!");
+    return await answer
+```
 
-    # either a or b may have have more numbers in them
-    while a.length > 0 then sorted.push(a.shift())
-    while b.length > 0 then sorted.push(b.shift())
+And the code to actually create and sort our list:
 
-    return sorted
-
-  if list.length <= 1
-    return list
-  else
-    left = []
-    right = []
-
-    for value, index in list
-      if index + 1 <= list.length / 2
-        left.push value
-      else
-        right.push value
-
-    left = mergeSort(left)
-    right = mergeSort(right)
-
-    return merge(left, right)
-
+```coffee
 # List of sample data which needs to be sorted
 unsortedListOfNumbers = for _ in [1..1000000]
   Math.round(Math.random() * 1000000)
@@ -115,19 +102,6 @@ for num, index in unsortedListOfNumbers
 sort = (list) =>
   # JSON.stringify(list.sort((a, b) => a - b))
   return JSON.stringify(mergeSort(list))
-
-# Helper class to hold some static WebWorker functions
-class WebWorker
-  # evalString is a toString of a function which when eval'd will return a string
-  @work: (evalString) ->
-    response = "self.onmessage=function(){postMessage(eval((#{evalString})()))}"
-    runnable = new Blob([response], type: "text/javascript" )
-    worker = new Worker(window.URL.createObjectURL(runnable))
-    answer = new Promise (resolve, reject) =>
-      worker.onmessage = (messageEvent) => resolve(messageEvent.data)
-      worker.onmessageerror = () => reject("Error occured within WebWorker")
-    worker.postMessage("Get to work!");
-    return await answer
 
 # WIP
 if Worker?

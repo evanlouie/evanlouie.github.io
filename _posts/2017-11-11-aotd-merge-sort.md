@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'AOTD: Merge Sort'
+title: 'AOTD: (External) Merge Sort'
 categories: algorithms
 tags: algorithms distributed parallel coffeescript
 ---

@@ -7,7 +7,7 @@ tags: algorithms distributed parallel coffeescript
 
 Hard to explain my love for MergeSort. It's easily one of my favourite algorithms for its simplicity and recursive nature; being the closest to a literal "divide & conquer" algorithm you could possibly get to.
 
-# The Algorithm
+## The Algorithm
 
 <https://en.wikipedia.org/wiki/Merge_sort>
 
@@ -50,19 +50,19 @@ class MergeSort
       return @merge(left, right)
 ```
 
-# Application
+## Application
 
 In terms of performance, it becomes pretty apparent that merge sorts biggest weakness (when compared to other sorting algorithms) is that it's sorting is not in-place. Meaning not only will you require extra space/variables to keep of sublists, you lose [Locality of Reference](https://en.wikipedia.org/wiki/Locality_of_reference). Which, when dealing with large datasets, becomes very noticeable.
 
 > But Evan, how can something with such a blaring flaw be one of your favourite algorithms!?!??!!
 
-## _External_ MergeSort
+### _External_ MergeSort
 
 We may have lost locality of reference, but we also gained something fairly unique to merge sort. Scalability. Merge sort is unique in that it easily allows you to dispatch sorting jobs to other processes.
 
 By modifying our base case, we can apply merge sort to arbitrarily large datasets. Datasets which may have even been too large to originally read into memory.
 
-### Distributed / Large Data
+#### Distributed / Large Data
 
 In order to get a distributed example working in the browser, we're gonna have to rely on WebWorkers. For a crash course on how they work, take a swing over to my [article on integrating with React](/react-web-worker) or the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
 
@@ -138,7 +138,7 @@ Now lets explain:
 
 And there it is, a quasi-distributed MergeSort. Don't go trying to use this in any practical scenario. `Array.sort()` will be infinitly faster and more space efficient. This is a POC to show how external mergesort would work in the context of a browser. In order to get any actual usefulness out External MergeSort, you would need to either need to have complex computation for a comparitor in `sort` or require parsing of data to big to fit into memory; neither of which can be fulfilled by a list of 1000000 random numbers.
 
-# Final Takeaways
+## Final Takeaways
 
 * MergeSort is simple, relatively fast, and incredibly easy to scale out if necessary.
 * External MergeSort is good for scenarios which require high computation for comparing list items and for when the list size is too big to read into memory.

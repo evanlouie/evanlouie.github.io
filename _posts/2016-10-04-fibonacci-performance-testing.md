@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Language Performance Tests - Nth Fibonacci
-tags: ruby, php, node, crystal, go, performance, fibonacci, functional, recursion
+tags: ruby php node crystal go performance fibonacci functional recursion
 excerpt: 'One of the most common interview questions also happens to be a good measure of performance for differing languages. With a whole bunch of different ways to implement it, calculating the nth Fibonacci number can both reveal strengths/weaknesses of languages as optimizations become easier or more difficult (possibly impossible) to implement.'
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: 'AOTD: Merge Sort'
 categories: algorithms
-tags: algorithms, distributed, parallel, coffeescript
+tags: algorithms distributed parallel coffeescript
 ---
 
 Hard to explain my love for MergeSort. It's easily one of my favourite algorithms for its simplicity and recursive nature; being the closest to a literal "divide & conquer" algorithm you could possibly get to.
@@ -39,7 +39,7 @@ class MergeSort
     else
       # Split into 2 halves
       middleIndex = Math.round(list.length/2)
-      left = list[1..middleIndex]
+      left = list[0...middleIndex]
       right = list[middleIndex..list.length]
 
       # Recurse
@@ -66,60 +66,80 @@ By modifying our base case, we can apply merge sort to arbitrarily large dataset
 
 In order to get a distributed example working in the browser, we're gonna have to rely on WebWorkers. For a crash course on how they work, take a swing over to my [article on integrating with React](/react-web-worker) or the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
 
-In the following example, we're just going to sort a big array of random numbers ranging from 0-1000000. To do so, we are going to make use of our earlier made MergeSort class and the following WebWorker helper class to allow for multi-threaded execution:
+In the following example, we're just going to sort a big array of random numbers ranging from 0-1000000. To do so, we are going to make use of a modified version of our earlier made MergeSort class and the following WebWorker helper class to allow for multi-threaded execution:
 
 ```coffee
-# Helper class to hold some static WebWorker functions
 class WebWorker
   # evalString is a toString of a function which when eval'd will return a string
-  @work: (evalString) ->
-    response = "self.onmessage=function(){postMessage(eval((#{evalString})()))}"
+  @eval: (evalString) =>
+    response = "self.onmessage=()=>{postMessage(eval((#{evalString})))}"
     runnable = new Blob([response], type: "text/javascript" )
     worker = new Worker(window.URL.createObjectURL(runnable))
     answer = new Promise (resolve, reject) =>
-      worker.onmessage = (messageEvent) => resolve(messageEvent.data)
-      worker.onmessageerror = () => reject("Error occured within WebWorker")
+      worker.onmessage = (messageEvent) =>
+        resolve(messageEvent.data)
+      worker.onmessageerror = () =>
+        reject("Error occured within WebWorker")
     worker.postMessage("Get to work!");
     return await answer
-```
 
-And the code to actually create and sort our list:
+class ExternalMergeSort
+  @merge: (a, b) =>
+    console.info "Merging: ", a, b
 
-```coffee
-# List of sample data which needs to be sorted
-unsortedListOfNumbers = for _ in [1..1000000]
+    # Callable lambda
+    mergeTask = (a ,b) =>
+      # merge the two sorted lists
+      merged = while a.length > 0 or b.length > 0
+        # If both still have items
+        if a[0]? and b[0]?
+          if a[0] <= b[0] then a.shift() else b.shift()
+        # either a or b may still have items
+        else if a[0]? then a.shift()
+        else if b[0]? then b.shift()
+
+      return merged
+
+    # Interpolate callable into string with .call()
+    merged = await WebWorker.eval("(#{mergeTask}).call(this, [#{a}], [#{b}])")
+
+    console.info "Merged: ", merged
+    return merged
+
+  @sort: (list, targetListSize = 1000) =>
+    if list.length < targetListSize
+      sortingTask = (list) => list.sort (a, b) => a - b
+      sorted = await WebWorker.eval("(#{sortingTask}).call(this, [#{list}])")
+      console.info "Sorted: ", sorted
+      return sorted
+    else
+      middleIndex = Math.round(list.length/2)
+      left = list[0...middleIndex]
+      right = list[middleIndex..list.length]
+
+      # await Promise.all() to allow allow jobs to fire concurrently
+      merged = await Promise.all([@sort(left), @sort(right)]).then ([left, right]) =>
+          return @merge(left, right)
+
+      return merged
+
+randomNumbers = for _ in [1..1000000]
   Math.round(Math.random() * 1000000)
 
-# Partitioned into equal lists using mod
-partitions = []
-for num, index in unsortedListOfNumbers
-  partitionIndex = index % 100
-  if not partitions[partitionIndex]? then partitions[partitionIndex] = []
-  partitions[partitionIndex].push(num)
-
-# Lambda to call; you can use whatever sorting function you want, but right now i'm just using the buildin `.sort()`
-# Note we make it return a string as the message passing API for WebWorkers only allows strings
-sort = (list) =>
-  # JSON.stringify(list.sort((a, b) => a - b))
-  return JSON.stringify(mergeSort(list))
-
-# WIP
-if Worker?
-  task = () ->
-    # WIP
-    (list = [1,4,1,2,3,2,5,7543,23434651,1]) ->
-      list.sort()
-  taskString = task().toString()
-  WebWorker.work taskString
-  lists = (WebWorker.work((() -> partition.sort()).toString()) for partition in partitions)
-else
-  console.exception "#{navigator.appVersion} lacks Web Worker support."
-  console.info "Web Workers are required to evaluated answers as computation will cause the main window thread to lock"
-  alert "Your browser doesn't seem to support Web Workers :-("
+ExternalMergeSort.sort(randomNumbers).then (sorted) =>
+  console.log("Done: ", sorted)
+  sorted
 ```
 
 Now lets explain:
 
-* We created a list of 1000000 random number from 0 - 1000000
+* We created a list of 1000000 random numbers from 0 - 1000000.
+* We modified the code in `MergeSort` to `ExternalMergeSort` which trigger calls to `WebWorker` instead of doing the `merge` and `sort` locally.
 
-WORK IN PROGRESS
+And there it is, a quasi-distributed MergeSort. Don't go trying to use this in any practical scenario. `Array.sort()` will be infinitly faster and more space efficient. This is a POC to show how external mergesort would work in the context of a browser. In order to get any actual usefulness out External MergeSort, you would need to either need to have complex computation for a comparitor in `sort` or require parsing of data to big to fit into memory; neither of which can be fulfilled by a list of 1000000 random numbers.
+
+# Final Takeaways
+
+* MergeSort is simple, relatively fast, and incredibly easy to scale out if necessary.
+* External MergeSort is good for scenarios which require high computation for comparing list items and for when the list size is too big to read into memory.
+* Don't use WebWorkers like I did in this demo.

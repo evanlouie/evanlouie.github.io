@@ -64,7 +64,7 @@ By modifying our base case, we can apply merge sort to arbitrarily large dataset
 
 #### Distributed / Large Data
 
-In order to get a distributed example working in the browser, we're gonna have to rely on WebWorkers. For a crash course on how they work, take a swing over to my [article on integrating with React](/react-web-worker) or the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
+In order to get a distributed example working in the browser, we're gonna have to rely on WebWorkers. For a crash course on how they work, take a swing over to my [article on integrating with React](react-web-worker) or the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
 
 In the following example, we're just going to sort a big array of random numbers ranging from 0-1000000. To do so, we are going to make use of a modified version of our earlier made MergeSort class and the following WebWorker helper class to allow for multi-threaded execution:
 

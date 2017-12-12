@@ -38,7 +38,7 @@ class MergeSort
       return list
     else
       # Split into 2 halves
-      middleIndex = Math.round(list.length/2)
+      middleIndex = Math.round(list.length / 2)
       left = list[0...middleIndex]
       right = list[middleIndex..list.length]
 

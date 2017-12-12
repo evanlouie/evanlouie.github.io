@@ -10,9 +10,6 @@
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
-  <!-- Note could cause problems with insecure http -->
-  <!-- <script defer src="http://coffeescript.org/v2/browser-compiler/coffeescript.js" /> -->
-
   <script type="application/ld+json">
   {% include metadata.json %}
   </script>
@@ -25,4 +22,10 @@
   </style>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto|VT323" rel="stylesheet">
+
+  <!-- Turbolinks -->
+  <script async src="https://cdn.rawgit.com/turbolinks/turbolinks/1066805f/dist/turbolinks.js"></script>
+
+  <!-- Note could cause problems with insecure http -->
+  <!-- <script defer src="http://coffeescript.org/v2/browser-compiler/coffeescript.js" /> -->
 </head>

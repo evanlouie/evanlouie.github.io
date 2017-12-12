@@ -101,7 +101,7 @@ class ExternalMergeSort
       return merged
 
     # Interpolate callable into string with .call()
-    merged = await WebWorker.eval("(#{mergeTask}).call(this, [#{a}], [#{b}])")
+    merged = await WebWorker.eval("(#{mergeTask}).call(null, [#{a}], [#{b}])")
 
     console.info "Merged: ", merged
     return merged
@@ -109,7 +109,7 @@ class ExternalMergeSort
   @sort: (list, targetListSize = 1000) =>
     if list.length < targetListSize
       sortingTask = (list) => list.sort (a, b) => a - b
-      sorted = await WebWorker.eval("(#{sortingTask}).call(this, [#{list}])")
+      sorted = await WebWorker.eval("(#{sortingTask}).call(null, [#{list}])")
       console.info "Sorted: ", sorted
       return sorted
     else

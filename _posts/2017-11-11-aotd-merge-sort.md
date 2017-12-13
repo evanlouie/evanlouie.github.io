@@ -39,8 +39,14 @@ class MergeSort
     else
       # Split into 2 halves
       middleIndex = Math.round(list.length / 2)
-      left = list[0...middleIndex]
-      right = list[middleIndex..list.length]
+
+      # Not memory efficient, use .splice()
+      # left = list[0...middleIndex]
+      # right = list[middleIndex..list.length]
+
+      # Use splice to take and mutate the original list (better perf)
+      left = list.splice(0, middleIndex)
+      right = list
 
       # Recurse
       left = @sort(left)
@@ -114,8 +120,8 @@ class ExternalMergeSort
       return sorted
     else
       middleIndex = Math.round(list.length / 2)
-      left = list[0...middleIndex]
-      right = list[middleIndex..list.length]
+      left = list.splice(0, middleIndex)
+      right = list
 
       # await Promise.all() to allow allow jobs to fire concurrently
       merged = await Promise.all([@sort(left), @sort(right)]).then ([left, right]) =>

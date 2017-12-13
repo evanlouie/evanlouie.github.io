@@ -149,8 +149,11 @@ body {
     }
 
     .page-links {
+      $pageLinkMarginWidth: 1em;
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 -#{$pageLinkMarginWidth} 0 0;
       top: 10px;
       right: $rs;
       font-weight: 200;
@@ -158,10 +161,7 @@ body {
       font-size: 18px;
       line-height: 30px;
 
-      $pageLinkMarginWidth: 1em;
-      margin: 0 -#{$pageLinkMarginWidth} 0 0;
       .page-link {
-        flex: 1 1 auto;
         margin: 0 #{$pageLinkMarginWidth};
       }
       a {

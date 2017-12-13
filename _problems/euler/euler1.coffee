@@ -9,5 +9,5 @@ class Euler1
   @answer = () ->
     sum = 0
     sum += n for n in [1...1000] when n % 3 is 0 or n % 5 is 0
-    
+
     return sum

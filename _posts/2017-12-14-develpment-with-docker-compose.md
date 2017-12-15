@@ -68,3 +68,40 @@ services:
     ports:
       - 6379:6379
 ```
+
+LA(MMP)P stack? Sure!:
+
+```yaml
+version: '3'
+services:
+  php:
+    image: php:apache
+    ports:
+      - 9000:80
+    volumes:
+      - ./:/var/www/html
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data/mongodb:/data/db
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/postgresql:/var/lib/postgresql/data
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+```

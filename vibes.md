@@ -21,6 +21,14 @@ title: Vibes
 </style>
 
 <div class="iframe-holder">
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JPfE3JJkot0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nPiQJfyK_i8" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7Cfu39jnQhE" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/_WTCIK9SkKU" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nPyihvohLPY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/wbBSeyHYv8c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>

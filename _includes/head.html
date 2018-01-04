@@ -26,6 +26,14 @@
   <!-- Turbolinks -->
   <script defer src="https://cdn.rawgit.com/turbolinks/turbolinks/1066805f/dist/turbolinks.js"></script>
 
+  <!-- Vue.js -->
+  {% if jekyll.environment == "production" %}
+    <script src="https://vuejs.org/js/vue.min.js"></script>
+  {% else %}
+    <script src="https://vuejs.org/js/vue.js"></script>
+  {% endif %}
+
+
   <!-- Note could cause problems with insecure http -->
   <!-- <script defer src="http://coffeescript.org/v2/browser-compiler/coffeescript.js" /> -->
 </head>

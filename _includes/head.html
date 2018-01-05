@@ -24,15 +24,14 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto|VT323" rel="stylesheet">
 
   <!-- Turbolinks -->
-  <script defer src="https://cdn.rawgit.com/turbolinks/turbolinks/1066805f/dist/turbolinks.js"></script>
+  <script defer src="https://unpkg.com/turbolinks@latest/dist/turbolinks.js"></script>
 
   <!-- Vue.js -->
   {% if jekyll.environment == "production" %}
-    <script src="https://vuejs.org/js/vue.min.js"></script>
+    <script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
   {% else %}
-    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
   {% endif %}
-
 
   <!-- Note could cause problems with insecure http -->
   <!-- <script defer src="http://coffeescript.org/v2/browser-compiler/coffeescript.js" /> -->

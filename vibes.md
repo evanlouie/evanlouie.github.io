@@ -30,6 +30,7 @@ title: Vibes
     const vm = new Vue({
       el: document.querySelector('.vibes'),
       data: {
+        index: 0,
         videos: [
           'JPfE3JJkot0',
           'nPiQJfyK_i8',
@@ -51,6 +52,15 @@ title: Vibes
           '8d82SrPn_Ss',
           'ISUmbcFsWpM',
         ],
+      },
+      methods: {
+        next() {
+          this.index = (this.index + 1) % this.videos.length;
+        },
+        prev() {
+          const newVal = this.index - 1;
+          this.index = newVal >= 0 ? newVal : this.videos.length;
+        },
       },
     });
   })();

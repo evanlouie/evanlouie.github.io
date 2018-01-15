@@ -17,7 +17,7 @@ These instructions will guide you through the process of setting up local, trust
 
 These instructions are intended to be used on Mac OSX Yosemite.
 
---------------------------------------------------------------------------------
+---
 
 ## Configuring Apache
 
@@ -110,7 +110,7 @@ echo "<h1>localhost works</h1>" > ~/Sites/localhost/index.html
 
 Now, in a **web browser**, visit <http://localhost>. You should see a message stating that **localhost works**.
 
---------------------------------------------------------------------------------
+---
 
 ## Configuring SSL
 

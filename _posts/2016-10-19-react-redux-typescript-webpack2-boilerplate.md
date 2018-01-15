@@ -14,20 +14,16 @@ The [react-redux documentation](http://redux.js.org/docs/basics/UsageWithReact.h
 In the docs, you'll see visual components defined only as functions:
 
 ```javascript
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from "react";
 
-const Todo = ({ onClick, text }) => (
-  <li onClick={onClick}>
-    {text}
-  </li>
-)
+const Todo = ({ onClick, text }) => <li onClick={onClick}>{text}</li>;
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired
-}
+};
 
-export default Todo
+export default Todo;
 ```
 
 Now, although this is a matter of personal preference, we could do something like this in TypeScript and just add parameter types to the function; but I feel we lose a lot of the structure that we gain from a ES6 React class and TypeScripts generics for component props.
@@ -38,15 +34,15 @@ So if we do end up making a react component class, well end up writing something
 import * as React from "react";
 
 export interface IGreetingProps {
-    greeting: string;
-    including: string[];
-    jokes: string[];
-    onAddMessage: (message: string) => any;
-    getAnotherJoke: () => void;
+  greeting: string;
+  including: string[];
+  jokes: string[];
+  onAddMessage: (message: string) => any;
+  getAnotherJoke: () => void;
 }
 
 interface IGreetingsLocalState {
-    feature: string;
+  feature: string;
 }
 
 export default class Greeting extends React.Component<IGreetingProps, IGreetingsLocalState> {
@@ -64,21 +60,21 @@ One of the core features of react-redux is that by writing your containers using
 
 ```javascript
 const mapStateToProps = (state: any): any => {
-    return {
-        greeting: state.greetings.greeting,
-        including: state.greetings.including,
-        jokes: state.greetings.jokes,
-    };
+  return {
+    greeting: state.greetings.greeting,
+    including: state.greetings.including,
+    jokes: state.greetings.jokes
+  };
 };
 const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): any => {
-    return {
-        getAnotherJoke: () => {
-            dispatch(Actions.getRandomChuckNorrisJoke());
-        },
-        onAddMessage: (message: string) => {
-            dispatch(Actions.addMessage(message));
-        },
-    };
+  return {
+    getAnotherJoke: () => {
+      dispatch(Actions.getRandomChuckNorrisJoke());
+    },
+    onAddMessage: (message: string) => {
+      dispatch(Actions.addMessage(message));
+    }
+  };
 };
 
 const Homepage = connect(mapStateToProps, mapDispatchToProps)(Greeting);
@@ -114,21 +110,21 @@ Now lets change the types of `mapStateToProps` and `mapDispatchToProps` to refle
 
 ```javascript
 const mapStateToProps = (state: any): IGreetingState => {
-    return {
-        greeting: state.greetings.greeting,
-        including: state.greetings.including,
-        jokes: state.greetings.jokes,
-    };
+  return {
+    greeting: state.greetings.greeting,
+    including: state.greetings.including,
+    jokes: state.greetings.jokes
+  };
 };
 const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): IGreetingActions => {
-    return {
-        getAnotherJoke: () => {
-            dispatch(Actions.getRandomChuckNorrisJoke());
-        },
-        onAddMessage: (message: string) => {
-            dispatch(Actions.addMessage(message));
-        },
-    };
+  return {
+    getAnotherJoke: () => {
+      dispatch(Actions.getRandomChuckNorrisJoke());
+    },
+    onAddMessage: (message: string) => {
+      dispatch(Actions.addMessage(message));
+    }
+  };
 };
 
 const Homepage = connect(mapStateToProps, mapDispatchToProps)(Greeting);

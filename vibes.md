@@ -32,6 +32,8 @@ title: Vibes
       data: {
         index: 0,
         videos: [
+          'osVlUMRZ2so',
+          '1wa1KDM0P6w',
           'W3Pc7ZQggoE',
           'EU8j-gDtC18',
           'H8l7JA-LQVA',

@@ -14,10 +14,11 @@ However that is not to say HHVM hasn't given me or my team any headaches. There 
 Here is my scratchpad/notes for using HHVM.
 
 # Contents
+
 {:.no_toc}
 
 * Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
+  {:toc}
 
 # Useful Commands
 
@@ -153,7 +154,7 @@ This will start up a Proxygen listening to port 8888 and grep the verbose logs f
 ### Broken PHP ini getters
 
 Several PHP ini retrieval functions fail by default. In order to make them work, you have to disable an [UNDOCUMENTED](https://docs.hhvm.com/hhvm/configuration/INI-settings)
- ini config option:
+ini config option:
 
 ```ini
 hhvm.enable_zend_ini_compat = false

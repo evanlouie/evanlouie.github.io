@@ -38,7 +38,7 @@ Note: By default, containers can ping eachother via their service name, the `dep
 
 In order to make development easier, add `ports` mappings to expose the container ports to the host (`<hostPort>:<containerPort>`). Now you can develop locally on your host machine while having the `mongo` and `redis` containers exposed. In this example, `mongo` is accessible by the host via: `mongodb://0.0.0.0:27017` and `redis` via `redis://0.0.0.0:6379`.
 
-This is my default dev environment I run when developing locally (minus the `web` service). Exposing to my host persistant  MongoDB, PostgreSQL, and MySQL databases as well as volatile redis cache:
+This is my default dev environment I run when developing locally (minus the `web` service). Exposing to my host persistant MongoDB, PostgreSQL, and MySQL databases as well as volatile redis cache:
 
 ```yaml
 version: '3'

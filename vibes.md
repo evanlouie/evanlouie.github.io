@@ -2,6 +2,7 @@
 layout: page
 title: Vibes
 vibes:
+  - SmLJqVLYFtM
   - 1Nzl-rUauIA
   - TUvi-4goP7s
   - xA-_8JJC-so

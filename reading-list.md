@@ -10,6 +10,7 @@ Just a list of useful sites and stuff to read:
 * [Awwwards - Frontend insperation](https://www.awwwards.com/)
 * [CSS3 - Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 * [CSS3 - Grids](https://css-tricks.com/snippets/css/complete-guide-grid/)
+* [CSS Grid Changes EVERYTHING - Amazing Presentation](https://www.youtube.com/watch?v=7kVeCqQCxlk)
 * [Gatsby + Contentful + Netlify](https://www.gatsbyjs.org/blog/2017-12-06-gatsby-plus-contentful-plus-netlify/)
 * [Gatsby Introduction](https://dev.to/ardennl/taking-gatsby-for-a-spin-4je)
 * [JAM Stack - Living the dynamically static life](https://jamstack.org/)

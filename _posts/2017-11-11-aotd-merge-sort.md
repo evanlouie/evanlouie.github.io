@@ -19,41 +19,38 @@ Merge sort is probably the easiest sorting algorithm to wrap you mind around:
 * Recursively divide the unsorted list into two unsorted lists until the two unsorted lists become sorted (by definition of an empty or single element list being sorted)
 * Merge the sorted lists
 
-```coffee
-class MergeSort
-  @merge: (a, b) =>
-    # merge the two sorted lists
-    sorted = while a.length > 0 or b.length > 0
-      # If both still have items
-      if a[0]? and b[0]?
-        if a[0] <= b[0] then a.shift() else b.shift()
-      # either a or b may still have items
-      else if a[0]? then a.shift()
-      else if b[0]? then b.shift()
+```typescript
+class MergeSort {
+  public static sort<T = any>(list: T[]): T[] {
+    if (list.length <= 1) {
+      return list;
+    } else {
+      const middleIndex = Math.round(list.length / 2);
+      const left = this.sort(list.slice(0, middleIndex));
+      const right = this.sort(list.slice(middleIndex, list.length - 1));
 
-    return sorted
+      return this.merge<T>(left, right);
+    }
+  }
 
-  @sort: (list) =>
-    if list.length <= 1
-      return list
-    else
-      # Split into 2 halves
-      middleIndex = Math.round(list.length / 2)
-
-      # Not memory efficient, use .splice()
-      # left = list[0...middleIndex]
-      # right = list[middleIndex..list.length]
-
-      # Use splice to take and mutate the original list (better perf)
-      left = list.splice(0, middleIndex)
-      right = list
-
-      # Recurse
-      left = @sort(left)
-      right = @sort(right)
-
-      # Merge
-      return @merge(left, right)
+  private static merge<T>(a: T[], b: T[]): T[] {
+    const sorted = [];
+    while (a.length > 0 || b.length > 0) {
+      if (a[0] && b[0]) {
+        if (a[0] <= b[0]) {
+          sorted.push(a.shift());
+        } else {
+          sorted.push(b.shift());
+        }
+      } else if (a[0]) {
+        sorted.push(a.shift());
+      } else if (b[0]) {
+        sorted.push(b.shift());
+      }
+    }
+    return sorted;
+  }
+}
 ```
 
 ## Application
@@ -74,67 +71,70 @@ In order to get a distributed example working in the browser, we're gonna have t
 
 In the following example, we're just going to sort a big array of random numbers ranging from 0-1000000. To do so, we are going to make use of a modified version of our earlier made MergeSort class and the following WebWorker helper class to allow for multi-threaded execution:
 
-```coffee
-class WebWorker
-  # evalString is a toString of a function which when eval'd will return a string
-  @eval: (evalString) =>
-    response = "self.onmessage=()=>{postMessage(eval((#{evalString})))}"
-    runnable = new Blob([response], type: "text/javascript" )
-    worker = new Worker(window.URL.createObjectURL(runnable))
-    answer = new Promise (resolve, reject) =>
-      worker.onmessage = (messageEvent) =>
-        resolve(messageEvent.data)
-      worker.onmessageerror = () =>
-        reject("Error occured within WebWorker")
+```typescript
+class WebWorker {
+  public static async eval<T = any>(string: string): Promise<T> {
+    const response = `self.onmessage=()=>{postMessage(eval((${string})))}`;
+    const runnable = new Blob([response], { type: "text/javascript" });
+    const worker = new Worker(URL.createObjectURL(runnable));
+    const answer = new Promise<T>((resolve, reject) => {
+      worker.onmessage = messageEvent => resolve(messageEvent.data);
+      worker.onerror = () => reject("Error within worker");
+    });
     worker.postMessage("Get to work!");
-    return await answer
+    return answer;
+  }
+}
 
-class ExternalMergeSort
-  @merge: (a, b) =>
-    console.info "Merging: ", a, b
+class ExternalMergeSort {
+  public static async sort<T>(list: T[], maxListSize: number = 1000): Promise<T[]> {
+    console.info("Sorting:", list);
+    if (list.length <= maxListSize) {
+      const sortingTask = (l: T[]) => l.sort();
+      const sorted = await WebWorker.eval(`(${sortingTask}).call(null, [${list}])`);
+      console.info("Sorted:", sorted);
+      return sorted;
+    } else {
+      const middleIndex = Math.round(list.length / 2);
+      const left = list.splice(0, middleIndex);
+      const right = list;
+      const sortedLists = await Promise.all<T[], T[]>([this.sort<T>(left), this.sort<T>(right)]);
+      const merged = await this.merge(sortedLists[0], sortedLists[1]);
+      console.info("Sorted:", merged);
+      return merged;
+    }
+  }
 
-    # Callable lambda
-    mergeTask = (a ,b) =>
-      # merge the two sorted lists
-      merged = while a.length > 0 or b.length > 0
-        # If both still have items
-        if a[0]? and b[0]?
-          if a[0] <= b[0] then a.shift() else b.shift()
-        # either a or b may still have items
-        else if a[0]? then a.shift()
-        else if b[0]? then b.shift()
+  private static async merge<T>(l1: T[], l2: T[]): Promise<T[]> {
+    console.info("Merging:", l1, l2);
+    const mergeTask = (a: T[], b: T[]) => {
+      const merged: T[] = [];
+      while (a.length > 0 || b.length > 0) {
+        if (a[0] && b[0]) {
+          if (a[0] <= b[0]) {
+            merged.push(a.shift());
+          } else {
+            merged.push(b.shift());
+          }
+        } else if (a[0]) {
+          merged.push(a.shift());
+        } else if (b[0]) {
+          merged.push(b.shift());
+        }
+      }
+      return merged;
+    };
 
-      return merged
+    const merged: T[] = await WebWorker.eval(`(${mergeTask}).call(null, [${l1}], [${l2}])`);
+    console.info("Merged:", merged);
+    return merged;
+  }
+}
 
-    # Interpolate callable into string with .call()
-    merged = await WebWorker.eval("(#{mergeTask}).call(null, [#{a}], [#{b}])")
-
-    console.info "Merged: ", merged
-    return merged
-
-  @sort: (list, targetListSize = 1000) =>
-    if list.length < targetListSize
-      sortingTask = (list) => list.sort (a, b) => a - b
-      sorted = await WebWorker.eval("(#{sortingTask}).call(null, [#{list}])")
-      console.info "Sorted: ", sorted
-      return sorted
-    else
-      middleIndex = Math.round(list.length / 2)
-      left = list.splice(0, middleIndex)
-      right = list
-
-      # await Promise.all() to allow allow jobs to fire concurrently
-      merged = await Promise.all([@sort(left), @sort(right)]).then ([left, right]) =>
-          return @merge(left, right)
-
-      return merged
-
-randomNumbers = for _ in [1..1000000]
-  Math.round(Math.random() * 1000000)
-
-ExternalMergeSort.sort(randomNumbers).then (sorted) =>
-  console.log("Done: ", sorted)
-  sorted
+const randomNumbers: number[] = Array(10000)
+  .fill(undefined)
+  .map(() => Math.round(Math.random() * 100000));
+ExternalMergeSort.sort(randomNumbers).then(sorted => console.info("Done:", sorted));
 ```
 
 Now lets explain:

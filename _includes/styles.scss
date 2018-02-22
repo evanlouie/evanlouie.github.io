@@ -1,5 +1,6 @@
 @import "bourbon/bourbon";
-@import "syntax-highlighting";
+@import "highlight";
+
 $grey-color: #828282;
 
 .icon {
@@ -646,14 +647,13 @@ body {
 
 code,
 pre {
-  font-size: 15px;
+  font-size: small;
   border: 1px solid #e8e8e8;
   border-radius: 3px;
-  background-color: #eeeeff;
 }
 
 code {
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   padding: 1px 5px;
 }
 

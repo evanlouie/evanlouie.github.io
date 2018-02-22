@@ -13,7 +13,7 @@ The [react-redux documentation](http://redux.js.org/docs/basics/UsageWithReact.h
 
 In the docs, you'll see visual components defined only as functions:
 
-```typescript
+```javascript
 import React, { PropTypes } from "react";
 
 const Todo = ({ onClick, text }) => <li onClick={onClick}>{text}</li>;
@@ -59,14 +59,14 @@ They are composed of two functions, `mapStateToProps` and `mapDispatchToProps`. 
 One of the core features of react-redux is that by writing your containers using the `connect()` generator, you don't have to implement `shouldComponentUpdate` to optimize your visual components. But the `connect` function expects to two parameters which are merged together to create your props for your component:
 
 ```typescript
-const mapStateToProps = (state: any): any => {
+const mapStateToProps = <T>(state: T) => {
   return {
     greeting: state.greetings.greeting,
     including: state.greetings.including,
     jokes: state.greetings.jokes
   };
 };
-const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): any => {
+const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>) => {
   return {
     getAnotherJoke: () => {
       dispatch(Actions.getRandomChuckNorrisJoke());
@@ -109,7 +109,7 @@ The above snippet now fulfills the class signature of `Component<P,S>` by defini
 Now lets change the types of `mapStateToProps` and `mapDispatchToProps` to reflect these new interfaces:
 
 ```typescript
-const mapStateToProps = (state: any): IGreetingState => {
+const mapStateToProps = <T>(state: T): IGreetingState => {
   return {
     greeting: state.greetings.greeting,
     including: state.greetings.including,

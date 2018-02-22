@@ -13,7 +13,7 @@ The [react-redux documentation](http://redux.js.org/docs/basics/UsageWithReact.h
 
 In the docs, you'll see visual components defined only as functions:
 
-```javascript
+```typescript
 import React, { PropTypes } from "react";
 
 const Todo = ({ onClick, text }) => <li onClick={onClick}>{text}</li>;
@@ -30,7 +30,7 @@ Now, although this is a matter of personal preference, we could do something lik
 
 So if we do end up making a react component class, well end up writing something that looks like this (this is an example from my boilerplate repo)
 
-```javascript
+```typescript
 import * as React from "react";
 
 export interface IGreetingProps {
@@ -58,7 +58,7 @@ They are composed of two functions, `mapStateToProps` and `mapDispatchToProps`. 
 
 One of the core features of react-redux is that by writing your containers using the `connect()` generator, you don't have to implement `shouldComponentUpdate` to optimize your visual components. But the `connect` function expects to two parameters which are merged together to create your props for your component:
 
-```javascript
+```typescript
 const mapStateToProps = (state: any): any => {
   return {
     greeting: state.greetings.greeting,
@@ -88,7 +88,7 @@ If you write something like this, TypeScript is gonna yell at you saying `connec
 
 The TypeScript `React.Component` class defines itself as a generic that takes in a `<P,S>`. The former being your props interface and the latter your state. In order to properly integrate with react-redux, you need to be able to compose your props from two separate objects. Luckily for us, TypeScript supports generics and allows us to compose types as intersects of other types using the `&` operator.
 
-```javascript
+```typescript
 export interface IGreetingState {
     greeting: string;
     including: string[];
@@ -108,7 +108,7 @@ The above snippet now fulfills the class signature of `Component<P,S>` by defini
 
 Now lets change the types of `mapStateToProps` and `mapDispatchToProps` to reflect these new interfaces:
 
-```javascript
+```typescript
 const mapStateToProps = (state: any): IGreetingState => {
   return {
     greeting: state.greetings.greeting,

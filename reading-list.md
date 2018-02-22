@@ -24,6 +24,11 @@ Just a list of useful sites and stuff to read:
 * [Metaparticle - std lib for distributed systems](https://metaparticle.io/)
 * [Reliable K8s](https://stripe.com/blog/operating-kubernetes)
 
+## Machine Learning
+
+* [Population based training of neural networks](https://deepmind.com/blog/population-based-training-neural-networks/)
+* [Population based training of neural networks (Paper)](https://arxiv.org/abs/1711.09846)
+
 ## Tools
 
 * [WebGraphviz](http://www.webgraphviz.com/)

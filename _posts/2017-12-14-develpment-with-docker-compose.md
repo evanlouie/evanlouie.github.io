@@ -88,6 +88,8 @@ services:
       - ./data/mongodb:/data/db
   postgres:
     image: postgres
+    environment:
+      - POSTGRES_PASSWORD=password
     ports:
       - 5432:5432
     volumes:

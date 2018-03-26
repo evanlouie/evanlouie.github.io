@@ -27,6 +27,7 @@ Just a list of useful sites and stuff to read:
 * [Metaparticle - std lib for distributed systems](https://metaparticle.io/)
 * [Reliable K8s](https://stripe.com/blog/operating-kubernetes)
 * [Setting up Istio on ACS-Engine](https://medium.com/@timfpark/more-batteries-included-microservices-made-easier-with-istio-on-kubernetes-87c8b76ac2ef)
+* [Fabric8 - Production Ready Java Images](https://github.com/fabric8io-images/README)
 
 ## Machine Learning
 

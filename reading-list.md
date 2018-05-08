@@ -37,3 +37,4 @@ Just a list of useful sites and stuff to read:
 ## Tools
 
 * [WebGraphviz](http://www.webgraphviz.com/)
+* [BFG Repo Cleaner - Delete files from git history](https://rtyley.github.io/bfg-repo-cleaner/)

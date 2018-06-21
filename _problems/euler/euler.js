@@ -42,20 +42,11 @@ const Euler3 = {
         /**
          * Recursive solution. V8 doesn't support TCO. Breaks on node and most browsers
          */
-        const primeFactorsR = (n, factors = new Set(), factor = 2) => {
-            return n === 1
-                ? [...factors]
-                : n % factor === 0
-                    ? primeFactorsR(n / factor, factors.add(factor), factor)
-                    : primeFactorsR(n, factors.add(factor), factor + 1);
-            // if (n === 1) {
-            //   return [...factors];
-            // } else if (n % factor === 0) {
-            //   return primeFactorsR(n / factor, factors.add(factor), factor);
-            // } else {
-            //   return primeFactorsR(n, factors.add(factor), factor + 1);
-            // }
-        };
+        const primeFactorsR = (n, factors = new Set(), factor = 2) => n === 1
+            ? [...factors]
+            : n % factor === 0
+                ? primeFactorsR(n / factor, factors.add(factor), factor)
+                : primeFactorsR(n, factors.add(factor), factor + 1);
         const primeFactors = (target, factors = new Set(), factor = 2) => {
             while (target > 1) {
                 if (target % factor === 0) {
@@ -92,26 +83,13 @@ const Euler5 = {
     question: `2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
   What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?`,
     answer: () => {
-        const isDivibleFrom = (n, from, to, current) => {
-            return !current
-                ? isDivibleFrom(n, from, to, from)
-                : current === to
-                    ? n % current === 0
-                    : current > to
-                        ? n % current === 0 && isDivibleFrom(n, from, to, current - 1)
-                        : n % current === 0 && isDivibleFrom(n, from, to, current + 1);
-            // if (!current) {
-            //   return isDivibleFrom(n, from, to, from);
-            // } else if (current === to) {
-            //   return n % current === 0;
-            // } else if (current > to) {
-            //   return n % current === 0 && isDivibleFrom(n, from, to, current - 1);
-            // } else if (current < to) {
-            //   return n % current === 0 && isDivibleFrom(n, from, to, current + 1);
-            // } else {
-            //   throw new Error("BAD STATE");
-            // }
-        };
+        const isDivibleFrom = (n, from, to, current) => !current
+            ? isDivibleFrom(n, from, to, from)
+            : current === to
+                ? n % current === 0
+                : current > to
+                    ? n % current === 0 && isDivibleFrom(n, from, to, current - 1)
+                    : n % current === 0 && isDivibleFrom(n, from, to, current + 1);
         for (let x = 1; x < Infinity; x++) {
             if (isDivibleFrom(x, 20, 1)) {
                 return x;

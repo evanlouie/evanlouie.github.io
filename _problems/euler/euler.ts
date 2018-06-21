@@ -100,22 +100,12 @@ const Euler4: IEulerQuestion = {
       );
     };
 
-    return (
-      [...Array(1000)]
+    return Math.max(
+      ...[...Array(1000)]
         .map((_, x) => [...Array(1000)].map((_, y) => (x + 1) * (y + 1)))
-        // .reduce((flattend, numbers): number[] => {
-        //   return flattend.concat(numbers);
-        // }, [])
-        // .reduce((maxPalindrome, number) => {
-        //   return number > maxPalindrome && isPalidrome(number)
-        //     ? number
-        //     : maxPalindrome;
-        // }, -1)
-        .reduce((maxPalindrome, numbers) => {
-          return Math.max(
-            ...numbers.concat([maxPalindrome]).filter(n => isPalidrome(n))
-          );
-        }, -1)
+        .reduce((palindromes, numbers) =>
+          palindromes.concat(numbers.filter(isPalidrome))
+        )
     );
   }
 };

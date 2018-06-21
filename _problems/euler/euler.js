@@ -14,7 +14,7 @@ const Euler2 = {
   By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.`,
     answer: () => {
         const fibonacciGenerator = function* () {
-            let [a, b, c] = [1, 2, -1];
+            let [a, b, c] = [1, 2, 3];
             while (true) {
                 yield a;
                 c = a + b;
@@ -22,16 +22,23 @@ const Euler2 = {
                 b = c;
             }
         };
-        let sum = 0;
-        for (const fibonacci of fibonacciGenerator()) {
-            if (fibonacci % 2 === 0) {
-                sum = sum + fibonacci;
+        const answerRecursive = (sum = 0, sequence = fibonacciGenerator(), fibonacci = 0) => {
+            fibonacci > 4000000
+                ? sum
+                : answerRecursive(sum + fibonacci, sequence, sequence.next().value);
+        };
+        const answer = (sum = 0) => {
+            for (const fibonacci of fibonacciGenerator()) {
+                if (fibonacci > 4000000) {
+                    break;
+                }
+                else {
+                    sum = sum + fibonacci;
+                }
             }
-            if (fibonacci > 4000000) {
-                break;
-            }
-        }
-        return sum;
+            return sum;
+        };
+        return answer();
     }
 };
 const Euler3 = {
@@ -42,11 +49,11 @@ const Euler3 = {
         /**
          * Recursive solution. V8 doesn't support TCO. Breaks on node and most browsers
          */
-        const primeFactorsR = (n, factors = new Set(), factor = 2) => n === 1
+        const primeFactorsRecursive = (n, factors = new Set(), factor = 2) => n === 1
             ? [...factors]
             : n % factor === 0
-                ? primeFactorsR(n / factor, factors.add(factor), factor)
-                : primeFactorsR(n, factors.add(factor), factor + 1);
+                ? primeFactorsRecursive(n / factor, factors.add(factor), factor)
+                : primeFactorsRecursive(n, factors.add(factor), factor + 1);
         const primeFactors = (target, factors = new Set(), factor = 2) => {
             while (target > 1) {
                 if (target % factor === 0) {
@@ -66,14 +73,13 @@ const Euler4 = {
     question: `A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
   Find the largest palindrome made from the product of two 3-digit numbers.`,
     answer: () => {
-        const isPalidrome = (n) => {
-            const asString = n.toString();
-            return (asString ===
-                asString
+        const isPalidrome = (n) => typeof n !== "string"
+            ? isPalidrome(n.toString())
+            : n ===
+                n
                     .split("")
                     .reverse()
-                    .join(""));
-        };
+                    .join("");
         return Math.max(...[...Array(1000)]
             .map((_, x) => [...Array(1000)].map((_, y) => (x + 1) * (y + 1)))
             .reduce((palindromes, numbers) => palindromes.concat(numbers.filter(isPalidrome))));
@@ -90,12 +96,27 @@ const Euler5 = {
                 : current > to
                     ? n % current === 0 && isDivibleFrom(n, from, to, current - 1)
                     : n % current === 0 && isDivibleFrom(n, from, to, current + 1);
-        for (let x = 1; x < Infinity; x++) {
-            if (isDivibleFrom(x, 20, 1)) {
-                return x;
+        /**
+         * Recursive answer
+         * @param current
+         */
+        const answerRecursive = (current) => !current
+            ? answerRecursive(1)
+            : isDivibleFrom(current, 20, 1)
+                ? current
+                : answerRecursive(current + 1);
+        const answer = () => {
+            for (let x = 1; x < Infinity; x++) {
+                if (isDivibleFrom(x, 20, 1)) {
+                    return x;
+                }
+                else {
+                    continue;
+                }
             }
-        }
-        throw new Error("No answer found");
+            throw new Error("No answer found");
+        };
+        return answer();
     }
 };
 const Euler6 = {

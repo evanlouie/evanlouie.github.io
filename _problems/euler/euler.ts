@@ -20,7 +20,7 @@ const Euler2: IEulerQuestion = {
   By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.`,
   answer: () => {
     const fibonacciGenerator = function*() {
-      let [a, b, c] = [1, 2, -1];
+      let [a, b, c] = [1, 2, 3];
       while (true) {
         yield a;
         c = a + b;
@@ -29,17 +29,28 @@ const Euler2: IEulerQuestion = {
       }
     };
 
-    let sum = 0;
-    for (const fibonacci of fibonacciGenerator()) {
-      if (fibonacci % 2 === 0) {
-        sum = sum + fibonacci;
-      }
-      if (fibonacci > 4000000) {
-        break;
-      }
-    }
+    const answerRecursive = (
+      sum: number = 0,
+      sequence: IterableIterator<number> = fibonacciGenerator(),
+      fibonacci: number = 0
+    ) => {
+      fibonacci > 4000000
+        ? sum
+        : answerRecursive(sum + fibonacci, sequence, sequence.next().value);
+    };
 
-    return sum;
+    const answer = (sum: number = 0) => {
+      for (const fibonacci of fibonacciGenerator()) {
+        if (fibonacci > 4000000) {
+          break;
+        } else {
+          sum = sum + fibonacci;
+        }
+      }
+      return sum;
+    };
+
+    return answer();
   }
 };
 
@@ -51,7 +62,7 @@ const Euler3: IEulerQuestion = {
     /**
      * Recursive solution. V8 doesn't support TCO. Breaks on node and most browsers
      */
-    const primeFactorsR = (
+    const primeFactorsRecursive = (
       n: number,
       factors: Set<number> = new Set(),
       factor = 2
@@ -59,8 +70,8 @@ const Euler3: IEulerQuestion = {
       n === 1
         ? [...factors]
         : n % factor === 0
-          ? primeFactorsR(n / factor, factors.add(factor), factor)
-          : primeFactorsR(n, factors.add(factor), factor + 1);
+          ? primeFactorsRecursive(n / factor, factors.add(factor), factor)
+          : primeFactorsRecursive(n, factors.add(factor), factor + 1);
 
     const primeFactors = (
       target: number,
@@ -86,16 +97,14 @@ const Euler4: IEulerQuestion = {
   question: `A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
   Find the largest palindrome made from the product of two 3-digit numbers.`,
   answer: () => {
-    const isPalidrome = (n: number): boolean => {
-      const asString = n.toString();
-      return (
-        asString ===
-        asString
-          .split("")
-          .reverse()
-          .join("")
-      );
-    };
+    const isPalidrome = (n: number | string): boolean =>
+      typeof n !== "string"
+        ? isPalidrome(n.toString())
+        : n ===
+          n
+            .split("")
+            .reverse()
+            .join("");
 
     return Math.max(
       ...[...Array(1000)]
@@ -125,12 +134,29 @@ const Euler5: IEulerQuestion = {
             ? n % current === 0 && isDivibleFrom(n, from, to, current - 1)
             : n % current === 0 && isDivibleFrom(n, from, to, current + 1);
 
-    for (let x = 1; x < Infinity; x++) {
-      if (isDivibleFrom(x, 20, 1)) {
-        return x;
+    /**
+     * Recursive answer
+     * @param current
+     */
+    const answerRecursive = (current?: number): number =>
+      !current
+        ? answerRecursive(1)
+        : isDivibleFrom(current, 20, 1)
+          ? current
+          : answerRecursive(current + 1);
+
+    const answer = (): number => {
+      for (let x = 1; x < Infinity; x++) {
+        if (isDivibleFrom(x, 20, 1)) {
+          return x;
+        } else {
+          continue;
+        }
       }
-    }
-    throw new Error("No answer found");
+      throw new Error("No answer found");
+    };
+
+    return answer();
   }
 };
 

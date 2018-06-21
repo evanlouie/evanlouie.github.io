@@ -10,8 +10,7 @@ const Euler1: IEulerQuestion = {
   answer: () =>
     [...Array(1000)]
       .map((_, index) => index + 1)
-      .filter(n => n % 3 === 0 || n % 5 === 0)
-      .reduce((sum, n) => sum + n)
+      .reduce((sum, n) => (n % 3 === 0 || n % 5 === 0 ? sum + n : sum))
 };
 
 const Euler2: IEulerQuestion = {

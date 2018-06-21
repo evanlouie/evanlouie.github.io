@@ -56,13 +56,19 @@ const Euler3: IEulerQuestion = {
       factors: Set<number> = new Set(),
       factor = 2
     ): number[] => {
-      if (n === 1) {
-        return [...factors];
-      } else if (n % factor === 0) {
-        return primeFactorsR(n / factor, factors.add(factor), factor);
-      } else {
-        return primeFactorsR(n, factors.add(factor), factor + 1);
-      }
+      return n === 1
+        ? [...factors]
+        : n % factor === 0
+          ? primeFactorsR(n / factor, factors.add(factor), factor)
+          : primeFactorsR(n, factors.add(factor), factor + 1);
+
+      // if (n === 1) {
+      //   return [...factors];
+      // } else if (n % factor === 0) {
+      //   return primeFactorsR(n / factor, factors.add(factor), factor);
+      // } else {
+      //   return primeFactorsR(n, factors.add(factor), factor + 1);
+      // }
     };
 
     const primeFactors = (
@@ -120,17 +126,25 @@ const Euler5: IEulerQuestion = {
       to: number,
       current?: number
     ): boolean => {
-      if (!current) {
-        return isDivibleFrom(n, from, to, from);
-      } else if (current === to) {
-        return n % current === 0;
-      } else if (current > to) {
-        return n % current === 0 && isDivibleFrom(n, from, to, current - 1);
-      } else if (current < to) {
-        return n % current === 0 && isDivibleFrom(n, from, to, current + 1);
-      } else {
-        throw new Error("BAD STATE");
-      }
+      return !current
+        ? isDivibleFrom(n, from, to, from)
+        : current === to
+          ? n % current === 0
+          : current > to
+            ? n % current === 0 && isDivibleFrom(n, from, to, current - 1)
+            : n % current === 0 && isDivibleFrom(n, from, to, current + 1);
+
+      // if (!current) {
+      //   return isDivibleFrom(n, from, to, from);
+      // } else if (current === to) {
+      //   return n % current === 0;
+      // } else if (current > to) {
+      //   return n % current === 0 && isDivibleFrom(n, from, to, current - 1);
+      // } else if (current < to) {
+      //   return n % current === 0 && isDivibleFrom(n, from, to, current + 1);
+      // } else {
+      //   throw new Error("BAD STATE");
+      // }
     };
 
     for (let x = 1; x < Infinity; x++) {

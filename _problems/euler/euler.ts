@@ -10,7 +10,7 @@ const Euler1: IEulerQuestion = {
   answer: () =>
     [...Array(1000)]
       .map((_, index) => index + 1)
-      .reduce((sum, n) => (n % 3 === 0 || n % 5 === 0 ? sum + n : sum))
+      .reduce((sum, n) => (n % 3 === 0 || n % 5 === 0 ? sum + n : sum), 0)
 };
 
 const Euler2: IEulerQuestion = {
@@ -19,8 +19,7 @@ const Euler2: IEulerQuestion = {
   1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
   By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.`,
   answer: () => {
-    const fibonacciGenerator = function*() {
-      let [a, b, c] = [1, 2, 3];
+    const fibonacciGenerator = function*([a, b, c] = [1, 2, 3]) {
       while (true) {
         yield a;
         c = a + b;
@@ -38,7 +37,7 @@ const Euler2: IEulerQuestion = {
         ? sum
         : answerRecursive(sum + fibonacci, sequence, sequence.next().value);
 
-    const answer = (sum: number = 0) => {
+    return ((sum: number = 0) => {
       for (const fibonacci of fibonacciGenerator()) {
         if (fibonacci > 4000000) {
           break;
@@ -47,9 +46,7 @@ const Euler2: IEulerQuestion = {
         }
       }
       return sum;
-    };
-
-    return answer();
+    })();
   }
 };
 
@@ -108,8 +105,10 @@ const Euler4: IEulerQuestion = {
     return Math.max(
       ...[...Array(1000)]
         .map((_, x) => [...Array(1000)].map((_, y) => (x + 1) * (y + 1)))
-        .reduce((palindromes, numbers) =>
-          palindromes.concat(numbers.filter(isPalidrome))
+        .reduce(
+          (palindromes, numbers) =>
+            palindromes.concat(numbers.filter(isPalidrome)),
+          []
         )
     );
   }
@@ -140,7 +139,7 @@ const Euler5: IEulerQuestion = {
     const answerRecursive = (current: number = 1): number =>
       isDivibleFrom(current, 20, 1) ? current : answerRecursive(current + 1);
 
-    const answer = (): number => {
+    return (() => {
       for (let x = 1; x < Infinity; x++) {
         if (isDivibleFrom(x, 20, 1)) {
           return x;
@@ -149,9 +148,7 @@ const Euler5: IEulerQuestion = {
         }
       }
       throw new Error("No answer found");
-    };
-
-    return answer();
+    })();
   }
 };
 
@@ -166,13 +163,13 @@ const Euler6: IEulerQuestion = {
     const sumOfSquares = (n: number): number =>
       [...Array(n)]
         .map((_, index) => Math.pow(index + 1, 2))
-        .reduce((sum, square) => sum + square);
+        .reduce((sum, square) => sum + square, 0);
 
     const squareOfSum = (n: number): number =>
       Math.pow(
         [...Array(n)]
           .map((_, index) => index + 1)
-          .reduce((sum, num) => sum + num),
+          .reduce((sum, num) => sum + num, 0),
         2
       );
 
@@ -189,24 +186,26 @@ const Euler7: IEulerQuestion = {
      * Primes are defined as numbers not being evenly divisible by any primes lesser than itself
      */
     const primesGenerator = function*() {
-      const primes: number[] = [];
-      for (let current = 2; current < Infinity; current++) {
-        if (!primes.find(prime => current % prime === 0)) {
-          yield current;
-          primes.push(current);
+      naturals: for (let current = 2; current < Infinity; current++) {
+        for (let divisor = 2; divisor <= Math.sqrt(current); divisor++) {
+          if (current % divisor === 0) {
+            continue naturals;
+          }
         }
+        yield current;
       }
     };
 
-    let count = 1;
-    for (const prime of primesGenerator()) {
-      if (count === 10001) {
-        return prime;
-      } else {
-        count = count + 1;
+    return ((count: number = 1) => {
+      for (const prime of primesGenerator()) {
+        if (count === 10001) {
+          return prime;
+        } else {
+          count = count + 1;
+        }
       }
-    }
-    throw new Error("Answer not found");
+      throw new Error("Answer not found");
+    })();
   }
 };
 
@@ -263,7 +262,55 @@ const Euler8: IEulerQuestion = {
         .map((_, index, numbers) =>
           numbers
             .slice(index, index + 13)
-            .reduce((product, number) => product * number)
+            .reduce((product, number) => product * number, 1)
         )
     )
+};
+
+const Euler9: IEulerQuestion = {
+  question: `A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+  a2 + b2 = c2
+  For example, 32 + 42 = 9 + 16 = 25 = 52.
+  There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+  Find the product abc.`,
+  answer: () =>
+    [...Array(1000)]
+      .map((_, a) =>
+        [...Array(1000)]
+          .map((_, b) => [a, b, Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))])
+          .filter(
+            ([a, b, c]) =>
+              Number.isInteger(c) && a < b && b < c && a + b + c === 1000
+          )
+      )
+      .reduce((tripletsList, triplets) => tripletsList.concat(triplets), [])
+      .reduce((numbers, triplet) => numbers.concat(triplet), [])
+      .reduce((product, number) => product * number, 1)
+};
+
+const Euler10: IEulerQuestion = {
+  question: `The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+  Find the sum of all the primes below two million.`,
+  answer: () => {
+    const primesGenerator = function*() {
+      naturals: for (let current = 2; current < Infinity; current++) {
+        for (let divisor = 2; divisor <= Math.sqrt(current); divisor++) {
+          if (current % divisor === 0) {
+            continue naturals;
+          }
+        }
+        yield current;
+      }
+    };
+
+    return ((sum: number = 0) => {
+      for (const prime of primesGenerator()) {
+        if (prime >= 2000000) {
+          return sum;
+        }
+        sum = sum + prime;
+      }
+      throw new Error("No answer found");
+    })();
+  }
 };

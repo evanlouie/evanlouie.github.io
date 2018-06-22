@@ -155,7 +155,7 @@ const Euler7 = {
                 current = current + 1;
             }
         };
-        let count = 0;
+        let count = 1;
         for (const prime of primesGenerator()) {
             if (count === 10001) {
                 return prime;

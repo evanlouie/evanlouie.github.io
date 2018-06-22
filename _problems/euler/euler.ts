@@ -205,7 +205,7 @@ const Euler7: IEulerQuestion = {
       }
     };
 
-    let count = 0;
+    let count = 1;
     for (const prime of primesGenerator()) {
       if (count === 10001) {
         return prime;

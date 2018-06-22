@@ -140,13 +140,11 @@ const Euler7 = {
          */
         const primesGenerator = function* () {
             const primes = [];
-            let current = 2;
-            while (true) {
+            for (let current = 2; current < Infinity; current++) {
                 if (!primes.find(prime => current % prime === 0)) {
                     yield current;
                     primes.push(current);
                 }
-                current = current + 1;
             }
         };
         let count = 1;

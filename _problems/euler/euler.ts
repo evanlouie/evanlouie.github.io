@@ -190,13 +190,11 @@ const Euler7: IEulerQuestion = {
      */
     const primesGenerator = function*() {
       const primes: number[] = [];
-      let current: number = 2;
-      while (true) {
+      for (let current = 2; current < Infinity; current++) {
         if (!primes.find(prime => current % prime === 0)) {
           yield current;
           primes.push(current);
         }
-        current = current + 1;
       }
     };
 

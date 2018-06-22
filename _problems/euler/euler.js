@@ -22,11 +22,9 @@ const Euler2 = {
                 b = c;
             }
         };
-        const answerRecursive = (sum = 0, sequence = fibonacciGenerator(), fibonacci = 0) => {
-            fibonacci > 4000000
-                ? sum
-                : answerRecursive(sum + fibonacci, sequence, sequence.next().value);
-        };
+        const answerRecursive = (sum = 0, sequence = fibonacciGenerator(), fibonacci = 0) => fibonacci > 4000000
+            ? sum
+            : answerRecursive(sum + fibonacci, sequence, sequence.next().value);
         const answer = (sum = 0) => {
             for (const fibonacci of fibonacciGenerator()) {
                 if (fibonacci > 4000000) {

@@ -33,11 +33,10 @@ const Euler2: IEulerQuestion = {
       sum: number = 0,
       sequence: IterableIterator<number> = fibonacciGenerator(),
       fibonacci: number = 0
-    ) => {
+    ): number =>
       fibonacci > 4000000
         ? sum
         : answerRecursive(sum + fibonacci, sequence, sequence.next().value);
-    };
 
     const answer = (sum: number = 0) => {
       for (const fibonacci of fibonacciGenerator()) {

@@ -136,3 +136,34 @@ const Euler6 = {
         return squareOfSum(100) - sumOfSquares(100);
     }
 };
+const Euler7 = {
+    question: `
+  By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+  What is the 10 001st prime number?`,
+    answer: () => {
+        /**
+         * Primes are defined as numbers not being evenly divisible by any primes lesser than itself
+         */
+        const primesGenerator = function* () {
+            const primes = [];
+            let current = 2;
+            while (true) {
+                if (!primes.find(prime => current % prime === 0)) {
+                    yield current;
+                    primes.push(current);
+                }
+                current = current + 1;
+            }
+        };
+        let count = 0;
+        for (const prime of primesGenerator()) {
+            if (count === 10001) {
+                return prime;
+            }
+            else {
+                count = count + 1;
+            }
+        }
+        throw new Error("Answer not found");
+    }
+};

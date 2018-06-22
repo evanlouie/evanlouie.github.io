@@ -100,11 +100,7 @@ const Euler5 = {
          * Recursive answer
          * @param current
          */
-        const answerRecursive = (current) => !current
-            ? answerRecursive(1)
-            : isDivibleFrom(current, 20, 1)
-                ? current
-                : answerRecursive(current + 1);
+        const answerRecursive = (current = 1) => isDivibleFrom(current, 20, 1) ? current : answerRecursive(current + 1);
         const answer = () => {
             for (let x = 1; x < Infinity; x++) {
                 if (isDivibleFrom(x, 20, 1)) {

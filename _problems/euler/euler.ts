@@ -138,12 +138,8 @@ const Euler5: IEulerQuestion = {
      * Recursive answer
      * @param current
      */
-    const answerRecursive = (current?: number): number =>
-      !current
-        ? answerRecursive(1)
-        : isDivibleFrom(current, 20, 1)
-          ? current
-          : answerRecursive(current + 1);
+    const answerRecursive = (current: number = 1): number =>
+      isDivibleFrom(current, 20, 1) ? current : answerRecursive(current + 1);
 
     const answer = (): number => {
       for (let x = 1; x < Infinity; x++) {

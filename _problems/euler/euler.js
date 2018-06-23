@@ -366,7 +366,8 @@ const Euler12 = {
         const factorize = (n) => [...Array(Math.round(Math.sqrt(n)))]
             .map((_, index) => index + 1)
             .filter(factor => n % factor === 0)
-            .reduce((flat, factor) => flat.concat([factor, n / factor]), []);
+            .map(factor => [factor, n / factor])
+            .reduce((flat, pair) => flat.concat(pair), []);
         return ((factorCount = 0) => {
             for (const triangle of triangleGenerator()) {
                 factorCount = factorize(triangle).length;

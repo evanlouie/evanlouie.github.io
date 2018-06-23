@@ -447,10 +447,8 @@ const Euler12: IEulerQuestion = {
       [...Array(Math.round(Math.sqrt(n)))]
         .map((_, index) => index + 1)
         .filter(factor => n % factor === 0)
-        .reduce<number[]>(
-          (flat, factor) => flat.concat([factor, n / factor]),
-          []
-        );
+        .map(factor => [factor, n / factor])
+        .reduce((flat, pair) => flat.concat(pair), []);
 
     return ((factorCount = 0) => {
       for (const triangle of triangleGenerator()) {

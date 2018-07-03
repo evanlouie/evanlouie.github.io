@@ -2,6 +2,7 @@
 layout: page
 title: Vibes
 vibes:
+  - 32GKV2ky6_s
   - PB0HXiEV_kw
   - vWUHoAGRTHU
   - A0DHLDjQhaU

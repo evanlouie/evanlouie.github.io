@@ -18,8 +18,8 @@ $grey-color: #828282;
 
 $maxWidth: 900px;
 $rs: 16px;
-$font-serif: Georgia, serif;
-$font-sans: "Roboto", sans-serif;
+$font-serif: "Times New Roman", Times, serif;
+$font-sans: "Helvetica Neue", Helvetica, "Roboto", sans-serif;
 $font-mono: "VT323", monospace;
 @mixin respond-to($breakpoint) {
   @media only screen and (max-width: $breakpoint + px) {
@@ -417,7 +417,7 @@ body {
       font-weight: 400;
       font-style: normal;
       font-size: medium;
-      line-height: 1.59;
+      line-height: 1.4em;
       letter-spacing: -0.002em;
       margin-top: 1em;
       margin-bottom: 0;
@@ -484,7 +484,7 @@ body {
       font-weight: 400;
       font-style: normal;
       font-size: medium;
-      line-height: 30px;
+      line-height: 1.4em;
       margin-left: 30px;
       // margin-bottom: 12px;
       padding-top: 2px;

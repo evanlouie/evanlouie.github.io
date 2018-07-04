@@ -4,7 +4,7 @@
 $grey-color: #828282;
 
 .icon {
-  > svg {
+  svg {
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -27,18 +27,12 @@ $font-mono: "VT323", monospace;
   }
 }
 
-.cf {
-  @include clearfix;
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-between;
+.post-grid {
+  display: grid;
+  grid-template: auto / repeat(auto-fill, minmax(20em, 1fr));
+  gap: 1em;
 
-  $postMarginWidth: 1em;
-  margin: 0 -#{$postMarginWidth};
   article {
-    margin: 0 #{$postMarginWidth};
-    flex: 1 1 (($maxWidth / 2) - 30px);
-
     .article-item {
       height: 100%;
       display: flex;

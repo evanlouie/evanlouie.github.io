@@ -1,0 +1,44 @@
+---
+layout: post
+title: Creating OSBA Namespaced Service Instances
+date: 2018-08-14 14:27 -0700
+---
+
+A JS function to provision namespaced Service Instances with Service Catalog and the Open Service Broker for Azure
+
+<!-- <script src="https://gist.github.com/evanlouie/c00722a77caa6f217224fc4b3964399d.js"></script> -->
+
+```javascript
+const provision = (
+  { name, namespace, location, resourceGroup } = {
+    name: "foobar",
+    namespace: "default",
+    location: "westus2",
+    resourceGroup: "testing"
+  }
+) =>
+  fetch(
+    `http://localhost:8001/apis/servicecatalog.k8s.io/v1beta1/namespaces/${namespace}/serviceinstances`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        apiVersion: "servicecatalog.k8s.io/v1beta1",
+        kind: "ServiceInstance",
+        metadata: {
+          name
+        },
+        spec: {
+          serviceClassExternalName: "azure-storage",
+          servicePlanExternalName: "blob-container",
+          parameters: {
+            location,
+            resourceGroup
+          }
+        }
+      })
+    }
+  );
+```

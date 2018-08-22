@@ -4,8 +4,8 @@ title: About
 permalink: /about/
 ---
 
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-  <div class="about-me" style="flex: auto;">
+<div style="display: grid; grid-template: auto/repeat(auto-fill, minmax(20em, 1fr));">
+  <div class="about-me">
     <dl style="word-break: break-word;">
       <dt>Name:</dt>
       <dd>Evan Louie</dd>
@@ -46,7 +46,7 @@ permalink: /about/
       </dd>
     </dl>
   </div>
-  <div class="profile-pic" style="flex: 1;">{% include images/profile.svg %}</div>
+  <div class="profile-pic">{% include images/profile.svg %}</div>
 </div>
 
 {% capture who-am-i %}{% include snippets/who-am-i.md %}{% endcapture %} {{ who-am-i | markdownify }}

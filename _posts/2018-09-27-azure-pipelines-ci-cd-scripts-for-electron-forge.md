@@ -52,7 +52,7 @@ steps:
     displayName: "Make or Publish"
 ```
 
-> You can replace `"Ubuntu 16.04"` with `"macOS-10.13"` for MacOS builds.
+> You can replace `"Ubuntu 16.04"` with `"macOS-10.13"` for MacOS builds. Also for a Mac build, you dont need the "Install dpkg & fakeroot" script.
 
 This script will run `make` on general commits and `publish` on releases. Releases being determined as when there are zero commits since the last tag.
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Azure Pipeline CI/CD Scripts for Electron Forge
+title: Azure Pipelines CI/CD Scripts for Electron Forge
 date: 2018-09-27 14:49 -0700
 ---
 
@@ -10,14 +10,12 @@ Assuming you `package.json` has a `scripts` entry which looks something like thi
 
 ```json
 {
-  ...
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish",
+    "publish": "electron-forge publish"
   }
-  ...
 }
 ```
 

@@ -29,8 +29,8 @@ Array.from(document.querySelectorAll(".grid-row"))
   .reduce(
     (carry, row) => {
       const { owner, itemNumber, text, href } = row;
-      const entry = `[${itemNumber}] ${href}`;
-      return [/evan/i, /nathaniel/i, /yvonne/i].findIndex(
+      const entry = `[${itemNumber}] ${text}`;
+      return [/evan/i, /nath/i, /yvon/i].findIndex(
         regex => !!owner.match(regex)
       ) >= 0
         ? { ...carry, fox: [...carry.fox, entry] }

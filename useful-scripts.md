@@ -16,7 +16,11 @@ Generate User Story report for whichever user stories are on screen in VSTS. Req
 Array.from(document.querySelectorAll(".grid-row"))
   .map(row => {
     const workItem = row.querySelector(".work-item-title-link");
-    const owner = row.querySelector(".identity-picker-resolved-name").innerText;
+    const owner = (
+      row.querySelector(".identity-picker-resolved-name") || {
+        innerText: "No Owner"
+      }
+    ).innerText;
     const { href, text } = workItem;
     const itemNumber = href.match(/\/(\d+)$/i)[1];
     return {

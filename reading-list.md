@@ -9,6 +9,7 @@ Just a list of useful sites and stuff to read:
 
 - [Awwwards - Frontend insperation](https://www.awwwards.com/)
 - [CSS Grid Changes EVERYTHING - Amazing Presentation](https://www.youtube.com/watch?v=7kVeCqQCxlk)
+- [CSS Layout cookbook](https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook)
 - [CSS3 - Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [CSS3 - Grids](https://css-tricks.com/snippets/css/complete-guide-grid/)
 - [Flutter - Native Apps with Dart](https://flutter.io/)

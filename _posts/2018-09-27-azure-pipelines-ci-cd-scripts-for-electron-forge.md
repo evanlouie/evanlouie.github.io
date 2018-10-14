@@ -63,7 +63,8 @@ So general workflow:
 - Make changes
 - Commit
 - Azure runs `make` path and ensures it is in a compilable state
-- `yarn publish`
-- Confirm release on GitHub and click publish
+- `yarn publish` (note: make sure to increment our tag number)
+- `git push` (the previous `yarn publish` will also add a version bump commit; its this commit that will trigger the Azure Pipelines 'publish' workflow, ie. the `else` branch of our `if` script)
 - Azure Pipelines automatically detect the publishing of the release and run the build script with the `publish` path
   - Azure builds and pushes the artifact to the GitHub release
+- Confirm release on GitHub and click publish

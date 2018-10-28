@@ -46,3 +46,11 @@ JSON.stringify(
     )
 );
 ```
+
+### Pyenv on Mojave
+
+`zlib` headers aren't available by default: https://github.com/pyenv/pyenv/issues/1219
+
+```bash
+CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install 3.5.6
+```

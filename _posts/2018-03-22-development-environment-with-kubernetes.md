@@ -94,5 +94,4 @@ spec:
       port: 11211
   selector:
     app: datastores
-
 ```

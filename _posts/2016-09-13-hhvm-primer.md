@@ -17,7 +17,7 @@ Here is my scratchpad/notes for using HHVM.
 
 {:.no_toc}
 
-* Will be replaced with the ToC, excluding the "Contents" header
+- Will be replaced with the ToC, excluding the "Contents" header
   {:toc}
 
 # Useful Commands

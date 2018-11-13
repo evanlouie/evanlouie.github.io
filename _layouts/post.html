@@ -1,21 +1,22 @@
 ---
 layout: default
 ---
+
 <main class="content" role="main">
   <article class="post">
-    <div class="post-meta">
-      <h1 class="post-title">{{ page.title }}</h1>
-    </div>
+    <div class="post-meta"><h1 class="post-title">{{ page.title }}</h1></div>
 
     <section class="post-content">
-      <a name="topofpage"></a>
-      {{content}}
+      <a name="topofpage"></a> {{ content }}
     </section>
     <footer class="post-footer">
       <section class="share">
-        <a class="icon" href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.id }}&text={{page.title | cgi_escape}}&via={{ site.twitter_username }}" target="_blank">
-          Share on
-          {% include icons/icon-twitter.html %}
+        <a
+          class="icon"
+          href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.id }}&text={{page.title | cgi_escape}}&via={{ site.twitter_username }}"
+          target="_blank"
+        >
+          Share on {% include icons/icon-twitter.html %}
         </a>
       </section>
     </footer>
@@ -25,33 +26,46 @@ layout: default
         <section class="author">
           <div class="author-image"></div>
           <h4>{{ site.name }}</h4>
-          <p class="bio">{{site.bio}}</p>
+          <p class="bio">{{ site.bio }}</p>
 
           <p>
             <span>
-              {% if site.github_username %}
-                {% include icons/icon-github.html username=site.github_username %}
-              {% endif %}
+              {% if site.github_username %} {% include icons/icon-github.html
+              username=site.github_username %} {% endif %}
             </span>
 
             <span>
-              {% if site.twitter_username %}
-                {% include icons/icon-twitter.html username=site.twitter_username %}
-              {% endif %}
+              {% if site.twitter_username %} {% include icons/icon-twitter.html
+              username=site.twitter_username %} {% endif %}
             </span>
           </p>
-          <hr>
-          <p class="published">Published <time datetime="{{ page.date | date: "%F %R" }}">{{ page.date | date_to_string }}</time></p>
+          <hr />
+          <p class="published">
+            Published
+            <time datetime="{{ page.date | date: '%F %R' }}"
+              >{{ page.date | date_to_string }}</time
+            >
+          </p>
         </section>
       </div>
-      {{post}}
+      {{ post }}
       <div class="isRight">
         <h5 class="index-headline featured"><span>Supported by</span></h5>
         <footer class="site-footer">
-          <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
-          <a class="subscribe" href="{{ "/feed.xml" | prepend: site.baseurl }}"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+          <section class="poweredby">
+            Proudly published with <a href="http://jekyllrb.com"> Jekyll</a>
+          </section>
+          <a class="subscribe" href="{{ '/feed.xml' | prepend: site.baseurl }}">
+            <span class="tooltip">
+              <i class="fa fa-rss"></i> You should subscribe to my feed.</span
+            ></a
+          >
           <div class="inner">
-            <section class="copyright">All content copyright <a href="mailto:{{ site.email}}">{{site.name}}</a> &copy; {{ site.time | date: '%Y' }}<br>All rights reserved.</section>
+            <section class="copyright">
+              All content copyright
+              <a href="mailto:{{ site.email}}">{{ site.name }}</a> &copy; {{
+              site.time | date: "%Y" }}<br />All rights reserved.
+            </section>
           </div>
         </footer>
       </div>

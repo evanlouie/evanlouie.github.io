@@ -1,41 +1,65 @@
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
+  />
 
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 | strip }}{% else %}{{ site.description | strip }}{% endif %}">
-  <meta name="keywords" content="blog,computer-science,programming,fashion,travel,hack,photography,fashion">
+  <title>
+    {% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape
+    }}{% endif %}
+  </title>
+  <meta
+    name="description"
+    content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 | strip }}{% else %}{{ site.description | strip }}{% endif %}"
+  />
+  <meta
+    name="keywords"
+    content="blog,computer-science,programming,fashion,travel,hack,photography,fashion"
+  />
 
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+  <link
+    rel="canonical"
+    href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+  />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
+  href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
   <script type="application/ld+json">
-  {% include metadata.json %}
+    {% include metadata.json %}
   </script>
 
   <style>
-  {% capture include_to_scssify %}
-    {% include styles.scss %}
-  {% endcapture %}
-  {{ include_to_scssify | scssify }}
+    {% capture include_to_scssify %}
+      {% include styles.scss %}
+    {% endcapture %}
+    {{ include_to_scssify | scssify }}
   </style>
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css"
+  />
 
   <!-- Turbolinks -->
   <script>
-    {% include scripts/turbolinks.js %}
+    {% include scripts/turbolinks_closure.js %}
   </script>
 
   <!-- React -->
-  <!-- {% if jekyll.environment == "production" %}
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  {% else %}
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-  {% endif %} -->
+  <!--
+    {% if jekyll.environment == "production" %}
+      <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+      <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    {% else %}
+      <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+      <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    {% endif %}
+  -->
 </head>

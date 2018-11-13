@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'AOTD: (External) Merge Sort'
+title: "AOTD: (External) Merge Sort"
 categories: algorithms
 tags: algorithms distributed parallel coffeescript
 ---
@@ -15,9 +15,9 @@ Merge sort is probably the easiest sorting algorithm to wrap you mind around:
 
 ---
 
-* A list of size 1 or 0 is sorted
-* Recursively divide the unsorted list into two unsorted lists until the two unsorted lists become sorted (by definition of an empty or single element list being sorted)
-* Merge the sorted lists
+- A list of size 1 or 0 is sorted
+- Recursively divide the unsorted list into two unsorted lists until the two unsorted lists become sorted (by definition of an empty or single element list being sorted)
+- Merge the sorted lists
 
 ```typescript
 class MergeSort {
@@ -87,18 +87,26 @@ class WebWorker {
 }
 
 class ExternalMergeSort {
-  public static async sort<T>(list: T[], maxListSize: number = 1000): Promise<T[]> {
+  public static async sort<T>(
+    list: T[],
+    maxListSize: number = 1000
+  ): Promise<T[]> {
     console.info("Sorting:", list);
     if (list.length <= maxListSize) {
       const sortingTask = (l: T[]) => l.sort();
-      const sorted = await WebWorker.eval(`(${sortingTask}).call(null, [${list}])`);
+      const sorted = await WebWorker.eval(
+        `(${sortingTask}).call(null, [${list}])`
+      );
       console.info("Sorted:", sorted);
       return sorted;
     } else {
       const middleIndex = Math.round(list.length / 2);
       const left = list.splice(0, middleIndex);
       const right = list;
-      const sortedLists = await Promise.all<T[], T[]>([this.sort<T>(left), this.sort<T>(right)]);
+      const sortedLists = await Promise.all<T[], T[]>([
+        this.sort<T>(left),
+        this.sort<T>(right)
+      ]);
       const merged = await this.merge(sortedLists[0], sortedLists[1]);
       console.info("Sorted:", merged);
       return merged;
@@ -125,7 +133,9 @@ class ExternalMergeSort {
       return merged;
     };
 
-    const merged: T[] = await WebWorker.eval(`(${mergeTask}).call(null, [${l1}], [${l2}])`);
+    const merged: T[] = await WebWorker.eval(
+      `(${mergeTask}).call(null, [${l1}], [${l2}])`
+    );
     console.info("Merged:", merged);
     return merged;
   }
@@ -134,18 +144,20 @@ class ExternalMergeSort {
 const randomNumbers: number[] = Array(10000)
   .fill(undefined)
   .map(() => Math.round(Math.random() * 100000));
-ExternalMergeSort.sort(randomNumbers).then(sorted => console.info("Done:", sorted));
+ExternalMergeSort.sort(randomNumbers).then(sorted =>
+  console.info("Done:", sorted)
+);
 ```
 
 Now lets explain:
 
-* We created a list of 1000000 random numbers from 0 - 1000000.
-* We modified the code in `MergeSort` to `ExternalMergeSort` which trigger calls to `WebWorker` instead of doing the `merge` and `sort` locally.
+- We created a list of 1000000 random numbers from 0 - 1000000.
+- We modified the code in `MergeSort` to `ExternalMergeSort` which trigger calls to `WebWorker` instead of doing the `merge` and `sort` locally.
 
 And there it is, a quasi-distributed MergeSort. Don't go trying to use this in any practical scenario. `Array.sort()` will be infinitly faster and more space efficient. This is a POC to show how external mergesort would work in the context of a browser. In order to get any actual usefulness out External MergeSort, you would need to either need to have complex computation for a comparitor in `sort` or require parsing of data to big to fit into memory; neither of which can be fulfilled by a list of 1000000 random numbers.
 
 ## Final Takeaways
 
-* MergeSort is simple, relatively fast, and incredibly easy to scale out if necessary.
-* External MergeSort is good for scenarios which require high computation for comparing list items and for when the list size is too big to read into memory.
-* Don't use WebWorkers like I did in this demo.
+- MergeSort is simple, relatively fast, and incredibly easy to scale out if necessary.
+- External MergeSort is good for scenarios which require high computation for comparing list items and for when the list size is too big to read into memory.
+- Don't use WebWorkers like I did in this demo.

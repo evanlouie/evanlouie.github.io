@@ -2,7 +2,7 @@
 layout: post
 title: Language Performance Tests - Nth Fibonacci
 tags: ruby php node crystal go performance fibonacci functional recursion
-excerpt: 'One of the most common interview questions also happens to be a good measure of performance for differing languages. With a whole bunch of different ways to implement it, calculating the nth Fibonacci number can both reveal strengths/weaknesses of languages as optimizations become easier or more difficult (possibly impossible) to implement.'
+excerpt: "One of the most common interview questions also happens to be a good measure of performance for differing languages. With a whole bunch of different ways to implement it, calculating the nth Fibonacci number can both reveal strengths/weaknesses of languages as optimizations become easier or more difficult (possibly impossible) to implement."
 ---
 
 <https://github.com/evanlouie/fibonacci-performance>
@@ -94,11 +94,11 @@ I was extremely surprised by the findings of this basic test. I expected Ruby to
 
 ---
 
-* Ruby handles big numbers VERY well. Although getting a stack overflow with `n > 10000`, I'm sure that one could increase it's stack size to make the memoized and tail-recursive solutions work just as well. Was able to return the 10000th fib without any BigNum implementation.
-* PHP held up as I expected. Solid performance for a dynamic language, however it should be noted that I did not implement the solution with GMPMP or BCMath. Only with PHP's standard numbers. So with the 10000th test, `infinity` was returned. I am curious to see how PHP7 compares.
-* Node is overall quite fast for a dynamic language, as one would expect from the V8 engine. As with PHP, I did implement the solution with any BigNum implementation. So infinity was returned for the 10000th test.
-* Crystal held up quite well as expected
-* Go was unexpectedly slower than Crystal for the tail-recursive and iterative solutions. This leads me to think Go's BigInt implementation is slower overall than Crystals, however their internal reference handling and map/hash management is better (as the memoized solution shows)
+- Ruby handles big numbers VERY well. Although getting a stack overflow with `n > 10000`, I'm sure that one could increase it's stack size to make the memoized and tail-recursive solutions work just as well. Was able to return the 10000th fib without any BigNum implementation.
+- PHP held up as I expected. Solid performance for a dynamic language, however it should be noted that I did not implement the solution with GMPMP or BCMath. Only with PHP's standard numbers. So with the 10000th test, `infinity` was returned. I am curious to see how PHP7 compares.
+- Node is overall quite fast for a dynamic language, as one would expect from the V8 engine. As with PHP, I did implement the solution with any BigNum implementation. So infinity was returned for the 10000th test.
+- Crystal held up quite well as expected
+- Go was unexpectedly slower than Crystal for the tail-recursive and iterative solutions. This leads me to think Go's BigInt implementation is slower overall than Crystals, however their internal reference handling and map/hash management is better (as the memoized solution shows)
 
 What I was not expecting was the implementation of BigInt in Crystal and Go to be so expensive. More specifically in the recursive solution to them. I tried replicate the algorithms as closely as possible for all languages. As such, I did not implement any sort of variadic functions for Int32, Int64, and BigInt, and just chose to default to BigInt as the dynamic languages did not require such implementation.
 
@@ -108,7 +108,7 @@ I was amazed at the performance optimizations Ruby has done in terms of autoscal
 
 ---
 
-* This is an EXTREMELY dumb performance test. Meaning that I only really wanted to see how the languages would perform when I tried to transfer the same code from language to language without any sort of optimizations. Because of this, I default to the BigInt type for Go and Crystal.
-* A test using variadic functions to optimize between Int32/Int64/BigInt would most definitely make Go and Crystal leagues faster. I also wouldn't be surprised if this performance measure changed drastically as Go and Crystal optimize there BigInt implementations.
-* I chose the number 42 simply because any higher and the recursive solutions for Ruby, Crystal, and Go because unbearably slow. Crystal and Go's memoized/tail-recursive/iterative solutions would most definitely be much faster with a very large `n` (>100000)
-* It should be noted that given a large number, Ruby and Crystal's tail-recursive solutions will still fail; neither language does proper tail call optimization.
+- This is an EXTREMELY dumb performance test. Meaning that I only really wanted to see how the languages would perform when I tried to transfer the same code from language to language without any sort of optimizations. Because of this, I default to the BigInt type for Go and Crystal.
+- A test using variadic functions to optimize between Int32/Int64/BigInt would most definitely make Go and Crystal leagues faster. I also wouldn't be surprised if this performance measure changed drastically as Go and Crystal optimize there BigInt implementations.
+- I chose the number 42 simply because any higher and the recursive solutions for Ruby, Crystal, and Go because unbearably slow. Crystal and Go's memoized/tail-recursive/iterative solutions would most definitely be much faster with a very large `n` (>100000)
+- It should be noted that given a large number, Ruby and Crystal's tail-recursive solutions will still fail; neither language does proper tail call optimization.

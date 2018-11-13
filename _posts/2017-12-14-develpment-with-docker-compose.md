@@ -9,7 +9,7 @@ Docker's documentation leaves much to be desired as navigating it often becomes 
 Here's a sample `docker-compose.yml` which marks a MongoDB container as a dependency for my web service. As all containers are accessible to each other based on the format `<protocol>://<serviceName>:<port>`, my `web` service can now ping the `mongo` service at `mongodb://mongo:27017` and be assured that the mongo container is up and running when it does; with the `mongo` service's container persisting its `/data/db` folder locally to my host machines working subdirectory `./data/db`.
 
 ```yaml
-version: '3'
+version: "3"
 services:
   web:
     image: evanlouie/echoml
@@ -41,7 +41,7 @@ In order to make development easier, add `ports` mappings to expose the containe
 This is my default dev environment I run when developing locally (minus the `web` service). Exposing to my host persistant MongoDB, PostgreSQL, and MySQL databases as well as volatile redis cache:
 
 ```yaml
-version: '3'
+version: "3"
 services:
   mongo:
     image: mongo
@@ -72,7 +72,7 @@ services:
 LA(MMP)P stack? Sure!:
 
 ```yaml
-version: '3'
+version: "3"
 services:
   php:
     image: php:apache

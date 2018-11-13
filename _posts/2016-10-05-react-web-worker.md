@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 'React & Web Workers'
+title: "React & Web Workers"
 tags: react web-workers node javascript browser multi-thread multi-process
-excerpt: 'One of the less well known or used features of modern browsers is Web Worker support. With it, you can use spin up isolated processes to do CPU intensive tasks without locking the windows main rendering thread.'
+excerpt: "One of the less well known or used features of modern browsers is Web Worker support. With it, you can use spin up isolated processes to do CPU intensive tasks without locking the windows main rendering thread."
 ---
 
 One of the less well known or used features of modern browsers is Web Worker support. With it, you can spin up isolated processes to do CPU intensive tasks without locking the windows main rendering thread.
@@ -48,11 +48,11 @@ Here is where things get tricky/weird. Web Workers were meant to execute code on
 
 ---
 
-* Define the `self.onmessage` event as the `postMessage` of the `eval` for `answer`; all of which is saved as a string.
-* Instantiate a `Blob` with a `text/javascript` type and the onmessage string as its body; do note that the string has to be stored in an array. Hence `[response]`
-* You can then bind the blob to the window under an object URL using `window.URL.createObjectURL` and thus instantiate a Worker from it
-* Define what the main window should do when receiving a message from the worker with `worker.onmessage`
-* Tell the worker to get to work with `worker.postMessage`
+- Define the `self.onmessage` event as the `postMessage` of the `eval` for `answer`; all of which is saved as a string.
+- Instantiate a `Blob` with a `text/javascript` type and the onmessage string as its body; do note that the string has to be stored in an array. Hence `[response]`
+- You can then bind the blob to the window under an object URL using `window.URL.createObjectURL` and thus instantiate a Worker from it
+- Define what the main window should do when receiving a message from the worker with `worker.onmessage`
+- Tell the worker to get to work with `worker.postMessage`
 
 ```javascript
 const answer = () => {

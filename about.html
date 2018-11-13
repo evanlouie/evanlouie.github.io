@@ -4,7 +4,9 @@ title: About
 permalink: /about/
 ---
 
-<div style="display: grid; grid-template: auto/repeat(auto-fill, minmax(20em, 1fr));">
+<div
+  style="display: grid; grid-template: auto/repeat(auto-fill, minmax(20em, 1fr));"
+>
   <div class="about-me">
     <dl style="word-break: break-word;">
       <dt>Name:</dt>
@@ -21,25 +23,33 @@ permalink: /about/
           <li style="margin-left: 0;" class="external-profile">
             <p style="padding: 0; margin: 0;">
               {% include icons/icon-github-dev.html %}
-              <a href="https://github.com/evanlouie">https://github.com/evanlouie</a>
+              <a href="https://github.com/evanlouie"
+                >https://github.com/evanlouie</a
+              >
             </p>
           </li>
           <li style="margin-left: 0;" class="external-profile">
             <p style="padding: 0; margin: 0;">
               {% include icons/icon-linkedin.html %}
-              <a href="https://ca.linkedin.com/in/evanlouie">https://www.linkedin.com/in/evanlouie</a>
+              <a href="https://ca.linkedin.com/in/evanlouie"
+                >https://www.linkedin.com/in/evanlouie</a
+              >
             </p>
           </li>
           <li style="margin-left: 0;" class="external-profile">
             <p style="padding: 0; margin: 0;">
               {% include icons/icon-twitter.html %}
-              <a href="https://twitter.com/evanlouie">https://twitter.com/evanlouie</a>
+              <a href="https://twitter.com/evanlouie"
+                >https://twitter.com/evanlouie</a
+              >
             </p>
           </li>
           <li style="margin-left: 0;" class="external-profile">
             <p style="padding: 0; margin: 0;">
               {% include icons/icon-vsco.html %}
-              <a href="https://vsco.co/evanlouie/">https://vsco.co/evanlouie/</a>
+              <a href="https://vsco.co/evanlouie/"
+                >https://vsco.co/evanlouie/</a
+              >
             </p>
           </li>
         </ul>
@@ -49,4 +59,5 @@ permalink: /about/
   <div class="profile-pic">{% include images/profile.svg %}</div>
 </div>
 
-{% capture who-am-i %}{% include snippets/who-am-i.md %}{% endcapture %} {{ who-am-i | markdownify }}
+{% capture who-am-i %}{% include snippets/who-am-i.md %}{% endcapture %} {{
+who-am-i | markdownify }}

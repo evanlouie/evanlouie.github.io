@@ -45,7 +45,10 @@ interface IGreetingsLocalState {
   feature: string;
 }
 
-export default class Greeting extends React.Component<IGreetingProps, IGreetingsLocalState> {
+export default class Greeting extends React.Component<
+  IGreetingProps,
+  IGreetingsLocalState
+> {
   // Random stuff in here
 }
 ```
@@ -77,7 +80,10 @@ const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>) => {
   };
 };
 
-const Homepage = connect(mapStateToProps, mapDispatchToProps)(Greeting);
+const Homepage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Greeting);
 
 export default Homepage;
 ```
@@ -116,7 +122,9 @@ const mapStateToProps = <T>(state: T): IGreetingState => {
     jokes: state.greetings.jokes
   };
 };
-const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): IGreetingActions => {
+const mapDispatchToProps = <T>(
+  dispatch: Redux.Dispatch<T>
+): IGreetingActions => {
   return {
     getAnotherJoke: () => {
       dispatch(Actions.getRandomChuckNorrisJoke());
@@ -127,7 +135,10 @@ const mapDispatchToProps = <T>(dispatch: Redux.Dispatch<T>): IGreetingActions =>
   };
 };
 
-const Homepage = connect(mapStateToProps, mapDispatchToProps)(Greeting);
+const Homepage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Greeting);
 ```
 
 Voila! `connect(mapStateToProps, mapDispatchToProps)` now satisfies the type constraints of `Greeting`!

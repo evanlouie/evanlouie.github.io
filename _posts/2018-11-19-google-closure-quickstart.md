@@ -6,6 +6,10 @@ date: 2018-11-19 18:38 -0800
 
 ### Google Closure Compiler
 
+A basic quickstart for using Google's Closure Compiler for general ES6 projects.
+
+The compiler has a lot of knobs you can turn, go to the wiki for more details: https://github.com/google/closure-compiler/wiki/Flags-and-Options
+
 ```bash
 # Will run MUCH faster on Linux/OSX as a native binary will be installed by default.
 # The installer will choose which installation type is best for your machine (native, JS, Java)

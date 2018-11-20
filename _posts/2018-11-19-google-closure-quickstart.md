@@ -48,3 +48,48 @@ google-closure-compiler \
   --js='**.js' \
   --entry_point="main.js"
 ```
+
+### Exposing functions (JS Interop)
+
+#### Easiest & Cleanest
+
+Bind to a global variable using string literals; As Closure never touches string literals, doing dictionary bindings on global
+objects will export the function as expected.
+
+##### NodeJS - Bind to `this`
+
+This method seems to be undocumented and I only discovered it by playing around.
+
+```javascript
+const myFunction = () => {
+  console.log("I do something")
+}
+const anotherFunction = () => {
+  console.log("I do more!")
+}
+this['myFunction'] = myFunction
+this["anotherFunction"] = anotherFunction
+```
+
+When compiled in `ADVANCED`, the outputted JS, when `require()`'d will return an object with `myFunction` and `anotherFunction` keys;
+Both with the expected functions.
+
+##### Browser - Bind to `window`
+
+If you are compiling for the browser, the simplest way is to just bind to `window` instead of `this`
+
+#### Official & Unclear
+
+The officially documented way to export members is to use JSDoc to annotate a member with `/** @export */`.
+
+When the compiler parses this, it will translate this to `goog.exportProperty()` calls; this does mean you need have `google-closure-library`
+code available to the compiler at compile time.
+
+```bash
+yarn add google-closure-library
+```
+
+With that in your node_modules, make sure the code is imported in your `--js` options past to the compiler.
+
+Now which ever members are annotated with the `@export` JSDoc, will get bound in the format of `<memberName>$$module$path$to$script`.
+For example, `main.js` in root will end up being `myFunction$$module$main`, `lib/foobar.js` will be `myFunction$module$lib$foobar`.

@@ -24,9 +24,9 @@ yarn global add google-closure-compiler
 ```bash
 google-closure-compiler \
   --module_resolution=NODE \
+  --dependency_mode=STRICT \
   --js='node_modules/**/package.json' \
   --js='**.js' \
-  --dependency_mode=STRICT \
   --entry_point="main.js"
 ```
 
@@ -38,9 +38,9 @@ and dead code elimination.
 ```bash
 google-closure-compiler \
   --module_resolution=NODE \
+  --dependency_mode=STRICT \
+  --compilation_level=ADVANCED \
   --js='node_modules/**/package.json' \
   --js='**.js' \
-  --dependency_mode=STRICT \
-  --entry_point="main.js" \
-  --compilation_level=ADVANCED
+  --entry_point="main.js"
 ```

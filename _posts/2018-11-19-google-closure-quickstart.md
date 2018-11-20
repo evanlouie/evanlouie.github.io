@@ -4,9 +4,9 @@ title: Google Closure Quickstart
 date: 2018-11-19 18:38 -0800
 ---
 
-### Google Closure Compiler
+A basic quickstart for using Google's Closure Compiler usage with ES6/Node projects.
 
-A basic quickstart for using Google's Closure Compiler for general ES6 projects.
+### Google Closure Compiler
 
 The compiler has a lot of knobs you can turn, go to the wiki for more details: https://github.com/google/closure-compiler/wiki/Flags-and-Options
 

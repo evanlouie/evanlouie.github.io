@@ -12,7 +12,7 @@ description: >
 logo: "/assets/images/logo.svg"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://www.evanlouie.com # the base hostname & protocol for your site
-paginate:	6 # The number of posts to show per page on your homepage
+paginate: 6 # The number of posts to show per page on your homepage
 # permalink: :categories/:title
 permalink: posts/:title
 
@@ -24,7 +24,7 @@ bio: >
   Evan is currently working as a Open Source Software Engineer at Microsoft on the Open Source West team.
 author_image: "/assets/images/author.jpg"
 twitter_username: evanlouie
-github_username:  evanlouie
+github_username: evanlouie
 
 # Build settings
 markdown: kramdown

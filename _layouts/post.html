@@ -3,12 +3,9 @@ layout: default
 ---
 
 <main class="content" role="main">
-  <article class="post">
-    <div class="post-meta"><h1 class="post-title">{{ page.title }}</h1></div>
-
-    <section class="post-content">
-      <a name="topofpage"></a> {{ content }}
-    </section>
+  <article class="post markdown-body">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <section><a name="topofpage"></a> {{ content }}</section>
     <footer class="post-footer">
       <section class="share">
         <a

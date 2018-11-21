@@ -62,13 +62,13 @@ This method seems to be undocumented and I only discovered it by playing around.
 
 ```javascript
 const myFunction = () => {
-  console.log("I do something")
-}
+  console.log("I do something");
+};
 const anotherFunction = () => {
-  console.log("I do more!")
-}
-this['myFunction'] = myFunction
-this["anotherFunction"] = anotherFunction
+  console.log("I do more!");
+};
+this["myFunction"] = myFunction;
+this["anotherFunction"] = anotherFunction;
 ```
 
 When compiled in `ADVANCED`, the outputted JS, when `require()`'d will return an object with `myFunction` and `anotherFunction` keys;

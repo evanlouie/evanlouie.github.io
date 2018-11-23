@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Google Closure Quickstart
+title: Google Closure Compiler Quickstart
 date: 2018-11-19 18:38 -0800
 ---
 

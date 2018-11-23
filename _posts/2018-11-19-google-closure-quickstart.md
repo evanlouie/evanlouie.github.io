@@ -17,7 +17,7 @@ The compiler has a lot of knobs you can turn, go to the wiki for more details:
 yarn global add google-closure-compiler
 ```
 
-### Simple Compile w/ Tree-Shaking
+#### Common Options
 
 | Arg                         | Explanation                                                                                                                                                                                                                                                    |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -30,32 +30,75 @@ yarn global add google-closure-compiler
 | `externs`                   | JS files which outline environment functions that your code calls which will be available at runtime but not during compile (eg. you have a `<script>` which imports jQuery), so `$` will be globally available when script runs, but not during compile time. |
 | `generate_exports`          | If present, will parse for `@export` in JSDocs (`/** @export */`) and will export the member                                                                                                                                                                   |
 
+### Simple Compile
+
+The simplest usage of the GCC is to just do a simple build. ie, build compile all of your JS into a single file.
+
+This can actually be more error prone than more advanced compilations because it attempts to compile ALL the JS passed to it.
+
+```bash
+google-closure-compiler \
+  --module_resolution=NODE \
+  --process_common_js_modules \
+  --js='node_modules/**/package.json' \
+  --js='**.js' \
+  --create_source_map="out.js.map" \
+  > out.js
+```
+
+### Module Level Tree-Shaking
+
+You can enable module level tree shaking on by setting `dependency_mode` to `STRICT` and specifying one or more `entry_point`s.
+
 ```bash
 google-closure-compiler \
   --module_resolution=NODE \
   --process_common_js_modules \
   --dependency_mode=STRICT \
+  --entry_point="main.js" \
   --js='node_modules/**/package.json' \
   --js='**.js' \
-  --entry_point="main.js" \
   --create_source_map="out.js.map" \
   > out.js
 ```
 
 ### Advanced Mode (Whole Program Optimization)
 
-By setting `--compilation_level` to `ADVANCED` we get the best strongest benefit of the Closure compiler. Whole program optimization
-and dead code elimination.
+By setting `--compilation_level` to `ADVANCED` we get the strongest benefit of the Closure compiler. Whole program optimization
+and dead code elimination, this will allow the compiler to remove in-module level code which is never used throughout your
+codes life as well as remove code without any effects; thereby actually vastly improving the performance of large code bases.
 
 ```bash
 google-closure-compiler \
   --module_resolution=NODE \
   --process_common_js_modules \
-  --dependency_mode=STRICT \
   --compilation_level=ADVANCED \
   --js='node_modules/**/package.json' \
   --js='**.js' \
+  --create_source_map="out.js.map" \
+  > out.js
+```
+
+### Production Build (Module Tree-Shaking & Advanced Mode)
+
+`dependency_mode=STRICT` and `compilation_level=ADVANCED` are not actually disjoint, you can use them individually but
+this actually raises the chances for compile errors for ADVANCED mode as there will be many more modules for the compiler
+will try and optimize for, some of which may actually conflict with code that you actually want.
+
+eg. `./node_modules/immutable/contrib/cursor/index.js:35: ERROR - Failed to load module "../../"
+var Immutable = require('../../');` will be thrown if you have `immutable@^4.0.0-rc.12` in your `node_modules` and don't
+have `--dependency_mode=STRICT` set. But will compile fine in STRICT mode due to that file never actually being imported
+in the exported files of `immutable`.
+
+```bash
+google-closure-compiler \
+  --module_resolution=NODE \
+  --process_common_js_modules \
+  --compilation_level=ADVANCED \
+  --dependency_mode=STRICT \
   --entry_point="main.js" \
+  --js='node_modules/**/package.json' \
+  --js='**.js' \
   --create_source_map="out.js.map" \
   > out.js
 ```

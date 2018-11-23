@@ -8,7 +8,8 @@ A basic quickstart for using Google's Closure Compiler usage with ES6/Node proje
 
 ## Google Closure Compiler
 
-The compiler has a lot of knobs you can turn, go to the wiki for more details: https://github.com/google/closure-compiler/wiki/Flags-and-Options
+The compiler has a lot of knobs you can turn, go to the wiki for more details:
+<https://github.com/google/closure-compiler/wiki/Flags-and-Options>
 
 ```bash
 # Will run MUCH faster on Linux/OSX as a native binary will be installed by default.

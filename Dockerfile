@@ -1,3 +1,4 @@
+# Build in a Ruby container
 FROM ruby:latest
 
 WORKDIR /app/
@@ -8,6 +9,13 @@ RUN bundle install --deployment
 
 ADD . .
 
-EXPOSE 4000
+RUN bundle exec jekyll build
 
-CMD bundle exec jekyll serve --host 0.0.0.0 --port 4000
+# Copy to an Alpine Nginx image
+FROM nginx:alpine
+
+# Nginx images expose 80 by default
+EXPOSE 80
+
+WORKDIR /usr/share/nginx/html
+COPY --from=0 /app/_site /usr/share/nginx/html

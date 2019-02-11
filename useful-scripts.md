@@ -4,11 +4,46 @@ title: Useful Scripts
 permalink: /useful-scripts/
 ---
 
+### A Debug `Deployment` for Istio K8s Cluster
+
+```yaml
+# Single pod Ubuntu deployment that will not terminate
+# Annotated to allow full Egress traffic when in an Istio mesh
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-deployment
+  labels:
+    app: ubuntu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      annotations:
+        traffic.sidecar.istio.io/excludeOutboundIPRanges: 0.0.0.0/0 # Allow all Egress traffic https://github.com/istio/istio/issues/9304
+      labels:
+        app: ubuntu
+    spec:
+      containers:
+        - name: ubuntu
+          image: ubuntu:latest
+          imagePullPolicy: Always
+          command: ["/bin/bash", "-c", "--"]
+          args: ["while true; do sleep 30; done;"]
+```
+
+### Create release notes from git logs
+
 Auto generate release notes based on git tags and remove any 'merge' commits.
 
 ```bash
 git log $(git describe --tags --abbrev=0)..HEAD --oneline | grep -iv merge
 ```
+
+### Generate user story report from VSTS window
 
 Generate User Story report for whichever user stories are on screen in VSTS. Requires "Assigned To" to be on screen.
 

@@ -35,6 +35,34 @@ spec:
           args: ["while true; do sleep 30; done;"]
 ```
 
+### Remove Wix Ads
+
+```javascript
+ads = document.querySelector('#WIX_ADS')
+ads.parentElement.removeChild(ads)
+root = document.querySelector('#SITE_ROOT')
+root.style.top = 0
+```
+
+### Scrape an entire website
+
+```bash
+wget --recursive --adjust-extension --page-requisites --convert-links https://www.evanlouie.com
+```
+
+```bash
+wget \
+     --recursive \
+     --no-clobber \
+     --page-requisites \
+     --html-extension \
+     --convert-links \
+     --restrict-file-names=windows \
+     --domains website.org \
+     --no-parent \
+         www.website.com
+```
+
 ### Create release notes from git logs
 
 Auto generate release notes based on git tags and remove any 'merge' commits.

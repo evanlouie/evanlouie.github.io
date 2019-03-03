@@ -54,7 +54,7 @@ metadata:
   name: traefik-ingress
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: "traefik"
+    kubernetes.io/ingress.class: "traefik" # In the case of having multiple ingress controllers, the type must be specified
 spec:
   rules:
     - http:

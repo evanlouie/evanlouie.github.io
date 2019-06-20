@@ -4,6 +4,14 @@ title: Useful Scripts
 permalink: /useful-scripts/
 ---
 
+### Create release notes from git logs
+
+Auto generate release notes based on git tags and remove any 'merge' commits.
+
+```bash
+git log $(git describe --tags --abbrev=0)..HEAD --oneline | grep -iv merge
+```
+
 ### A Debug `Deployment` for Istio K8s Cluster
 
 ```yaml
@@ -38,10 +46,36 @@ spec:
 ### Remove Wix Ads
 
 ```javascript
-ads = document.querySelector('#WIX_ADS')
-ads.parentElement.removeChild(ads)
-root = document.querySelector('#SITE_ROOT')
-root.style.top = 0
+const removeAdsByJS = () =>
+  Promise.all([
+    document.querySelector("#WIX_ADS"),
+    document.querySelector("#SITE_BACKGROUND"),
+    document.querySelector("#SITE_ROOT")
+  ]).then(([wixBanner, background, root]) => {
+    wixBanner.parentElement.removeChild(wixBanner);
+    background.style.top = 0;
+    root.style.top = 0;
+  });
+
+const removeByCSS = () => {
+  const wixAdsRemovalStyles = `
+  #WIX_ADS {
+    display: none !important;
+  }
+
+  #SITE_BACKGROUND {
+    top: 0;
+  }
+
+  #SITE_ROOT {
+    top: 0;
+  }`;
+  const head = document.head;
+  const style = document.createElement("style");
+  head.appendChild(style);
+  style.type = "text/css";
+  style.appendChild(document.createTextNode(wixAdsRemovalStyles));
+};
 ```
 
 ### Scrape an entire website
@@ -61,14 +95,6 @@ wget \
      --domains website.org \
      --no-parent \
          www.website.com
-```
-
-### Create release notes from git logs
-
-Auto generate release notes based on git tags and remove any 'merge' commits.
-
-```bash
-git log $(git describe --tags --abbrev=0)..HEAD --oneline | grep -iv merge
 ```
 
 ### Generate user story report from VSTS window

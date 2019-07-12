@@ -34,7 +34,7 @@ constrictions.
 
 Although I find myself no longer believing in AMP for my personal stuff, it is
 not to say that the exercise in implementing it on both personal and production
-projects wasn't a good learning experience. When you get into the habbit of
+projects wasn't a good learning experience. When you get into the habit of
 carrying about page size and SEO performance, it really begins to change the way
 you think about both your content and how you design your pages. Without flashy
 JS interactions and such, simple and clean design comes to the forefront of how
@@ -60,5 +60,5 @@ before ActionScript. Just Content :)
   plugin doesn't say your performance is close to zero.
 - Use [Turbolinks](https://github.com/turbolinks/turbolinks). Just do it. If
   your site was Google AMP compliant before, Turbolinks will work no problem as
-  a drop in and make page loads noticably faster. (Note: throwing this in makes
+  a drop in and make page loads noticeably faster. (Note: throwing this in makes
   the hack for Lighthouse unnecessary)

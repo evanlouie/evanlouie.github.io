@@ -2,18 +2,30 @@
 layout: post
 title: Local HTTPS On OSX
 tags: osx mac development
-excerpt: "As I began development with Google AMP, I realized that I would need to get SSL working on localhost to get around `amp-iframe` HTTPS rules. Luckily I found an amazing guide by jonathantneal which outlined the process step by step on OSX. Which after following, development became a breeze."
+excerpt:
+  "As I began development with Google AMP, I realized that I would need to get
+  SSL working on localhost to get around `amp-iframe` HTTPS rules. Luckily I
+  found an amazing guide by jonathantneal which outlined the process step by
+  step on OSX. Which after following, development became a breeze."
 ---
 
-As I began development with Google AMP, I realized that I would need to get SSL working on localhost to get around `amp-iframe` HTTPS rules. Luckily I found an amazing guide by [jonathantneal](https://github.com/jonathantneal) which outlined the process step by step on OSX. Which after following, development became a breeze.
+As I began development with Google AMP, I realized that I would need to get SSL
+working on localhost to get around `amp-iframe` HTTPS rules. Luckily I found an
+amazing guide by [jonathantneal](https://github.com/jonathantneal) which
+outlined the process step by step on OSX. Which after following, development
+became a breeze.
 
-After following the guid which I've copied and linked to down below. You just need to replace your localhost folder with a symlink to your sites `_site` folder.
+After following the guid which I've copied and linked to down below. You just
+need to replace your localhost folder with a symlink to your sites `_site`
+folder.
 
-Ripped directly from: <https://gist.github.com/jonathantneal/774e4b0b3d4d739cbc53>
+Ripped directly from:
+<https://gist.github.com/jonathantneal/774e4b0b3d4d739cbc53>
 
 # Local SSL websites on Mac OSX
 
-These instructions will guide you through the process of setting up local, trusted websites on your own computer.
+These instructions will guide you through the process of setting up local,
+trusted websites on your own computer.
 
 These instructions are intended to be used on Mac OSX Yosemite.
 
@@ -27,7 +39,8 @@ Within **Terminal**, start **Apache**.
 sudo apachectl start
 ```
 
-In a **web browser**, visit <http://localhost>. You should see a message stating that **It works!**.
+In a **web browser**, visit <http://localhost>. You should see a message stating
+that **It works!**.
 
 ### Configuring Apache: Setting up a Virtual Host
 
@@ -37,7 +50,8 @@ Within **Terminal**, edit the Apache Configuration.
 edit /etc/apache2/httpd.conf
 ```
 
-Within your editor, replace line 212 to supress messages about the server's fully qualified domain name.
+Within your editor, replace line 212 to supress messages about the server's
+fully qualified domain name.
 
 ```conf
 ServerName localhost
@@ -65,7 +79,8 @@ Within **Terminal**, edit the Virtual Hosts.
 edit /etc/apache2/extra/httpd-vhosts.conf
 ```
 
-Within your editor, replace the entire contents of this file with the following, replacing _evanlouie_ with your user name.
+Within your editor, replace the entire contents of this file with the following,
+replacing _evanlouie_ with your user name.
 
 ```conf
 <VirtualHost *:80>
@@ -90,13 +105,15 @@ sudo apachectl restart
 
 ### Configuring Apache: Creating a Site
 
-Within **Terminal**, Create a **Sites** directory, which will be the parent directory of many individual **Site** subdirectories.
+Within **Terminal**, Create a **Sites** directory, which will be the parent
+directory of many individual **Site** subdirectories.
 
 ```sh
 mkdir ~/Sites
 ```
 
-Next, create a **localhost** subdirectory within **Sites**, which will be our first site.
+Next, create a **localhost** subdirectory within **Sites**, which will be our
+first site.
 
 ```sh
 mkdir ~/Sites/localhost
@@ -108,7 +125,8 @@ Finally, create an HTML document within **localhost**.
 echo "<h1>localhost works</h1>" > ~/Sites/localhost/index.html
 ```
 
-Now, in a **web browser**, visit <http://localhost>. You should see a message stating that **localhost works**.
+Now, in a **web browser**, visit <http://localhost>. You should see a message
+stating that **localhost works**.
 
 ---
 
@@ -155,7 +173,8 @@ DNS.1 = localhost
 DNS.2 = *.localhost
 ```
 
-Within **Terminal**, generate Certificate Requests using the OpenSSL Configuration, optionally replacing the defaults as you see fit.
+Within **Terminal**, generate Certificate Requests using the OpenSSL
+Configuration, optionally replacing the defaults as you see fit.
 
 ```sh
 sudo openssl req -new -key /etc/apache2/server.key -subj "/C=/ST=/L=/O=/CN=/emailAddress=/" -out /etc/apache2/server.csr
@@ -183,7 +202,8 @@ Within **Terminal**, edit the Apache Configuration.
 edit /etc/apache2/httpd.conf
 ```
 
-Within your editor, uncomment lines 89 and 143 to enable modules required by HTTPS.
+Within your editor, uncomment lines 89 and 143 to enable modules required by
+HTTPS.
 
 ```conf
 LoadModule socache_shmcb_module libexec/apache2/mod_socache_shmcb.so
@@ -207,7 +227,8 @@ edit /etc/apache2/extra/httpd-vhosts.conf
 
 Within your editor, add a **443** VirtualHost Name and **localhost**
 
-<virtualhost> Directive at the end of the file, replacing <em>evanlouie</em> with your user name.</virtualhost>
+<virtualhost> Directive at the end of the file, replacing <em>evanlouie</em>
+with your user name.</virtualhost>
 
 ```conf
 <VirtualHost *:443>
@@ -235,4 +256,5 @@ Within **Terminal**, restart Apache.
 sudo apachectl restart
 ```
 
-Now, in a **web browser**, visit <https://localhost>. The domain should appear trusted, and you should see a message stating that **localhost works!**.
+Now, in a **web browser**, visit <https://localhost>. The domain should appear
+trusted, and you should see a message stating that **localhost works!**.

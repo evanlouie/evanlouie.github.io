@@ -4,7 +4,8 @@ title: Google Closure Compiler Quickstart
 date: 2018-11-19 18:38 -0800
 ---
 
-A basic quickstart for using Google's Closure Compiler usage with ES6/Node projects.
+A basic quickstart for using Google's Closure Compiler usage with ES6/Node
+projects.
 
 ## Google Closure Compiler
 
@@ -32,9 +33,11 @@ yarn global add google-closure-compiler
 
 ### Simple Compile
 
-The simplest usage of the GCC is to just do a simple build. ie, build compile all of your JS into a single file.
+The simplest usage of the GCC is to just do a simple build. ie, build compile
+all of your JS into a single file.
 
-This can actually be more error prone than more advanced compilations because it attempts to compile ALL the JS passed to it.
+This can actually be more error prone than more advanced compilations because it
+attempts to compile ALL the JS passed to it.
 
 ```bash
 google-closure-compiler \
@@ -48,7 +51,8 @@ google-closure-compiler \
 
 ### Module Level Tree-Shaking
 
-You can enable module level tree shaking on by setting `dependency_mode` to `STRICT` and specifying one or more `entry_point`s.
+You can enable module level tree shaking on by setting `dependency_mode` to
+`STRICT` and specifying one or more `entry_point`s.
 
 ```bash
 google-closure-compiler \
@@ -64,9 +68,11 @@ google-closure-compiler \
 
 ### Advanced Mode (Whole Program Optimization)
 
-By setting `--compilation_level` to `ADVANCED` we get the strongest benefit of the Closure compiler. Whole program optimization
-and dead code elimination, this will allow the compiler to remove in-module level code which is never used throughout your
-codes life as well as remove code without any effects; thereby actually vastly improving the performance of large code bases.
+By setting `--compilation_level` to `ADVANCED` we get the strongest benefit of
+the Closure compiler. Whole program optimization and dead code elimination, this
+will allow the compiler to remove in-module level code which is never used
+throughout your codes life as well as remove code without any effects; thereby
+actually vastly improving the performance of large code bases.
 
 ```bash
 google-closure-compiler \
@@ -81,14 +87,18 @@ google-closure-compiler \
 
 ### Production Build (Module Tree-Shaking & Advanced Mode)
 
-`dependency_mode=STRICT` and `compilation_level=ADVANCED` are not actually disjoint, you can use them individually but
-this actually raises the chances for compile errors for ADVANCED mode as there will be many more modules for the compiler
-will try and optimize for, some of which may actually conflict with code that you actually want.
+`dependency_mode=STRICT` and `compilation_level=ADVANCED` are not actually
+disjoint, you can use them individually but this actually raises the chances for
+compile errors for ADVANCED mode as there will be many more modules for the
+compiler will try and optimize for, some of which may actually conflict with
+code that you actually want.
 
-eg. `./node_modules/immutable/contrib/cursor/index.js:35: ERROR - Failed to load module "../../"
-var Immutable = require('../../');` will be thrown if you have `immutable@^4.0.0-rc.12` in your `node_modules` and don't
-have `--dependency_mode=STRICT` set. But will compile fine in STRICT mode due to that file never actually being imported
-in the exported files of `immutable`.
+eg.
+`./node_modules/immutable/contrib/cursor/index.js:35: ERROR - Failed to load module "../../" var Immutable = require('../../');`
+will be thrown if you have `immutable@^4.0.0-rc.12` in your `node_modules` and
+don't have `--dependency_mode=STRICT` set. But will compile fine in STRICT mode
+due to that file never actually being imported in the exported files of
+`immutable`.
 
 ```bash
 google-closure-compiler \
@@ -107,8 +117,9 @@ google-closure-compiler \
 
 #### Easiest & Cleanest
 
-Bind to a global variable using string literals; As Closure never touches string literals, doing dictionary bindings on global
-objects will export the function as expected.
+Bind to a global variable using string literals; As Closure never touches string
+literals, doing dictionary bindings on global objects will export the function
+as expected.
 
 ##### NodeJS - Bind to `this`
 
@@ -125,41 +136,49 @@ this["myFunction"] = myFunction;
 this["anotherFunction"] = anotherFunction;
 ```
 
-When compiled in `ADVANCED`, the outputted JS, when `require()`'d will return an object with `myFunction` and `anotherFunction` keys;
-Both with the expected functions.
+When compiled in `ADVANCED`, the outputted JS, when `require()`'d will return an
+object with `myFunction` and `anotherFunction` keys; Both with the expected
+functions.
 
 ##### Browser - Bind to `window`
 
-If you are compiling for the browser, the simplest way is to just bind to `window` instead of `this`
+If you are compiling for the browser, the simplest way is to just bind to
+`window` instead of `this`
 
 #### Official & Unclear
 
-The officially documented way to export members is to use JSDoc to annotate a member with `/** @export */` and set `--generate_exports` on the compiler.
+The officially documented way to export members is to use JSDoc to annotate a
+member with `/** @export */` and set `--generate_exports` on the compiler.
 
-When the compiler parses this, it will translate this to `goog.exportProperty()` calls; this does mean you need have `google-closure-library`
-code available to the compiler at compile time.
+When the compiler parses this, it will translate this to `goog.exportProperty()`
+calls; this does mean you need have `google-closure-library` code available to
+the compiler at compile time.
 
 ```bash
 yarn add google-closure-library
 ```
 
-With that in your node_modules, make sure the code is imported in your `--js` options past to the compiler.
+With that in your node_modules, make sure the code is imported in your `--js`
+options past to the compiler.
 
-Now which ever members are annotated with the `@export` JSDoc, will get bound in the format of `<memberName>$$module$path$to$script`.
-For example, `main.js` in root will end up being `myFunction$$module$main`, `lib/foobar.js` will be `myFunction$module$lib$foobar`.
+Now which ever members are annotated with the `@export` JSDoc, will get bound in
+the format of `<memberName>$$module$path$to$script`. For example, `main.js` in
+root will end up being `myFunction$$module$main`, `lib/foobar.js` will be
+`myFunction$module$lib$foobar`.
 
 #### Use `require()` to expose libraries
 
-It is not possible to `@export` members imported via ES6 `import`. To do so, you should bind the lib to variable using Node `require()`.
+It is not possible to `@export` members imported via ES6 `import`. To do so, you
+should bind the lib to variable using Node `require()`.
 
 ```javascript
 /** @export */
-const immutable = require('immutable')
+const immutable = require("immutable");
 ```
 
 OR
 
 ```javascript
-const immutable = require('immutable')
-this['immutable'] = immutable
+const immutable = require("immutable");
+this["immutable"] = immutable;
 ```

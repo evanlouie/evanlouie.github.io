@@ -10,7 +10,8 @@ In this we will:
 
 - Install Traefik.
 - Install the BookInfo sample application (from Istio).
-- Configure an Ingress to expose the services made available from the BookInfo application.
+- Configure an Ingress to expose the services made available from the BookInfo
+  application.
 
 ## Requirements
 
@@ -18,7 +19,8 @@ In this we will:
 
 ## Prep
 
-1. Get the latest release of Fabrikate from https://github.com/Microsoft/fabrikate
+1. Get the latest release of Fabrikate from
+   https://github.com/Microsoft/fabrikate
 2. Clone https://github.com/evanlouie/fabrikate-traefik
 3. Unzip the `fab` binary into the just cloned `fabrikate-traefik`
 
@@ -76,6 +78,7 @@ spec:
               serviceName: productpage
               servicePort: 9080
 ---
+
 ```
 
 ## Check on your services
@@ -88,5 +91,10 @@ Now goto `http://localhost:9999` and you will see the newly available services.
 
 ## Common Gotchas
 
-- Traefik will install ONE load balancer in whichever namespace it is installed into.
-- For every namespace with a service you wish to expose through the Traefik LB, you need to setup a separate `Ingress` in the target namespace. Even though the Traefik LB may be in namespace `foo`, `Ingress` resources from namespaces `bar` and `baz` are required to control the routing for services in in those namespaces.
+- Traefik will install ONE load balancer in whichever namespace it is installed
+  into.
+- For every namespace with a service you wish to expose through the Traefik LB,
+  you need to setup a separate `Ingress` in the target namespace. Even though
+  the Traefik LB may be in namespace `foo`, `Ingress` resources from namespaces
+  `bar` and `baz` are required to control the routing for services in in those
+  namespaces.

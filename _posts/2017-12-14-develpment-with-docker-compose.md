@@ -4,9 +4,18 @@ title: Development With Docker-Compose
 date: 2017-12-14 12:28 -0800
 ---
 
-Docker's documentation leaves much to be desired as navigating it often becomes an exercise in `CMD-f`ing. I often want to use `docker-compose` for a project to get it running locally as PoC before setting up my k8s cluster. But it usually takes me longer to get the `ports` and `volumes` sorted out than I would prefer.
+Docker's documentation leaves much to be desired as navigating it often becomes
+an exercise in `CMD-f`ing. I often want to use `docker-compose` for a project to
+get it running locally as PoC before setting up my k8s cluster. But it usually
+takes me longer to get the `ports` and `volumes` sorted out than I would prefer.
 
-Here's a sample `docker-compose.yml` which marks a MongoDB container as a dependency for my web service. As all containers are accessible to each other based on the format `<protocol>://<serviceName>:<port>`, my `web` service can now ping the `mongo` service at `mongodb://mongo:27017` and be assured that the mongo container is up and running when it does; with the `mongo` service's container persisting its `/data/db` folder locally to my host machines working subdirectory `./data/db`.
+Here's a sample `docker-compose.yml` which marks a MongoDB container as a
+dependency for my web service. As all containers are accessible to each other
+based on the format `<protocol>://<serviceName>:<port>`, my `web` service can
+now ping the `mongo` service at `mongodb://mongo:27017` and be assured that the
+mongo container is up and running when it does; with the `mongo` service's
+container persisting its `/data/db` folder locally to my host machines working
+subdirectory `./data/db`.
 
 ```yaml
 version: "3"
@@ -34,11 +43,19 @@ services:
       - 6379:6379
 ```
 
-Note: By default, containers can ping eachother via their service name, the `depends_on` marks one your services to require the listed ones to be started (doesn't check if "ready") before itself can start.
+Note: By default, containers can ping eachother via their service name, the
+`depends_on` marks one your services to require the listed ones to be started
+(doesn't check if "ready") before itself can start.
 
-In order to make development easier, add `ports` mappings to expose the container ports to the host (`<hostPort>:<containerPort>`). Now you can develop locally on your host machine while having the `mongo` and `redis` containers exposed. In this example, `mongo` is accessible by the host via: `mongodb://0.0.0.0:27017` and `redis` via `redis://0.0.0.0:6379`.
+In order to make development easier, add `ports` mappings to expose the
+container ports to the host (`<hostPort>:<containerPort>`). Now you can develop
+locally on your host machine while having the `mongo` and `redis` containers
+exposed. In this example, `mongo` is accessible by the host via:
+`mongodb://0.0.0.0:27017` and `redis` via `redis://0.0.0.0:6379`.
 
-This is my default dev environment I run when developing locally (minus the `web` service). Exposing to my host persistant MongoDB, PostgreSQL, and MySQL databases as well as volatile redis cache:
+This is my default dev environment I run when developing locally (minus the
+`web` service). Exposing to my host persistent MongoDB, PostgreSQL, and MySQL
+databases as well as volatile redis cache:
 
 ```yaml
 version: "3"

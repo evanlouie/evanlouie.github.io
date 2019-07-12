@@ -5,7 +5,9 @@ categories: algorithms
 tags: algorithms distributed parallel coffeescript
 ---
 
-Hard to explain my love for MergeSort. It's easily one of my favourite algorithms for its simplicity and recursive nature; being the closest to a literal "divide & conquer" algorithm you could possibly get to.
+Hard to explain my love for MergeSort. It's easily one of my favourite
+algorithms for its simplicity and recursive nature; being the closest to a
+literal "divide & conquer" algorithm you could possibly get to.
 
 ## The Algorithm
 
@@ -16,7 +18,9 @@ Merge sort is probably the easiest sorting algorithm to wrap you mind around:
 ---
 
 - A list of size 1 or 0 is sorted
-- Recursively divide the unsorted list into two unsorted lists until the two unsorted lists become sorted (by definition of an empty or single element list being sorted)
+- Recursively divide the unsorted list into two unsorted lists until the two
+  unsorted lists become sorted (by definition of an empty or single element list
+  being sorted)
 - Merge the sorted lists
 
 ```typescript
@@ -55,21 +59,37 @@ class MergeSort {
 
 ## Application
 
-In terms of performance, it becomes pretty apparent that merge sorts biggest weakness (when compared to other sorting algorithms) is that it's sorting is not in-place. Meaning not only will you require extra space/variables to keep of sublists, you lose [Locality of Reference](https://en.wikipedia.org/wiki/Locality_of_reference). Which, when dealing with large datasets, becomes very noticeable.
+In terms of performance, it becomes pretty apparent that merge sorts biggest
+weakness (when compared to other sorting algorithms) is that it's sorting is not
+in-place. Meaning not only will you require extra space/variables to keep of
+sublists, you lose
+[Locality of Reference](https://en.wikipedia.org/wiki/Locality_of_reference).
+Which, when dealing with large datasets, becomes very noticeable.
 
-> But Evan, how can something with such a blaring flaw be one of your favourite algorithms!?!??!!
+> But Evan, how can something with such a blaring flaw be one of your favourite
+> algorithms!?!??!!
 
 ### _External_ MergeSort
 
-We may have lost locality of reference, but we also gained something fairly unique to merge sort. Scalability. Merge sort is unique in that it easily allows you to dispatch sorting jobs to other processes.
+We may have lost locality of reference, but we also gained something fairly
+unique to merge sort. Scalability. Merge sort is unique in that it easily allows
+you to dispatch sorting jobs to other processes.
 
-By modifying our base case, we can apply merge sort to arbitrarily large datasets. Datasets which may have even been too large to originally read into memory.
+By modifying our base case, we can apply merge sort to arbitrarily large
+datasets. Datasets which may have even been too large to originally read into
+memory.
 
 #### Distributed / Large Data
 
-In order to get a distributed example working in the browser, we're gonna have to rely on WebWorkers. For a crash course on how they work, take a swing over to my [article on integrating with React](react-web-worker) or the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
+In order to get a distributed example working in the browser, we're gonna have
+to rely on WebWorkers. For a crash course on how they work, take a swing over to
+my [article on integrating with React](react-web-worker) or the
+[MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
 
-In the following example, we're just going to sort a big array of random numbers ranging from 0-1000000. To do so, we are going to make use of a modified version of our earlier made MergeSort class and the following WebWorker helper class to allow for multi-threaded execution:
+In the following example, we're just going to sort a big array of random numbers
+ranging from 0-1000000. To do so, we are going to make use of a modified version
+of our earlier made MergeSort class and the following WebWorker helper class to
+allow for multi-threaded execution:
 
 ```typescript
 class WebWorker {
@@ -152,12 +172,22 @@ ExternalMergeSort.sort(randomNumbers).then(sorted =>
 Now lets explain:
 
 - We created a list of 1000000 random numbers from 0 - 1000000.
-- We modified the code in `MergeSort` to `ExternalMergeSort` which trigger calls to `WebWorker` instead of doing the `merge` and `sort` locally.
+- We modified the code in `MergeSort` to `ExternalMergeSort` which trigger calls
+  to `WebWorker` instead of doing the `merge` and `sort` locally.
 
-And there it is, a quasi-distributed MergeSort. Don't go trying to use this in any practical scenario. `Array.sort()` will be infinitly faster and more space efficient. This is a POC to show how external mergesort would work in the context of a browser. In order to get any actual usefulness out External MergeSort, you would need to either need to have complex computation for a comparitor in `sort` or require parsing of data to big to fit into memory; neither of which can be fulfilled by a list of 1000000 random numbers.
+And there it is, a quasi-distributed MergeSort. Don't go trying to use this in
+any practical scenario. `Array.sort()` will be infinitely faster and more space
+efficient. This is a POC to show how external merge-sort would work in the
+context of a browser. In order to get any actual usefulness out External
+MergeSort, you would need to either need to have complex computation for a
+comparator in `sort` or require parsing of data to big to fit into memory;
+neither of which can be fulfilled by a list of 1000000 random numbers.
 
 ## Final Takeaways
 
-- MergeSort is simple, relatively fast, and incredibly easy to scale out if necessary.
-- External MergeSort is good for scenarios which require high computation for comparing list items and for when the list size is too big to read into memory.
+- MergeSort is simple, relatively fast, and incredibly easy to scale out if
+  necessary.
+- External MergeSort is good for scenarios which require high computation for
+  comparing list items and for when the list size is too big to read into
+  memory.
 - Don't use WebWorkers like I did in this demo.

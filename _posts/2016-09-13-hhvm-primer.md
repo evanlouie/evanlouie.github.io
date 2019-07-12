@@ -2,14 +2,25 @@
 layout: post
 title: HHVM Primer
 tags: hhvm php apache nginx
-excerpt: "Internally at Hootsuite, we at the WebDev team have adopted HHVM as a means to improve the performance of our older PHP code. Unable to hot swap PHP7 without breaking third party vendor code and HHVM having full PHP5\\* support made swap very worth while. However that is not to say HHVM hasn't given me or my team any headaches. There have been plenty... segfaults anyone? Here is my scratchpad/notes for using HHVM."
+excerpt:
+  "Internally at Hootsuite, we at the WebDev team have adopted HHVM as a means
+  to improve the performance of our older PHP code. Unable to hot swap PHP7
+  without breaking third party vendor code and HHVM having full PHP5\\* support
+  made swap very worth while. However that is not to say HHVM hasn't given me or
+  my team any headaches. There have been plenty... segfaults anyone? Here is my
+  scratchpad/notes for using HHVM."
 ---
 
-> A HipHopsters Guide To WebDev with Facebook's HHVM / My scratchpad for development with HHVM on Apache and NGINX
+> A HipHopsters Guide To WebDev with Facebook's HHVM / My scratchpad for
+> development with HHVM on Apache and NGINX
 
-Internally at Hootsuite, we at the WebDev team have adopted HHVM as a means to improve the performance of our older PHP code. Unable to hot swap PHP7 without breaking third party vendor code and HHVM having full PHP5\* support made swap very worth while.
+Internally at Hootsuite, we at the WebDev team have adopted HHVM as a means to
+improve the performance of our older PHP code. Unable to hot swap PHP7 without
+breaking third party vendor code and HHVM having full PHP5\* support made swap
+very worth while.
 
-However that is not to say HHVM hasn't given me or my team any headaches. There have been plenty... segfaults anyone?
+However that is not to say HHVM hasn't given me or my team any headaches. There
+have been plenty... segfaults anyone?
 
 Here is my scratchpad/notes for using HHVM.
 
@@ -17,14 +28,14 @@ Here is my scratchpad/notes for using HHVM.
 
 {:.no_toc}
 
-- Will be replaced with the ToC, excluding the "Contents" header
-  {:toc}
+- Will be replaced with the ToC, excluding the "Contents" header {:toc}
 
 # Useful Commands
 
 ## Clean Verbose Logs:
 
-HHVM produces a lot of garbage logs in verbose mode; notably the `f_is_{file,dir}`. Do an inverse grep to filter them out
+HHVM produces a lot of garbage logs in verbose mode; notably the
+`f_is_{file,dir}`. Do an inverse grep to filter them out
 
 ```bash
 tail -F /var/log/hhvm/error.log | grep --line-buffered -v f_is_
@@ -32,7 +43,11 @@ tail -F /var/log/hhvm/error.log | grep --line-buffered -v f_is_
 
 ## Almighty Restart
 
-HHVM can sometimes be stubborn and refuse to recompile changed code. Restarting the service will force it to reevaluate all code. Usually having my logs open as I dev, I reopen filtered logs as soon as it restarts. I actually alias this command `hh_restart` and is probably one of my most used commands during development.
+HHVM can sometimes be stubborn and refuse to recompile changed code. Restarting
+the service will force it to reevaluate all code. Usually having my logs open as
+I dev, I reopen filtered logs as soon as it restarts. I actually alias this
+command `hh_restart` and is probably one of my most used commands during
+development.
 
 ```bash
 sudo service hhvm restart && sudo service apache2 restart && tail -F /var/log/hhvm/error.log | grep --line-buffered -v f_is_
@@ -40,7 +55,10 @@ sudo service hhvm restart && sudo service apache2 restart && tail -F /var/log/hh
 
 ## Enabling mod_php
 
-On one my teams older platforms, we migrated from PHP56/mod_php to HHVM/FastCGI on Apache. I often find myself having to switch between PHP56 mod_php and HHVM FastCGI in development just for testing and general backwards compatibility testing.
+On one my teams older platforms, we migrated from PHP56/mod_php to HHVM/FastCGI
+on Apache. I often find myself having to switch between PHP56 mod_php and HHVM
+FastCGI in development just for testing and general backwards compatibility
+testing.
 
 ```bash
 sudo su
@@ -70,9 +88,12 @@ exit
 
 ## server.ini
 
-When you first start using HHVM, there server.ini and php.ini settings files can be quite annoying to setup. Here is my setup for general development.
+When you first start using HHVM, there server.ini and php.ini settings files can
+be quite annoying to setup. Here is my setup for general development.
 
-Note: you will incur a heavy performance penalty for having `hhvm.jit_profile_interp_requests`, `hhvm.server.implicit_flush`, and `xdebug.enable` set to true
+Note: you will incur a heavy performance penalty for having
+`hhvm.jit_profile_interp_requests`, `hhvm.server.implicit_flush`, and
+`xdebug.enable` set to true
 
 ```ini
 ; php options
@@ -109,7 +130,11 @@ xdebug.remote_port=9999
 
 ## proxygen.ini
 
-Often times I find myself running having to develop HHVM along side standard PHP. This usually means I use mod_php on Apache and end up giving it my main dev port. Setting up multiple ports and virtual hosts in Apache/Nginx and juggling between FastCGI ports in server.ini can be annoying. One solution is to just start up HHVM's built in HTTP server; Proxygen.
+Often times I find myself running having to develop HHVM along side standard
+PHP. This usually means I use mod_php on Apache and end up giving it my main dev
+port. Setting up multiple ports and virtual hosts in Apache/Nginx and juggling
+between FastCGI ports in server.ini can be annoying. One solution is to just
+start up HHVM's built in HTTP server; Proxygen.
 
 ```ini
 ; php options
@@ -145,7 +170,8 @@ hhvm.server.implicit_flush = true
 hhvm -m s -c /etc/hhvm/proxygen.ini | grep --line-buffered -v f_is
 ```
 
-This will start up a Proxygen listening to port 8888 and grep the verbose logs for clean output
+This will start up a Proxygen listening to port 8888 and grep the verbose logs
+for clean output
 
 # Issues/Gotchas
 
@@ -153,8 +179,10 @@ This will start up a Proxygen listening to port 8888 and grep the verbose logs f
 
 ### Broken PHP ini getters
 
-Several PHP ini retrieval functions fail by default. In order to make them work, you have to disable an [UNDOCUMENTED](https://docs.hhvm.com/hhvm/configuration/INI-settings)
-ini config option:
+Several PHP ini retrieval functions fail by default. In order to make them work,
+you have to disable an
+[UNDOCUMENTED](https://docs.hhvm.com/hhvm/configuration/INI-settings) ini config
+option:
 
 ```ini
 hhvm.enable_zend_ini_compat = false
@@ -164,13 +192,18 @@ hhvm.enable_zend_ini_compat = false
 
 ## HHVM Doesn't Ship With GeoIP
 
-Unlike most vanilla PHP distros, HHVM doesn't ship with the GeoIP plugin. As such, if your actively switching between HHVM and vanilla PHP, you're going to want to disable your PHP's GeoIP (comment out the geoip.so in `/etc/path/to/php/mods-available/geoip.ini`) and install your own with composer.
+Unlike most vanilla PHP distros, HHVM doesn't ship with the GeoIP plugin. As
+such, if your actively switching between HHVM and vanilla PHP, you're going to
+want to disable your PHP's GeoIP (comment out the geoip.so in
+`/etc/path/to/php/mods-available/geoip.ini`) and install your own with composer.
 
 ## CraftCMS
 
 ### Exceptions Handling
 
-HHVM handles deconstructors somewhat differently from Zend. Yii/Craft uses deconstructors for exception handling. Wrap the app in a try/catch and manually call Crafts exception handler, passing the Exception
+HHVM handles deconstructors somewhat differently from Zend. Yii/Craft uses
+deconstructors for exception handling. Wrap the app in a try/catch and manually
+call Crafts exception handler, passing the Exception
 
 <https://docs.hhvm.com/hhvm/inconsistencies/classes-and-objects#exceptions-thrown-from-destructors>
 

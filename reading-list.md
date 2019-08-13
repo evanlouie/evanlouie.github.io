@@ -43,3 +43,7 @@ Just a list of useful sites and stuff to read:
 
 - [BFG Repo Cleaner - Delete files from git history](https://rtyley.github.io/bfg-repo-cleaner/)
 - [WebGraphviz](http://www.webgraphviz.com/)
+
+## Ops
+
+- [12 Factor Apps -- A methodology for building modern, scalable, maintainable software-as-a-service apps.](https://12factor.net)

@@ -15,6 +15,7 @@ Just a list of useful sites and stuff to read:
 - [Flutter - Native Apps with Dart](https://flutter.io/)
 - [Gatsby + Contentful + Netlify](https://www.gatsbyjs.org/blog/2017-12-06-gatsby-plus-contentful-plus-netlify/)
 - [Gatsby Introduction](https://dev.to/ardennl/taking-gatsby-for-a-spin-4je)
+- [HEAD - A free guide to HTML5 <head> elements](https://htmlhead.dev/)
 - [How To GraphSQL](https://www.howtographql.com/)
 - [How To Teach Git](https://rachelcarmena.github.io/2018/12/12/how-to-teach-git.html)
 - [JAM Stack - Living the dynamically static life](https://jamstack.org/)

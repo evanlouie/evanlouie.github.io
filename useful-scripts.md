@@ -43,6 +43,33 @@ spec:
           args: ["while true; do sleep 30; done;"]
 ```
 
+### Generate JSON Report of GitHub project board state
+
+```javascript
+let board = [...document.querySelectorAll(".project-column")].map(column => {
+  return {
+    name: column.querySelector(".js-project-column-name").innerHTML,
+    cards: [...column.querySelectorAll(`[data-content-type="Issue"]`)].map(
+      card => {
+        const issueEl = card.querySelector(`[data-content-label="issue"]`);
+        const issueNumberEl = card.querySelector(".js-issue-number");
+        return {
+          name: issueEl.innerHTML,
+          link:
+            issueEl.getAttribute("href") ??
+            Error(`unable to prase 'href' from ${issueEl}`),
+          issueNumber:
+            Number(issueNumberEl.innerHTML.slice(1)) ||
+            Error(`unable to parse Number() from ${issueNumberEl}`)
+        };
+      }
+    )
+  };
+});
+
+console.log(JSON.stringify(board, null, 2));
+```
+
 ### Remove Wix Ads
 
 ```javascript
@@ -99,7 +126,8 @@ wget \
 
 ### Generate user story report from VSTS window
 
-Generate User Story report for whichever user stories are on screen in VSTS. Requires "Assigned To" to be on screen.
+Generate User Story report for whichever user stories are on screen in VSTS.
+Requires "Assigned To" to be on screen.
 
 ```typescript
 JSON.stringify(
@@ -138,7 +166,8 @@ JSON.stringify(
 
 ### Pyenv on Mojave
 
-`zlib` headers aren't available by default: https://github.com/pyenv/pyenv/issues/1219
+`zlib` headers aren't available by default:
+https://github.com/pyenv/pyenv/issues/1219
 
 ```bash
 CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install 3.5.6

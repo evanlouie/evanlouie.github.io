@@ -5,6 +5,10 @@ title: Reading List
 
 Just a list of useful sites and stuff to read:
 
+## Cloud
+
+- [Cloud Report - 2020](https://www.cockroachlabs.com/blog/2020-cloud-report/)
+
 ## Web Development
 
 - [Awwwards - Frontend insperation](https://www.awwwards.com/)

@@ -49,6 +49,7 @@ Just a list of useful sites and stuff to read:
 
 - [BFG Repo Cleaner - Delete files from git history](https://rtyley.github.io/bfg-repo-cleaner/)
 - [WebGraphviz](http://www.webgraphviz.com/)
+- [jq guide](https://mosermichael.github.io/jq-illustrated/dir/content.html)
 
 ## Ops
 

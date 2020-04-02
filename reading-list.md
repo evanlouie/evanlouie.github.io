@@ -28,6 +28,7 @@ Just a list of useful sites and stuff to read:
 - [The Ultimate Guide to JavaScript Frameworks](https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/)
 - [Turbolinks 5](https://www.youtube.com/watch?v=SWEts0rlezA)
 - [Typography.js](https://kyleamathews.github.io/typography.js/)
+- [htmldom](https://htmldom.dev/)
 
 ## Distributed
 

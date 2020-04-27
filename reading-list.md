@@ -17,6 +17,7 @@ Just a list of useful sites and stuff to read:
 - [CSS3 - Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [CSS3 - Grids](https://css-tricks.com/snippets/css/complete-guide-grid/)
 - [ESLint + Typescript - Getting Started](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md)
+- [Eloquent JavaScript - GREAT book for beginners to JS](https://eloquentjavascript.net/)
 - [Flutter - Native Apps with Dart](https://flutter.io/)
 - [Gatsby + Contentful + Netlify](https://www.gatsbyjs.org/blog/2017-12-06-gatsby-plus-contentful-plus-netlify/)
 - [Gatsby Introduction](https://dev.to/ardennl/taking-gatsby-for-a-spin-4je)

@@ -5,6 +5,10 @@ title: Reading List
 
 Just a list of useful sites and stuff to read:
 
+## Language Development
+
+- [History of Clojure](https://clojure.org/about/history)
+
 ## Cloud
 
 - [Cloud Report - 2020](https://www.cockroachlabs.com/blog/2020-cloud-report/)
